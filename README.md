@@ -1,1 +1,27 @@
-IyBFY2hvIEFJIENvbXBhbmlvbiDwn4y/CgpBIGNoaWxsLCBjb21wYXNzaW9uYXRlIEFJIGJ1ZGR5IGJ1aWx0IHRvIGxpc3Rlbiwgc3VwcG9ydCwgYW5kIGhlbHAgeW91IGZlZWwgaGVhcmQuCgojIyDwn5qAIEZlYXR1cmVzCi0gKipNdWx0aS10aHJlYWRlZCBDb252ZXJzYXRpb25zKio6IE1hbmFnZSBtdWx0aXBsZSBjaGF0IGhpc3Rvcmllcy4KLSAqKlJlYWwtdGltZSBTdHJlYW1pbmcqKjogTmF0dXJhbCAidHlwaW5nIiBlZmZlY3QgZm9yIEFJIHJlc3BvbnNlcy4KLSAqKk1lbnRhbCBIZWFsdGggRm9jdXMqKjogRGVzaWduZWQgd2l0aCBlbXBhdGh5IGFuZCBjYWxtIGFzIHByaW9yaXRpZXMuCi0gKipWZXJjZWwgRGVwbG95bWVudCBSZWFkeSoqOiBDb25maWd1cmVkIGZvciBzZXJ2ZXJsZXNzIGZ1bmN0aW9ucyBhbmQgbW9kZXJuIGZyb250ZW5kIGhvc3RpbmcuCgojIyDwn5ug77iPIFRlY2ggU3RhY2sKLSAqKkZyb250ZW5kKio6IFJlYWN0IChWaXRlKSwgVGFpbHdpbmQgQ1NTLCBMdWNpZGUgSWNvbnMuCi0gKipCYWNrZW5kKio6IFB5dGhvbiAoRmxhc2spLCBOZXh0VG9rZW4gU0RLLgotICoqQUkgTW9kZWwqKjogR2VtaW5pIDIuMCBGbGFzaC4KCiMjIPCfk6YgRGVwbG95bWVudCB0byBWZXJjZWwKVGhpcyBwcm9qZWN0IGlzIHByZS1jb25maWd1cmVkIGZvciBWZXJjZWwuCgoxLiAqKkNvbm5lY3QgeW91ciBHaXRIdWIqKiB0byBWZXJjZWwuCjIuICoqSW1wb3J0IHRoaXMgcmVwb3NpdG9yeSoqLgozLiBTZXQgeW91ciAqKkVudmlyb25tZW50IFZhcmlhYmxlcyoqOgogICAtIGBORVhUVE9LRU5fQVBJX0tFWWA6IFlvdXIgTmV4dFRva2VuIEFQSSBrZXkuCiAgIC0gYEVDSE9fVFpgOiBZb3VyIHRpbWV6b25lIChlLmcuLCBgQWZyaWNhL0FjY3JhYCkuCjQuICoqRGVwbG95ISoqCgojIyDwn5Go4oCN8J+SuyBDcmVhdG9yCkNyZWF0ZWQgd2l0aCDinaTvuI8gYnkgKipMYW5vciBKZXBodGhhaCBLd2FtZSoqLgo=
+# Echo AI Companion 🌿
+
+A chill, compassionate AI buddy built to listen, support, and help you feel heard.
+
+## 🚀 Features
+- **Multi-threaded Conversations**: Manage multiple chat histories.
+- **Real-time Streaming**: Natural "typing" effect for AI responses.
+- **Mental Health Focus**: Designed with empathy and calm as priorities.
+- **Vercel Deployment Ready**: Configured for serverless functions and modern frontend hosting.
+
+## 🛠️ Tech Stack
+- **Frontend**: React (Vite), Tailwind CSS, Lucide Icons.
+- **Backend**: Python (Flask), NextToken SDK.
+- **AI Model**: Gemini 2.0 Flash.
+
+## 📦 Deployment to Vercel
+This project is pre-configured for Vercel.
+
+1. **Connect your GitHub** to Vercel.
+2. **Import this repository**.
+3. Set your **Environment Variables**:
+   - `NEXTTOKEN_API_KEY`: Your NextToken API key.
+   - `ECHO_TZ`: Your timezone (e.g., `Africa/Accra`).
+4. **Deploy!**
+
+## 👨‍💻 Creator
+Created with ❤️ by **Lanor Jephthah Kwame**.
