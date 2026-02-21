@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Echo-AI-Companion/', // GitHub Pages project base path
+  base: './',  // CRITICAL: Required for serving from subdirectory
 })
