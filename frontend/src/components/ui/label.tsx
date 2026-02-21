@@ -1,16 +1,1 @@
-import * as React from "react";
-import { cn } from "../../lib/utils";
-
-function Label({ className, ...props }: React.ComponentProps<"label">) {
-  return (
-    <label
-      className={cn(
-        "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-
-export { Label };
+aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgeyBjbiB9IGZyb20gIi4uLy4uL2xpYi91dGlscyI7CgpmdW5jdGlvbiBMYWJlbCh7IGNsYXNzTmFtZSwgLi4ucHJvcHMgfTogUmVhY3QuQ29tcG9uZW50UHJvcHM8ImxhYmVsIj4pIHsKICByZXR1cm4gKAogICAgPGxhYmVsCiAgICAgIGNsYXNzTmFtZT17Y24oCiAgICAgICAgInRleHQtc20gZm9udC1tZWRpdW0gbGVhZGluZy1ub25lIHBlZXItZGlzYWJsZWQ6Y3Vyc29yLW5vdC1hbGxvd2VkIHBlZXItZGlzYWJsZWQ6b3BhY2l0eS03MCIsCiAgICAgICAgY2xhc3NOYW1lCiAgICAgICl9CiAgICAgIHsuLi5wcm9wc30KICAgIC8+CiAgKTsKfQoKZXhwb3J0IHsgTGFiZWwgfTsK
