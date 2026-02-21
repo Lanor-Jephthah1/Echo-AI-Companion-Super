@@ -1,1 +1,49 @@
-QHRhaWx3aW5kIGJhc2U7CkB0YWlsd2luZCBjb21wb25lbnRzOwpAdGFpbHdpbmQgdXRpbGl0aWVzOwoKQGxheWVyIGJhc2UgewogIDpyb290IHsKICAgIC0tYmFja2dyb3VuZDogMCAwJSAxMDAlOwogICAgLS1mb3JlZ3JvdW5kOiAyMjQgNzEuNCUgNC4xJTsKICAgIC0tY2FyZDogMCAwJSAxMDAlOwogICAgLS1jYXJkLWZvcmVncm91bmQ6IDIyNCA3MS40JSA0LjElOwogICAgLS1wb3BvdmVyOiAwIDAlIDEwMCU7CiAgICAtLXBvcG92ZXItZm9yZWdyb3VuZDogMjI0IDcxLjQlIDQuMSU7CiAgICAtLXByaW1hcnk6IDI2My40IDcwJSA1MC40JTsKICAgIC0tcHJpbWFyeS1mb3JlZ3JvdW5kOiAyMTAgNDAlIDk4JTsKICAgIC0tc2Vjb25kYXJ5OiAyMjAgMTQuMyUgOTUuOSU7CiAgICAtLXNlY29uZGFyeS1mb3JlZ3JvdW5kOiAyMjAuOSAzOS4zJSAxMSU7CiAgICAtLW11dGVkOiAyMjAgMTQuMyUgOTUuOSU7CiAgICAtLW11dGVkLWZvcmVncm91bmQ6IDIyMCA4LjklIDQ2LjElOwogICAgLS1hY2NlbnQ6IDIyMCAxNC4zJSA5NS45JTsKICAgIC0tYWNjZW50LWZvcmVncm91bmQ6IDIyMC45IDM5LjMlIDExJTsKICAgIC0tZGVzdHJ1Y3RpdmU6IDAgODQuMiUgNjAuMiU7CiAgICAtLWRlc3RydWN0aXZlLWZvcmVncm91bmQ6IDIxMCAyMCUgOTglOwogICAgLS1ib3JkZXI6IDIyMCAxMyUgOTElOwogICAgLS1pbnB1dDogMjIwIDEzJSA5MSU7CiAgICAtLXJpbmc6IDI2My40IDcwJSA1MC40JTsKICAgIC0tcmFkaXVzOiAwLjYyNXJlbTsKICAgIC0tY2hhcnQtMTogMjYzLjQgNzAlIDUwLjQlOwogICAgLS1jaGFydC0yOiAzMzAgODElIDYwJTsKICAgIC0tY2hhcnQtMzogMTk5IDg5JSA0OCU7CiAgICAtLWNoYXJ0LTQ6IDQ3IDk2JSA1MyU7CiAgICAtLWNoYXJ0LTU6IDE2MCA2MCUgNDUlOwogIH0KCiAgKiB7CiAgICBAYXBwbHkgYm9yZGVyLWJvcmRlcjsKICB9CgogIGJvZHkgewogICAgQGFwcGx5IGJnLWJhY2tncm91bmQgdGV4dC1mb3JlZ3JvdW5kIGFudGlhbGlhc2VkOwogICAgZm9udC1mZWF0dXJlLXNldHRpbmdzOiAicmxpZyIgMSwgImNhbHQiIDE7CiAgfQp9CgouYmctbWVzaCB7CiAgYmFja2dyb3VuZC1jb2xvcjogaHNsYSgwLDAlLDEwMCUsMSk7CiAgYmFja2dyb3VuZC1pbWFnZToKICAgIHJhZGlhbC1ncmFkaWVudChhdCAwJSAwJSwgaHNsYSgyMjIsNDclLDExJSwwLjA1KSAwLCB0cmFuc3BhcmVudCA1MCUpLAogICAgcmFkaWFsLWdyYWRpZW50KGF0IDUwJSAwJSwgaHNsYSgyMjIsNDclLDExJSwwLjAyKSAwLCB0cmFuc3BhcmVudCA1MCUpOwp9Cg==
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 263.4 70% 50.4%;
+    --radius: 0.625rem;
+    --chart-1: 263.4 70% 50.4%;
+    --chart-2: 330 81% 60%;
+    --chart-3: 199 89% 48%;
+    --chart-4: 47 96% 53%;
+    --chart-5: 160 60% 45%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.bg-mesh {
+  background-color: hsla(0,0%,100%,1);
+  background-image:
+    radial-gradient(at 0% 0%, hsla(222,47%,11%,0.05) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(222,47%,11%,0.02) 0, transparent 50%);
+}
