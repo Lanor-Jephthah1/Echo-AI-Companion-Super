@@ -1,1 +1,94 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgeyBjbiB9IGZyb20gIi4uLy4uL2xpYi91dGlscyI7CgpmdW5jdGlvbiBUYWJsZSh7CiAgY2xhc3NOYW1lLAogIC4uLnByb3BzCn06IFJlYWN0LkhUTUxBdHRyaWJ1dGVzPEhUTUxUYWJsZUVsZW1lbnQ+KSB7CiAgcmV0dXJuICgKICAgIDxkaXYgY2xhc3NOYW1lPSJyZWxhdGl2ZSB3LWZ1bGwgb3ZlcmZsb3ctYXV0byI+CiAgICAgIDx0YWJsZQogICAgICAgIGNsYXNzTmFtZT17Y24oInctZnVsbCBjYXB0aW9uLWJvdHRvbSB0ZXh0LXNtIiwgY2xhc3NOYW1lKX0KICAgICAgICB7Li4ucHJvcHN9CiAgICAgIC8+CiAgICA8L2Rpdj4KICApOwp9CgpmdW5jdGlvbiBUYWJsZUhlYWRlcih7CiAgY2xhc3NOYW1lLAogIC4uLnByb3BzCn06IFJlYWN0LkhUTUxBdHRyaWJ1dGVzPEhUTUxUYWJsZVNlY3Rpb25FbGVtZW50PikgewogIHJldHVybiA8dGhlYWQgY2xhc3NOYW1lPXtjbigiWyZfdHJdOmJvcmRlci1iIiwgY2xhc3NOYW1lKX0gey4uLnByb3BzfSAvPjsKfQoKZnVuY3Rpb24gVGFibGVCb2R5KHsKICBjbGFzc05hbWUsCiAgLi4ucHJvcHMKfTogUmVhY3QuSFRNTEF0dHJpYnV0ZXM8SFRNTFRhYmxlU2VjdGlvbkVsZW1lbnQ+KSB7CiAgcmV0dXJuICgKICAgIDx0Ym9keQogICAgICBjbGFzc05hbWU9e2NuKCJbJl90cjpsYXN0LWNoaWxkXTpib3JkZXItMCIsIGNsYXNzTmFtZSl9CiAgICAgIHsuLi5wcm9wc30KICAgIC8+CiAgKTsKfQoKZnVuY3Rpb24gVGFibGVSb3coewogIGNsYXNzTmFtZSwKICAuLi5wcm9wcwp9OiBSZWFjdC5IVE1MQXR0cmlidXRlczxIVE1MVGFibGVSb3dFbGVtZW50PikgewogIHJldHVybiAoCiAgICA8dHIKICAgICAgY2xhc3NOYW1lPXtjbigKICAgICAgICAiYm9yZGVyLWIgdHJhbnNpdGlvbi1jb2xvcnMgaG92ZXI6YmctbXV0ZWQvNTAgZGF0YS1bc3RhdGU9c2VsZWN0ZWRdOmJnLW11dGVkIiwKICAgICAgICBjbGFzc05hbWUKICAgICAgKX0KICAgICAgey4uLnByb3BzfQogICAgLz4KICApOwp9CgpmdW5jdGlvbiBUYWJsZUhlYWQoewogIGNsYXNzTmFtZSwKICAuLi5wcm9wcwp9OiBSZWFjdC5UaEhUTUxBdHRyaWJ1dGVzPEhUTUxUYWJsZUNlbGxFbGVtZW50PikgewogIHJldHVybiAoCiAgICA8dGgKICAgICAgY2xhc3NOYW1lPXtjbigKICAgICAgICAiaC0xMCBweC0yIHRleHQtbGVmdCBhbGlnbi1taWRkbGUgZm9udC1tZWRpdW0gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIiwKICAgICAgICBjbGFzc05hbWUKICAgICAgKX0KICAgICAgey4uLnByb3BzfQogICAgLz4KICApOwp9CgpmdW5jdGlvbiBUYWJsZUNlbGwoewogIGNsYXNzTmFtZSwKICAuLi5wcm9wcwp9OiBSZWFjdC5UZEhUTUxBdHRyaWJ1dGVzPEhUTUxUYWJsZUNlbGxFbGVtZW50PikgewogIHJldHVybiA8dGQgY2xhc3NOYW1lPXtjbigicC0yIGFsaWduLW1pZGRsZSIsIGNsYXNzTmFtZSl9IHsuLi5wcm9wc30gLz47Cn0KCmZ1bmN0aW9uIFRhYmxlQ2FwdGlvbih7CiAgY2xhc3NOYW1lLAogIC4uLnByb3BzCn06IFJlYWN0LkhUTUxBdHRyaWJ1dGVzPEhUTUxUYWJsZUNhcHRpb25FbGVtZW50PikgewogIHJldHVybiAoCiAgICA8Y2FwdGlvbgogICAgICBjbGFzc05hbWU9e2NuKCJtdC00IHRleHQtc20gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIiwgY2xhc3NOYW1lKX0KICAgICAgey4uLnByb3BzfQogICAgLz4KICApOwp9CgpleHBvcnQgewogIFRhYmxlLAogIFRhYmxlSGVhZGVyLAogIFRhYmxlQm9keSwKICBUYWJsZVJvdywKICBUYWJsZUhlYWQsCiAgVGFibGVDZWxsLAogIFRhYmxlQ2FwdGlvbiwKfTsK
+import * as React from "react";
+import { cn } from "../../lib/utils";
+
+function Table({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLTableElement>) {
+  return (
+    <div className="relative w-full overflow-auto">
+      <table
+        className={cn("w-full caption-bottom text-sm", className)}
+        {...props}
+      />
+    </div>
+  );
+}
+
+function TableHeader({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLTableSectionElement>) {
+  return <thead className={cn("[&_tr]:border-b", className)} {...props} />;
+}
+
+function TableBody({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLTableSectionElement>) {
+  return (
+    <tbody
+      className={cn("[&_tr:last-child]:border-0", className)}
+      {...props}
+    />
+  );
+}
+
+function TableRow({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLTableRowElement>) {
+  return (
+    <tr
+      className={cn(
+        "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+function TableHead({
+  className,
+  ...props
+}: React.ThHTMLAttributes<HTMLTableCellElement>) {
+  return (
+    <th
+      className={cn(
+        "h-10 px-2 text-left align-middle font-medium text-muted-foreground",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+function TableCell({
+  className,
+  ...props
+}: React.TdHTMLAttributes<HTMLTableCellElement>) {
+  return <td className={cn("p-2 align-middle", className)} {...props} />;
+}
+
+function TableCaption({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLTableCaptionElement>) {
+  return (
+    <caption
+      className={cn("mt-4 text-sm text-muted-foreground", className)}
+      {...props}
+    />
+  );
+}
+
+export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+  TableCaption,
+};
