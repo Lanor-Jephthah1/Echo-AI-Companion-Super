@@ -1,1 +1,24 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgeyBjbiB9IGZyb20gIi4uLy4uL2xpYi91dGlscyI7CgpmdW5jdGlvbiBTZXBhcmF0b3IoewogIGNsYXNzTmFtZSwKICBvcmllbnRhdGlvbiA9ICJob3Jpem9udGFsIiwKICAuLi5wcm9wcwp9OiB7CiAgb3JpZW50YXRpb24/OiAiaG9yaXpvbnRhbCIgfCAidmVydGljYWwiOwp9ICYgUmVhY3QuSFRNTEF0dHJpYnV0ZXM8SFRNTERpdkVsZW1lbnQ+KSB7CiAgcmV0dXJuICgKICAgIDxkaXYKICAgICAgcm9sZT0ic2VwYXJhdG9yIgogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICJzaHJpbmstMCBiZy1ib3JkZXIiLAogICAgICAgIG9yaWVudGF0aW9uID09PSAiaG9yaXpvbnRhbCIgPyAiaC1bMXB4XSB3LWZ1bGwiIDogImgtZnVsbCB3LVsxcHhdIiwKICAgICAgICBjbGFzc05hbWUKICAgICAgKX0KICAgICAgey4uLnByb3BzfQogICAgLz4KICApOwp9CgpleHBvcnQgeyBTZXBhcmF0b3IgfTsK
+import * as React from "react";
+import { cn } from "../../lib/utils";
+
+function Separator({
+  className,
+  orientation = "horizontal",
+  ...props
+}: {
+  orientation?: "horizontal" | "vertical";
+} & React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      role="separator"
+      className={cn(
+        "shrink-0 bg-border",
+        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+export { Separator };
