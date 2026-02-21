@@ -1,1 +1,34 @@
-aW1wb3J0IHsgc3RyZWFtU1NFIH0gZnJvbSAiLi91c2VTU0UiOwoKZnVuY3Rpb24gZ2V0Q29uZmlnKCkgewogIHJldHVybiAod2luZG93IGFzIGFueSkuX19BUFBfQ09ORklHX187Cn0KCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBycGNDYWxsPFQgPSBhbnk+KHsgZnVuYywgYXJncyA9IHt9LCBtb2R1bGUgfTogYW55KTogUHJvbWlzZTxUPiB7CiAgY29uc3QgY29uZmlnID0gZ2V0Q29uZmlnKCk7CiAgY29uc3QgcmVzb2x2ZWRNb2R1bGUgPSBtb2R1bGUgfHwgYGFwcHMuJHtjb25maWcuYXBwTmFtZX0uYmFja2VuZC5tYWluYDsKCiAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2goY29uZmlnLmRhdGFFbmRwb2ludCwgewogICAgbWV0aG9kOiAiUE9TVCIsCiAgICBoZWFkZXJzOiB7ICJDb250ZW50LVR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsICJYLVJ1bi1JZCI6IGNvbmZpZy5ydW5JZCB8fCAiIiB9LAogICAgYm9keTogSlNPTi5zdHJpbmdpZnkoeyBtb2R1bGU6IHJlc29sdmVkTW9kdWxlLCBmdW5jLCBhcmdzIH0pLAogICAgY3JlZGVudGlhbHM6ICJpbmNsdWRlIiwKICB9KTsKCiAgaWYgKCFyZXMub2spIHRocm93IG5ldyBFcnJvcigiUmVxdWVzdCBmYWlsZWQiKTsKICByZXR1cm4gYXdhaXQgcmVzLmpzb24oKTsKfQoKZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHN0cmVhbUNhbGwoeyBmdW5jLCBhcmdzID0ge30sIG1vZHVsZSwgb25DaHVuaywgb25FcnJvciB9OiBhbnkpOiBQcm9taXNlPHZvaWQ+IHsKICBjb25zdCBjb25maWcgPSBnZXRDb25maWcoKTsKICBjb25zdCByZXNvbHZlZE1vZHVsZSA9IG1vZHVsZSB8fCBgYXBwcy4ke2NvbmZpZy5hcHBOYW1lfS5iYWNrZW5kLm1haW5gOwogIGNvbnN0IHN0cmVhbVVybCA9IGNvbmZpZy5kYXRhRW5kcG9pbnQucmVwbGFjZSgiL2RhdGEiLCAiL2RhdGEvc3RyZWFtIik7CgogIGF3YWl0IHN0cmVhbVNTRSgKICAgIHN0cmVhbVVybCwKICAgIHsgbW9kdWxlOiByZXNvbHZlZE1vZHVsZSwgZnVuYywgYXJncyB9LAogICAgb25DaHVuaywKICAgIG9uRXJyb3IsCiAgICB7ICJYLVJ1bi1JZCI6IGNvbmZpZy5ydW5JZCB8fCAiIiB9CiAgKTsKfQo=
+import { streamSSE } from "./useSSE";
+
+function getConfig() {
+  return (window as any).__APP_CONFIG__;
+}
+
+export async function rpcCall<T = any>({ func, args = {}, module }: any): Promise<T> {
+  const config = getConfig();
+  const resolvedModule = module || `apps.${config.appName}.backend.main`;
+
+  const res = await fetch(config.dataEndpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Run-Id": config.runId || "" },
+    body: JSON.stringify({ module: resolvedModule, func, args }),
+    credentials: "include",
+  });
+
+  if (!res.ok) throw new Error("Request failed");
+  return await res.json();
+}
+
+export async function streamCall({ func, args = {}, module, onChunk, onError }: any): Promise<void> {
+  const config = getConfig();
+  const resolvedModule = module || `apps.${config.appName}.backend.main`;
+  const streamUrl = config.dataEndpoint.replace("/data", "/data/stream");
+
+  await streamSSE(
+    streamUrl,
+    { module: resolvedModule, func, args },
+    onChunk,
+    onError,
+    { "X-Run-Id": config.runId || "" }
+  );
+}
