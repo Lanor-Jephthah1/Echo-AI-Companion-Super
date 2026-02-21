@@ -1,1 +1,100 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgeyBjbiB9IGZyb20gIi4uLy4uL2xpYi91dGlscyI7Cgp0eXBlIFRhYnNDb250ZXh0VmFsdWUgPSB7CiAgdmFsdWU6IHN0cmluZzsKICBvblZhbHVlQ2hhbmdlOiAodmFsdWU6IHN0cmluZykgPT4gdm9pZDsKfTsKCmNvbnN0IFRhYnNDb250ZXh0ID0gUmVhY3QuY3JlYXRlQ29udGV4dDxUYWJzQ29udGV4dFZhbHVlIHwgbnVsbD4obnVsbCk7CgpmdW5jdGlvbiB1c2VUYWJzKCkgewogIGNvbnN0IGN0eCA9IFJlYWN0LnVzZUNvbnRleHQoVGFic0NvbnRleHQpOwogIGlmICghY3R4KQogICAgdGhyb3cgbmV3IEVycm9yKAogICAgICAiVGFicyBjb21wb3VuZCBjb21wb25lbnRzIG11c3QgYmUgdXNlZCB3aXRoaW4gPFRhYnM+IgogICAgKTsKICByZXR1cm4gY3R4Owp9CgpmdW5jdGlvbiBUYWJzKHsKICBkZWZhdWx0VmFsdWUgPSAiIiwKICB2YWx1ZTogY29udHJvbGxlZFZhbHVlLAogIG9uVmFsdWVDaGFuZ2UsCiAgY2xhc3NOYW1lLAogIGNoaWxkcmVuLAogIC4uLnByb3BzCn06IHsKICBkZWZhdWx0VmFsdWU/OiBzdHJpbmc7CiAgdmFsdWU/OiBzdHJpbmc7CiAgb25WYWx1ZUNoYW5nZT86ICh2OiBzdHJpbmcpID0+IHZvaWQ7Cn0gJiBSZWFjdC5IVE1MQXR0cmlidXRlczxIVE1MRGl2RWxlbWVudD4pIHsKICBjb25zdCBbdW5jb250cm9sbGVkLCBzZXRVbmNvbnRyb2xsZWRdID0gUmVhY3QudXNlU3RhdGUoZGVmYXVsdFZhbHVlKTsKICBjb25zdCB2YWx1ZSA9IGNvbnRyb2xsZWRWYWx1ZSA/PyB1bmNvbnRyb2xsZWQ7CiAgY29uc3QgaGFuZGxlQ2hhbmdlID0gb25WYWx1ZUNoYW5nZSA/PyBzZXRVbmNvbnRyb2xsZWQ7CiAgcmV0dXJuICgKICAgIDxUYWJzQ29udGV4dC5Qcm92aWRlciB2YWx1ZT17eyB2YWx1ZSwgb25WYWx1ZUNoYW5nZTogaGFuZGxlQ2hhbmdlIH19PgogICAgICA8ZGl2IGNsYXNzTmFtZT17Y2xhc3NOYW1lfSB7Li4ucHJvcHN9PgogICAgICAgIHtjaGlsZHJlbn0KICAgICAgPC9kaXY+CiAgICA8L1RhYnNDb250ZXh0LlByb3ZpZGVyPgogICk7Cn0KCmZ1bmN0aW9uIFRhYnNMaXN0KHsKICBjbGFzc05hbWUsCiAgLi4ucHJvcHMKfTogUmVhY3QuSFRNTEF0dHJpYnV0ZXM8SFRNTERpdkVsZW1lbnQ+KSB7CiAgcmV0dXJuICgKICAgIDxkaXYKICAgICAgcm9sZT0idGFibGlzdCIKICAgICAgY2xhc3NOYW1lPXtjbigKICAgICAgICAiaW5saW5lLWZsZXggaC05IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciByb3VuZGVkLWxnIGJnLW11dGVkIHAtMSB0ZXh0LW11dGVkLWZvcmVncm91bmQiLAogICAgICAgIGNsYXNzTmFtZQogICAgICApfQogICAgICB7Li4ucHJvcHN9CiAgICAvPgogICk7Cn0KCmZ1bmN0aW9uIFRhYnNUcmlnZ2VyKHsKICBjbGFzc05hbWUsCiAgdmFsdWUsCiAgLi4ucHJvcHMKfTogUmVhY3QuQnV0dG9uSFRNTEF0dHJpYnV0ZXM8SFRNTEJ1dHRvbkVsZW1lbnQ+ICYgeyB2YWx1ZTogc3RyaW5nIH0pIHsKICBjb25zdCB7IHZhbHVlOiBzZWxlY3RlZCwgb25WYWx1ZUNoYW5nZSB9ID0gdXNlVGFicygpOwogIGNvbnN0IGlzQWN0aXZlID0gc2VsZWN0ZWQgPT09IHZhbHVlOwogIHJldHVybiAoCiAgICA8YnV0dG9uCiAgICAgIHJvbGU9InRhYiIKICAgICAgYXJpYS1zZWxlY3RlZD17aXNBY3RpdmV9CiAgICAgIG9uQ2xpY2s9eygpID0+IG9uVmFsdWVDaGFuZ2UodmFsdWUpfQogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICJpbmxpbmUtZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgd2hpdGVzcGFjZS1ub3dyYXAgcm91bmRlZC1tZCBweC0zIHB5LTEgdGV4dC1zbSBmb250LW1lZGl1bSByaW5nLW9mZnNldC1iYWNrZ3JvdW5kIHRyYW5zaXRpb24tYWxsIGZvY3VzLXZpc2libGU6b3V0bGluZS1ub25lIGZvY3VzLXZpc2libGU6cmluZy0yIGZvY3VzLXZpc2libGU6cmluZy1yaW5nIGZvY3VzLXZpc2libGU6cmluZy1vZmZzZXQtMiBkaXNhYmxlZDpwb2ludGVyLWV2ZW50cy1ub25lIGRpc2FibGVkOm9wYWNpdHktNTAiLAogICAgICAgIGlzQWN0aXZlCiAgICAgICAgICA/ICJiZy1iYWNrZ3JvdW5kIHRleHQtZm9yZWdyb3VuZCBzaGFkb3ciCiAgICAgICAgICA6ICJ0ZXh0LW11dGVkLWZvcmVncm91bmQgaG92ZXI6dGV4dC1mb3JlZ3JvdW5kIiwKICAgICAgICBjbGFzc05hbWUKICAgICAgKX0KICAgICAgey4uLnByb3BzfQogICAgLz4KICApOwp9CgpmdW5jdGlvbiBUYWJzQ29udGVudCh7CiAgY2xhc3NOYW1lLAogIHZhbHVlLAogIC4uLnByb3BzCn06IFJlYWN0LkhUTUxBdHRyaWJ1dGVzPEhUTUxEaXZFbGVtZW50PiAmIHsgdmFsdWU6IHN0cmluZyB9KSB7CiAgY29uc3QgeyB2YWx1ZTogc2VsZWN0ZWQgfSA9IHVzZVRhYnMoKTsKICBpZiAoc2VsZWN0ZWQgIT09IHZhbHVlKSByZXR1cm4gbnVsbDsKICByZXR1cm4gKAogICAgPGRpdgogICAgICByb2xlPSJ0YWJwYW5lbCIKICAgICAgY2xhc3NOYW1lPXtjbigibXQtMiIsIGNsYXNzTmFtZSl9CiAgICAgIHsuLi5wcm9wc30KICAgIC8+CiAgKTsKfQoKZXhwb3J0IHsgVGFicywgVGFic0xpc3QsIFRhYnNUcmlnZ2VyLCBUYWJzQ29udGVudCB9Owo=
+import * as React from "react";
+import { cn } from "../../lib/utils";
+
+type TabsContextValue = {
+  value: string;
+  onValueChange: (value: string) => void;
+};
+
+const TabsContext = React.createContext<TabsContextValue | null>(null);
+
+function useTabs() {
+  const ctx = React.useContext(TabsContext);
+  if (!ctx)
+    throw new Error(
+      "Tabs compound components must be used within <Tabs>"
+    );
+  return ctx;
+}
+
+function Tabs({
+  defaultValue = "",
+  value: controlledValue,
+  onValueChange,
+  className,
+  children,
+  ...props
+}: {
+  defaultValue?: string;
+  value?: string;
+  onValueChange?: (v: string) => void;
+} & React.HTMLAttributes<HTMLDivElement>) {
+  const [uncontrolled, setUncontrolled] = React.useState(defaultValue);
+  const value = controlledValue ?? uncontrolled;
+  const handleChange = onValueChange ?? setUncontrolled;
+  return (
+    <TabsContext.Provider value={{ value, onValueChange: handleChange }}>
+      <div className={className} {...props}>
+        {children}
+      </div>
+    </TabsContext.Provider>
+  );
+}
+
+function TabsList({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      role="tablist"
+      className={cn(
+        "inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+function TabsTrigger({
+  className,
+  value,
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & { value: string }) {
+  const { value: selected, onValueChange } = useTabs();
+  const isActive = selected === value;
+  return (
+    <button
+      role="tab"
+      aria-selected={isActive}
+      onClick={() => onValueChange(value)}
+      className={cn(
+        "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+        isActive
+          ? "bg-background text-foreground shadow"
+          : "text-muted-foreground hover:text-foreground",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+function TabsContent({
+  className,
+  value,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & { value: string }) {
+  const { value: selected } = useTabs();
+  if (selected !== value) return null;
+  return (
+    <div
+      role="tabpanel"
+      className={cn("mt-2", className)}
+      {...props}
+    />
+  );
+}
+
+export { Tabs, TabsList, TabsTrigger, TabsContent };
