@@ -1,17 +1,1 @@
-import * as React from "react";
-import { Loader2 } from "lucide-react";
-import { cn } from "../../lib/utils";
-
-function Spinner({
-  className,
-  ...props
-}: React.ComponentProps<typeof Loader2>) {
-  return (
-    <Loader2
-      className={cn("h-4 w-4 animate-spin", className)}
-      {...props}
-    />
-  );
-}
-
-export { Spinner };
+aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgeyBMb2FkZXIyIH0gZnJvbSAibHVjaWRlLXJlYWN0IjsKaW1wb3J0IHsgY24gfSBmcm9tICIuLi8uLi9saWIvdXRpbHMiOwoKZnVuY3Rpb24gU3Bpbm5lcih7CiAgY2xhc3NOYW1lLAogIC4uLnByb3BzCn06IFJlYWN0LkNvbXBvbmVudFByb3BzPHR5cGVvZiBMb2FkZXIyPikgewogIHJldHVybiAoCiAgICA8TG9hZGVyMgogICAgICBjbGFzc05hbWU9e2NuKCJoLTQgdy00IGFuaW1hdGUtc3BpbiIsIGNsYXNzTmFtZSl9CiAgICAgIHsuLi5wcm9wc30KICAgIC8+CiAgKTsKfQoKZXhwb3J0IHsgU3Bpbm5lciB9Owo=
