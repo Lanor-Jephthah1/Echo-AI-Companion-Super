@@ -1,1 +1,33 @@
-ewogICJuYW1lIjogImVjaG9fYWlfYXBwIiwKICAicHJpdmF0ZSI6IHRydWUsCiAgInZlcnNpb24iOiAiMC4wLjAiLAogICJ0eXBlIjogIm1vZHVsZSIsCiAgInNjcmlwdHMiOiB7CiAgICAiZGV2IjogInZpdGUiLAogICAgImJ1aWxkIjogInZpdGUgYnVpbGQiLAogICAgInByZXZpZXciOiAidml0ZSBwcmV2aWV3IgogIH0sCiAgImRlcGVuZGVuY2llcyI6IHsKICAgICJyZWFjdCI6ICJeMTguMi4wIiwKICAgICJyZWFjdC1kb20iOiAiXjE4LjIuMCIsCiAgICAicmVjaGFydHMiOiAiXjIuMTAuMCIsCiAgICAibHVjaWRlLXJlYWN0IjogIl4wLjI5NC4wIiwKICAgICJmcmFtZXItbW90aW9uIjogIl4xMC4xNi40IiwKICAgICJjbHN4IjogIl4yLjAuMCIsCiAgICAidGFpbHdpbmQtbWVyZ2UiOiAiXjIuMC4wIiwKICAgICJjbGFzcy12YXJpYW5jZS1hdXRob3JpdHkiOiAiXjAuNy4wIgogIH0sCiAgImRldkRlcGVuZGVuY2llcyI6IHsKICAgICJAdHlwZXMvcmVhY3QiOiAiXjE4LjIuMCIsCiAgICAiQHR5cGVzL3JlYWN0LWRvbSI6ICJeMTguMi4wIiwKICAgICJAdml0ZWpzL3BsdWdpbi1yZWFjdCI6ICJeNC4yLjAiLAogICAgImF1dG9wcmVmaXhlciI6ICJeMTAuNC4xNiIsCiAgICAicG9zdGNzcyI6ICJeOC40LjMyIiwKICAgICJ0YWlsd2luZGNzcyI6ICJeMy40LjAiLAogICAgInRhaWx3aW5kY3NzLWFuaW1hdGUiOiAiXjEuMC43IiwKICAgICJ0eXBlc2NyaXB0IjogIl41LjMuMCIsCiAgICAidml0ZSI6ICJeNS4wLjAiCiAgfQp9Cg==
+{
+  "name": "echo_ai_app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.10.0",
+    "lucide-react": "^0.294.0",
+    "framer-motion": "^10.16.4",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0",
+    "class-variance-authority": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.3.0",
+    "vite": "^5.0.0"
+  }
+}
+

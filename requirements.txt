@@ -1,0 +1,4 @@
+flask>=3.0.0
+flask-cors>=4.0.0
+pymongo[srv]>=4.8.0
+nexttoken>=0.1.0

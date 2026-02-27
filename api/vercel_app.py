@@ -173,6 +173,24 @@ def route_admin():
     tr:nth-child(even) {{ background: #0f172a; }}
     .wrap {{ max-width: 100%; overflow-x: auto; }}
     .btn {{ display: inline-block; padding: 8px 12px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 6px; }}
+    @media (max-width: 760px) {{
+      .wrap table, .wrap thead, .wrap tbody, .wrap th, .wrap td, .wrap tr {{ display: block; width: 100%; }}
+      .wrap thead tr {{ display: none; }}
+      .wrap tbody tr {{ border: 1px solid #374151; border-radius: 8px; margin-bottom: 10px; background: #0f172a; padding: 6px; }}
+      .wrap td {{ border: none; border-bottom: 1px solid #1f2937; padding: 8px 10px 8px 44%; position: relative; min-height: 34px; }}
+      .wrap td:last-child {{ border-bottom: none; }}
+      .wrap td::before {{
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        top: 8px;
+        width: 40%;
+        color: #9ca3af;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+      }}
+    }}
   </style>
 </head>
 <body>
@@ -395,12 +413,12 @@ def route_admin():
       }}
       tbody.innerHTML = rows.map((r) => `
         <tr>
-          <td>${{esc(r.timestamp)}}</td>
-          <td>${{esc(r.ip)}}</td>
-          <td>${{esc(r.client_id || "unknown")}}</td>
-          <td>${{esc(r.sentiment)}} (${{scoreForRow(r)}})</td>
-          <td>${{esc(r.user_message)}}</td>
-          <td>${{esc(r.bot_reply)}}</td>
+          <td data-label="Timestamp">${{esc(r.timestamp)}}</td>
+          <td data-label="IP">${{esc(r.ip)}}</td>
+          <td data-label="Client">${{esc(r.client_id || "unknown")}}</td>
+          <td data-label="Sentiment">${{esc(r.sentiment)}} (${{scoreForRow(r)}})</td>
+          <td data-label="User">${{esc(r.user_message)}}</td>
+          <td data-label="Bot">${{esc(r.bot_reply)}}</td>
         </tr>
       `).join("");
     }}

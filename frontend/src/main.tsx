@@ -1,1 +1,8 @@
-aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgUmVhY3RET00gZnJvbSAncmVhY3QtZG9tL2NsaWVudCcKaW1wb3J0IEFwcCBmcm9tICcuL0FwcCcKaW1wb3J0ICcuL2luZGV4LmNzcycKClJlYWN0RE9NLmNyZWF0ZVJvb3QoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Jvb3QnKSEpLnJlbmRlcigKICA8UmVhY3QuU3RyaWN0TW9kZT48QXBwIC8+PC9SZWFjdC5TdHJpY3RNb2RlPiwKKQo=
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode><App /></React.StrictMode>,
+)

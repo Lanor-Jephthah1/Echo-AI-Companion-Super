@@ -1,1 +1,36 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgeyBjdmEsIHR5cGUgVmFyaWFudFByb3BzIH0gZnJvbSAiY2xhc3MtdmFyaWFuY2UtYXV0aG9yaXR5IjsKaW1wb3J0IHsgY24gfSBmcm9tICIuLi8uLi9saWIvdXRpbHMiOwoKY29uc3QgYmFkZ2VWYXJpYW50cyA9IGN2YSgKICAiaW5saW5lLWZsZXggaXRlbXMtY2VudGVyIHJvdW5kZWQtbWQgYm9yZGVyIHB4LTIuNSBweS0wLjUgdGV4dC14cyBmb250LXNlbWlib2xkIHRyYW5zaXRpb24tY29sb3JzIGZvY3VzOm91dGxpbmUtbm9uZSBmb2N1czpyaW5nLTIgZm9jdXM6cmluZy1yaW5nIGZvY3VzOnJpbmctb2Zmc2V0LTIiLAogIHsKICAgIHZhcmlhbnRzOiB7CiAgICAgIHZhcmlhbnQ6IHsKICAgICAgICBkZWZhdWx0OgogICAgICAgICAgImJvcmRlci10cmFuc3BhcmVudCBiZy1wcmltYXJ5IHRleHQtcHJpbWFyeS1mb3JlZ3JvdW5kIHNoYWRvdyIsCiAgICAgICAgc2Vjb25kYXJ5OgogICAgICAgICAgImJvcmRlci10cmFuc3BhcmVudCBiZy1zZWNvbmRhcnkgdGV4dC1zZWNvbmRhcnktZm9yZWdyb3VuZCIsCiAgICAgICAgZGVzdHJ1Y3RpdmU6CiAgICAgICAgICAiYm9yZGVyLXRyYW5zcGFyZW50IGJnLWRlc3RydWN0aXZlIHRleHQtZGVzdHJ1Y3RpdmUtZm9yZWdyb3VuZCBzaGFkb3ciLAogICAgICAgIG91dGxpbmU6ICJ0ZXh0LWZvcmVncm91bmQiLAogICAgICB9LAogICAgfSwKICAgIGRlZmF1bHRWYXJpYW50czogewogICAgICB2YXJpYW50OiAiZGVmYXVsdCIsCiAgICB9LAogIH0KKTsKCmZ1bmN0aW9uIEJhZGdlKHsKICBjbGFzc05hbWUsCiAgdmFyaWFudCwKICAuLi5wcm9wcwp9OiBSZWFjdC5IVE1MQXR0cmlidXRlczxIVE1MU3BhbkVsZW1lbnQ+ICYKICBWYXJpYW50UHJvcHM8dHlwZW9mIGJhZGdlVmFyaWFudHM+KSB7CiAgcmV0dXJuICgKICAgIDxzcGFuIGNsYXNzTmFtZT17Y24oYmFkZ2VWYXJpYW50cyh7IHZhcmlhbnQgfSksIGNsYXNzTmFtZSl9IHsuLi5wcm9wc30gLz4KICApOwp9CgpleHBvcnQgeyBCYWRnZSwgYmFkZ2VWYXJpYW50cyB9Owo=
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../../lib/utils";
+
+const badgeVariants = cva(
+  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  {
+    variants: {
+      variant: {
+        default:
+          "border-transparent bg-primary text-primary-foreground shadow",
+        secondary:
+          "border-transparent bg-secondary text-secondary-foreground",
+        destructive:
+          "border-transparent bg-destructive text-destructive-foreground shadow",
+        outline: "text-foreground",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
+function Badge({
+  className,
+  variant,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement> &
+  VariantProps<typeof badgeVariants>) {
+  return (
+    <span className={cn(badgeVariants({ variant }), className)} {...props} />
+  );
+}
+
+export { Badge, badgeVariants };

@@ -164,7 +164,9 @@ function buildSparklinePath(values: number[], width = 180, height = 44): string 
 }
 
 export default function App() {
-  const isShareView = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('share');
+  const isShareView =
+    typeof window !== 'undefined' &&
+    (new URLSearchParams(window.location.search).has('share') || window.location.pathname.startsWith('/shared/'));
   const [threads, setThreads] = useState<Thread[]>([]);
   const [activeThreadId, setActiveThreadId] = useState<string | null>(null);
   const [input, setInput] = useState('');
@@ -227,7 +229,11 @@ export default function App() {
     console.log("RENDER_SUCCESS");
     const params = new URLSearchParams(window.location.search);
     const key = params.get('key');
-    const shareId = params.get('share');
+    const shareIdFromQuery = params.get('share');
+    const shareIdFromPath = window.location.pathname.startsWith('/shared/')
+      ? decodeURIComponent(window.location.pathname.replace('/shared/', '').trim())
+      : '';
+    const shareId = (shareIdFromQuery || shareIdFromPath || '').trim();
     if (key === 'echoo' && window.location.pathname !== '/admin') {
       window.location.replace(`/admin?key=${encodeURIComponent(key)}`);
       return;

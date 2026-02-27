@@ -8,13 +8,17 @@ import hmac
 import base64
 import smtplib
 import html
+import secrets
 from contextlib import contextmanager
 import urllib.request
 import urllib.error
 from typing import Generator, Any, Dict, List, Optional
 from datetime import datetime, timezone, timedelta
 from email.message import EmailMessage
-from nexttoken import NextToken
+try:
+    from nexttoken import NextToken
+except Exception:
+    NextToken = None
 
 # Path for storage
 # Vercel functions can write to /tmp only. Local dev uses backend/data.
@@ -25,6 +29,7 @@ else:
 CHAT_LOG_FILE = os.path.join(DATA_DIR, "chat_logs.jsonl")
 EMAIL_EVENTS_FILE = os.path.join(DATA_DIR, "email_events.json")
 SHARED_LINKS_FILE = os.path.join(DATA_DIR, "shared_links.json")
+SHARED_SNAPSHOTS_FILE = os.path.join(DATA_DIR, "shared_snapshots.json")
 _DB_READY = False
 _MONGO_CLIENT = None
 _KB_CACHE = {"sig": "", "sections": []}
@@ -551,6 +556,79 @@ def _save_shared_links_file(data: Dict[str, Any]) -> None:
             json.dump(data, f, ensure_ascii=False)
     except Exception as e:
         print(f"[BACKEND_ERROR] Failed to save shared links file: {e}")
+
+
+def _load_shared_snapshots_file() -> Dict[str, Any]:
+    ensure_data_dir(None)
+    if not os.path.exists(SHARED_SNAPSHOTS_FILE):
+        return {}
+    try:
+        with open(SHARED_SNAPSHOTS_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def _save_shared_snapshots_file(data: Dict[str, Any]) -> None:
+    ensure_data_dir(None)
+    try:
+        with open(SHARED_SNAPSHOTS_FILE, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False)
+    except Exception as e:
+        print(f"[BACKEND_ERROR] Failed to save shared snapshots file: {e}")
+
+
+def _put_shared_snapshot(share_id: str, snapshot: Dict[str, Any]) -> None:
+    sid = str(share_id or "").strip()
+    if not sid:
+        return
+    payload = {
+        "share_id": sid,
+        "snapshot": snapshot,
+        "updated_at": _now_utc_iso(),
+    }
+    if _mongo_enabled():
+        db = _mongo_db()
+        if db is not None:
+            try:
+                db.shared_snapshots.update_one(
+                    {"share_id": sid},
+                    {"$set": payload, "$setOnInsert": {"created_at": _now_utc_iso()}},
+                    upsert=True,
+                )
+                return
+            except Exception as e:
+                print(f"[BACKEND_ERROR] Failed mongo write shared snapshot: {e}")
+    data = _load_shared_snapshots_file()
+    existing = data.get(sid)
+    if isinstance(existing, dict) and "created_at" in existing:
+        payload["created_at"] = str(existing.get("created_at"))
+    else:
+        payload["created_at"] = _now_utc_iso()
+    data[sid] = payload
+    _save_shared_snapshots_file(data)
+
+
+def _get_shared_snapshot(share_id: str) -> Optional[Dict[str, Any]]:
+    sid = str(share_id or "").strip()
+    if not sid:
+        return None
+    if _mongo_enabled():
+        db = _mongo_db()
+        if db is not None:
+            try:
+                row = db.shared_snapshots.find_one({"share_id": sid}, {"_id": 0, "snapshot": 1})
+                snap = row.get("snapshot") if isinstance(row, dict) else None
+                return snap if isinstance(snap, dict) else None
+            except Exception as e:
+                print(f"[BACKEND_ERROR] Failed mongo read shared snapshot: {e}")
+    data = _load_shared_snapshots_file()
+    row = data.get(sid)
+    if isinstance(row, dict):
+        snap = row.get("snapshot")
+        return snap if isinstance(snap, dict) else None
+    return None
 
 
 def _get_shared_link(share_id: str) -> Optional[Dict[str, Any]]:
@@ -1691,11 +1769,9 @@ def create_share_link(**args):
         "created_at": str(thread.get("created_at", _now_utc_iso())),
         "updated_at": str(thread.get("updated_at", _now_utc_iso())),
     }
-    payload = json.dumps({"v": 2, "th": snapshot}, separators=(",", ":")).encode("utf-8")
-    payload_b64 = base64.urlsafe_b64encode(payload).decode("utf-8").rstrip("=")
-    secret = os.environ.get("ECHO_SHARE_SECRET", "echo-share-secret").encode("utf-8")
-    sig = hmac.new(secret, payload_b64.encode("utf-8"), hashlib.sha256).hexdigest()[:20]
-    share_id = f"{payload_b64}.{sig}"
+    # Use short share IDs backed by storage to avoid long URLs breaking on mobile/social apps.
+    share_id = secrets.token_urlsafe(12)
+    _put_shared_snapshot(share_id, snapshot)
     base_url = os.environ.get("PUBLIC_APP_URL", "https://echo-ai-companion-bice.vercel.app").strip().rstrip("/")
     return {"share_id": share_id, "url": f"{base_url}/shared/{share_id}"}
 
@@ -1705,6 +1781,25 @@ def import_shared_thread(**args):
     target_client_id = _sanitize_client_id(args.get("client_id"))
     if not share_id:
         return {"error": "share_id is required"}
+
+    # Preferred: server-side snapshot lookup by short share_id.
+    snap = _get_shared_snapshot(share_id)
+    if isinstance(snap, dict):
+        imported_id = f"shared-{share_id}"
+        imported_thread = {
+            "id": imported_id,
+            "title": str(snap.get("title", "Shared Conversation")),
+            "messages": snap.get("messages", []),
+            "created_at": str(snap.get("created_at", _now_utc_iso())),
+            "updated_at": str(snap.get("updated_at", _now_utc_iso())),
+        }
+        return {
+            "thread": imported_thread,
+            "readonly": True,
+            "reason": "This is a shared read-only snapshot to protect the owner conversation and privacy.",
+        }
+
+    # Backward compatibility for old token-based share links.
     try:
         if "." not in share_id:
             return {"error": "Invalid share link"}
@@ -1817,11 +1912,13 @@ def _get_nexttoken_api_key() -> str:
 
 
 def _use_nexttoken() -> bool:
-    return _get_nexttoken_api_key().startswith("sk-")
+    return NextToken is not None and _get_nexttoken_api_key().startswith("sk-")
 
 
 def _nexttoken_generate_reply(system_content: str, messages: List[Dict[str, str]]) -> str:
     api_key = _get_nexttoken_api_key()
+    if NextToken is None:
+        raise RuntimeError("NextToken SDK not installed")
     if not api_key:
         raise RuntimeError("Missing NEXTTOKEN_API_KEY")
     client = NextToken(api_key=api_key)

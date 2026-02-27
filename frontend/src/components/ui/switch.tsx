@@ -1,1 +1,48 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgeyBjbiB9IGZyb20gIi4uLy4uL2xpYi91dGlscyI7CgpmdW5jdGlvbiBTd2l0Y2goewogIGNsYXNzTmFtZSwKICBjaGVja2VkLAogIGRlZmF1bHRDaGVja2VkLAogIG9uQ2hlY2tlZENoYW5nZSwKICBkaXNhYmxlZCwKICBpZCwKICAuLi5wcm9wcwp9OiBPbWl0PFJlYWN0LkhUTUxBdHRyaWJ1dGVzPEhUTUxCdXR0b25FbGVtZW50PiwgIm9uQ2hhbmdlIj4gJiB7CiAgY2hlY2tlZD86IGJvb2xlYW47CiAgZGVmYXVsdENoZWNrZWQ/OiBib29sZWFuOwogIG9uQ2hlY2tlZENoYW5nZT86IChjaGVja2VkOiBib29sZWFuKSA9PiB2b2lkOwogIGRpc2FibGVkPzogYm9vbGVhbjsKICBpZD86IHN0cmluZzsKfSkgewogIGNvbnN0IFt1bmNvbnRyb2xsZWQsIHNldFVuY29udHJvbGxlZF0gPSBSZWFjdC51c2VTdGF0ZShkZWZhdWx0Q2hlY2tlZCA/PyBmYWxzZSk7CiAgY29uc3QgaXNDaGVja2VkID0gY2hlY2tlZCA/PyB1bmNvbnRyb2xsZWQ7CiAgY29uc3QgaGFuZGxlQ2hhbmdlID0gb25DaGVja2VkQ2hhbmdlID8/IHNldFVuY29udHJvbGxlZDsKCiAgcmV0dXJuICgKICAgIDxidXR0b24KICAgICAgdHlwZT0iYnV0dG9uIgogICAgICByb2xlPSJzd2l0Y2giCiAgICAgIGFyaWEtY2hlY2tlZD17aXNDaGVja2VkfQogICAgICBpZD17aWR9CiAgICAgIGRpc2FibGVkPXtkaXNhYmxlZH0KICAgICAgb25DbGljaz17KCkgPT4gaGFuZGxlQ2hhbmdlKCFpc0NoZWNrZWQpfQogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICJwZWVyIGlubGluZS1mbGV4IGgtNSB3LTkgc2hyaW5rLTAgY3Vyc29yLXBvaW50ZXIgaXRlbXMtY2VudGVyIHJvdW5kZWQtZnVsbCBib3JkZXItMiBib3JkZXItdHJhbnNwYXJlbnQgc2hhZG93LXNtIHRyYW5zaXRpb24tY29sb3JzIGZvY3VzLXZpc2libGU6b3V0bGluZS1ub25lIGZvY3VzLXZpc2libGU6cmluZy0yIGZvY3VzLXZpc2libGU6cmluZy1yaW5nIGZvY3VzLXZpc2libGU6cmluZy1vZmZzZXQtMiBmb2N1cy12aXNpYmxlOnJpbmctb2Zmc2V0LWJhY2tncm91bmQgZGlzYWJsZWQ6Y3Vyc29yLW5vdC1hbGxvd2VkIGRpc2FibGVkOm9wYWNpdHktNTAiLAogICAgICAgIGlzQ2hlY2tlZCA/ICJiZy1wcmltYXJ5IiA6ICJiZy1pbnB1dCIsCiAgICAgICAgY2xhc3NOYW1lCiAgICAgICl9CiAgICAgIHsuLi5wcm9wc30KICAgID4KICAgICAgPHNwYW4KICAgICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICAgInBvaW50ZXItZXZlbnRzLW5vbmUgYmxvY2sgaC00IHctNCByb3VuZGVkLWZ1bGwgYmctYmFja2dyb3VuZCBzaGFkb3ctbGcgcmluZy0wIHRyYW5zaXRpb24tdHJhbnNmb3JtIiwKICAgICAgICAgIGlzQ2hlY2tlZCA/ICJ0cmFuc2xhdGUteC00IiA6ICJ0cmFuc2xhdGUteC0wIgogICAgICAgICl9CiAgICAgIC8+CiAgICA8L2J1dHRvbj4KICApOwp9CgpleHBvcnQgeyBTd2l0Y2ggfTsK
+import * as React from "react";
+import { cn } from "../../lib/utils";
+
+function Switch({
+  className,
+  checked,
+  defaultChecked,
+  onCheckedChange,
+  disabled,
+  id,
+  ...props
+}: Omit<React.HTMLAttributes<HTMLButtonElement>, "onChange"> & {
+  checked?: boolean;
+  defaultChecked?: boolean;
+  onCheckedChange?: (checked: boolean) => void;
+  disabled?: boolean;
+  id?: string;
+}) {
+  const [uncontrolled, setUncontrolled] = React.useState(defaultChecked ?? false);
+  const isChecked = checked ?? uncontrolled;
+  const handleChange = onCheckedChange ?? setUncontrolled;
+
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={isChecked}
+      id={id}
+      disabled={disabled}
+      onClick={() => handleChange(!isChecked)}
+      className={cn(
+        "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
+        isChecked ? "bg-primary" : "bg-input",
+        className
+      )}
+      {...props}
+    >
+      <span
+        className={cn(
+          "pointer-events-none block h-4 w-4 rounded-full bg-background shadow-lg ring-0 transition-transform",
+          isChecked ? "translate-x-4" : "translate-x-0"
+        )}
+      />
+    </button>
+  );
+}
+
+export { Switch };
