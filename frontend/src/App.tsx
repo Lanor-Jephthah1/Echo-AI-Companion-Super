@@ -1,1 +1,1323 @@
-aW1wb3J0IHsgdXNlU3RhdGUsIHVzZUVmZmVjdCwgdXNlUmVmIH0gZnJvbSAncmVhY3QnOwppbXBvcnQgeyBycGNDYWxsLCBzdHJlYW1DYWxsIH0gZnJvbSAnLi9hcGknOwppbXBvcnQgeyBCdXR0b24gfSBmcm9tICcuL2NvbXBvbmVudHMvdWkvYnV0dG9uJzsKaW1wb3J0IHsgQ2FyZCwgQ2FyZENvbnRlbnQgfSBmcm9tICcuL2NvbXBvbmVudHMvdWkvY2FyZCc7CmltcG9ydCB7IElucHV0IH0gZnJvbSAnLi9jb21wb25lbnRzL3VpL2lucHV0JzsKaW1wb3J0IHsgU2Nyb2xsQXJlYSB9IGZyb20gJy4vY29tcG9uZW50cy91aS9zY3JvbGwtYXJlYSc7CmltcG9ydCB7IFNwaW5uZXIgfSBmcm9tICcuL2NvbXBvbmVudHMvdWkvc3Bpbm5lcic7CmltcG9ydCB7IEJhZGdlIH0gZnJvbSAnLi9jb21wb25lbnRzL3VpL2JhZGdlJzsKaW1wb3J0IHsgU2VwYXJhdG9yIH0gZnJvbSAnLi9jb21wb25lbnRzL3VpL3NlcGFyYXRvcic7CmltcG9ydCB7IFBsdXMsIE1lc3NhZ2VTcXVhcmUsIFRyYXNoMiwgU2VuZCwgQm90LCBVc2VyLCBNZW51LCBYIH0gZnJvbSAnbHVjaWRlLXJlYWN0JzsKaW1wb3J0IHsgY24gfSBmcm9tICcuL2xpYi91dGlscyc7CgppbnRlcmZhY2UgTWVzc2FnZSB7CiAgcm9sZTogJ3VzZXInIHwgJ2Fzc2lzdGFudCcgfCAnc3lzdGVtJzsKICBjb250ZW50OiBzdHJpbmc7Cn0KCmludGVyZmFjZSBUaHJlYWQgewogIGlkOiBzdHJpbmc7CiAgdGl0bGU6IHN0cmluZzsKICBtZXNzYWdlczogTWVzc2FnZVtdOwogIGNyZWF0ZWRfYXQ6IHN0cmluZzsKICB1cGRhdGVkX2F0OiBzdHJpbmc7Cn0KCmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIEFwcCgpIHsKICBjb25zdCBbdGhyZWFkcywgc2V0VGhyZWFkc10gPSB1c2VTdGF0ZTxUaHJlYWRbXT4oW10pOwogIGNvbnN0IFthY3RpdmVUaHJlYWRJZCwgc2V0QWN0aXZlVGhyZWFkSWRdID0gdXNlU3RhdGU8c3RyaW5nIHwgbnVsbD4obnVsbCk7CiAgY29uc3QgW2lucHV0LCBzZXRJbnB1dF0gPSB1c2VTdGF0ZSgnJyk7CiAgY29uc3QgW2xvYWRpbmcsIHNldExvYWRpbmddID0gdXNlU3RhdGUoZmFsc2UpOwogIGNvbnN0IFtpc1NpZGViYXJPcGVuLCBzZXRJc1NpZGViYXJPcGVuXSA9IHVzZVN0YXRlKHRydWUpOwogIGNvbnN0IFtzdHJlYW1pbmdNZXNzYWdlLCBzZXRTdHJlYW1pbmdNZXNzYWdlXSA9IHVzZVN0YXRlKCcnKTsKICBjb25zdCBbc3RhdHVzLCBzZXRTdGF0dXNdID0gdXNlU3RhdGUoJycpOwoKICBjb25zdCBzY3JvbGxSZWYgPSB1c2VSZWY8SFRNTERpdkVsZW1lbnQ+KG51bGwpOwoKICB1c2VFZmZlY3QoKCkgPT4gewogICAgY29uc29sZS5sb2coIlJFTkRFUl9TVUNDRVNTIik7CiAgICBmZXRjaFRocmVhZHMoKTsKICB9LCBbXSk7CgogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBpZiAoc2Nyb2xsUmVmLmN1cnJlbnQpIHsKICAgICAgc2Nyb2xsUmVmLmN1cnJlbnQuc2Nyb2xsSW50b1ZpZXcoeyBiZWhhdmlvcjogJ3Ntb290aCcgfSk7CiAgICB9CiAgfSwgW3RocmVhZHMsIHN0cmVhbWluZ01lc3NhZ2VdKTsKCiAgY29uc3QgZmV0Y2hUaHJlYWRzID0gYXN5bmMgKCkgPT4gewogICAgY29uc29sZS5sb2coIltGRVRDSF9TVEFSVF0gZ2V0X3RocmVhZHMiKTsKICAgIHRyeSB7CiAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCBycGNDYWxsKHsgZnVuYzogJ2dldF90aHJlYWRzJywgYXJnczoge30gfSk7CiAgICAgIHNldFRocmVhZHMoZGF0YSk7CiAgICAgIGlmIChkYXRhLmxlbmd0aCA+IDAgJiYgIWFjdGl2ZVRocmVhZElkKSB7CiAgICAgICAgc2V0QWN0aXZlVGhyZWFkSWQoZGF0YVswXS5pZCk7CiAgICAgIH0KICAgIH0gY2F0Y2ggKGVycikgewogICAgICBjb25zb2xlLmVycm9yKCJbRkVUQ0hfRVJST1JdIiwgZXJyKTsKICAgIH0KICB9OwoKICBjb25zdCBoYW5kbGVDcmVhdGVUaHJlYWQgPSBhc3luYyAoKSA9PiB7CiAgICBjb25zb2xlLmxvZygiW0FDVElPTl0gY3JlYXRlX3RocmVhZCIpOwogICAgdHJ5IHsKICAgICAgY29uc3QgbmV3VGhyZWFkID0gYXdhaXQgcnBjQ2FsbCh7IGZ1bmM6ICdjcmVhdGVfdGhyZWFkJywgYXJnczogeyB0aXRsZTogIk5ldyBDb252ZXJzYXRpb24iIH0gfSk7CiAgICAgIHNldFRocmVhZHMoW25ld1RocmVhZCwgLi4udGhyZWFkc10pOwogICAgICBzZXRBY3RpdmVUaHJlYWRJZChuZXdUaHJlYWQuaWQpOwogICAgICBpZiAod2luZG93LmlubmVyV2lkdGggPCA3NjgpIHNldElzU2lkZWJhck9wZW4oZmFsc2UpOwogICAgfSBjYXRjaCAoZXJyKSB7CiAgICAgIGNvbnNvbGUuZXJyb3IoIltBQ1RJT05fRVJST1JdIiwgZXJyKTsKICAgIH0KICB9OwoKICBjb25zdCBoYW5kbGVEZWxldGVUaHJlYWQgPSBhc3luYyAoaWQ6IHN0cmluZywgZTogUmVhY3QuTW91c2VFdmVudCkgPT4gewogICAgZS5zdG9wUHJvcGFnYXRpb24oKTsKICAgIGNvbnNvbGUubG9nKCJbQUNUSU9OXSBkZWxldGVfdGhyZWFkIiwgaWQpOwogICAgdHJ5IHsKICAgICAgYXdhaXQgcnBjQ2FsbCh7IGZ1bmM6ICdkZWxldGVfdGhyZWFkJywgYXJnczogeyB0aHJlYWRfaWQ6IGlkIH0gfSk7CiAgICAgIGNvbnN0IHVwZGF0ZWRUaHJlYWRzID0gdGhyZWFkcy5maWx0ZXIodCA9PiB0LmlkICE9PSBpZCk7CiAgICAgIHNldFRocmVhZHModXBkYXRlZFRocmVhZHMpOwogICAgICBpZiAoYWN0aXZlVGhyZWFkSWQgPT09IGlkKSB7CiAgICAgICAgc2V0QWN0aXZlVGhyZWFkSWQodXBkYXRlZFRocmVhZHMubGVuZ3RoID4gMCA/IHVwZGF0ZWRUaHJlYWRzWzBdLmlkIDogbnVsbCk7CiAgICAgIH0KICAgIH0gY2F0Y2ggKGVycikgewogICAgICBjb25zb2xlLmVycm9yKCJbQUNUSU9OX0VSUk9SXSIsIGVycik7CiAgICB9CiAgfTsKCiAgY29uc3QgaGFuZGxlU2VuZE1lc3NhZ2UgPSBhc3luYyAoKSA9PiB7CiAgICBpZiAoIWlucHV0LnRyaW0oKSB8fCAhYWN0aXZlVGhyZWFkSWQgfHwgbG9hZGluZykgcmV0dXJuOwoKICAgIGNvbnN0IHVzZXJNc2cgPSBpbnB1dC50cmltKCk7CiAgICBzZXRJbnB1dCgnJyk7CiAgICBzZXRMb2FkaW5nKHRydWUpOwogICAgc2V0U3RyZWFtaW5nTWVzc2FnZSgnJyk7CiAgICBzZXRTdGF0dXMoJycpOwoKICAgIC8vIE9wdGltaXN0aWNhbGx5IHVwZGF0ZSBVSQogICAgc2V0VGhyZWFkcyhwcmV2ID0+IHByZXYubWFwKHQgPT4gewogICAgICBpZiAodC5pZCA9PT0gYWN0aXZlVGhyZWFkSWQpIHsKICAgICAgICByZXR1cm4gewogICAgICAgICAgLi4udCwKICAgICAgICAgIG1lc3NhZ2VzOiBbLi4udC5tZXNzYWdlcywgeyByb2xlOiAndXNlcicsIGNvbnRlbnQ6IHVzZXJNc2cgfV0KICAgICAgICB9OwogICAgICB9CiAgICAgIHJldHVybiB0OwogICAgfSkpOwoKICAgIHRyeSB7CiAgICAgIGNvbnNvbGUubG9nKCJbU1RSRUFNX1NUQVJUXSBjaGF0X3N0cmVhbWluZyIpOwogICAgICBsZXQgZnVsbENvbnRlbnQgPSAnJzsKICAgICAgCiAgICAgIGF3YWl0IHN0cmVhbUNhbGwoewogICAgICAgIGZ1bmM6ICdjaGF0X3N0cmVhbWluZycsCiAgICAgICAgYXJnczogeyB0aHJlYWRfaWQ6IGFjdGl2ZVRocmVhZElkLCBtZXNzYWdlOiB1c2VyTXNnIH0sCiAgICAgICAgb25DaHVuazogKGNodW5rKSA9PiB7CiAgICAgICAgICBpZiAoY2h1bmsudHlwZSA9PT0gJ3N0YXR1cycpIHsKICAgICAgICAgICAgc2V0U3RhdHVzKGNodW5rLm1lc3NhZ2UpOwogICAgICAgICAgfSBlbHNlIGlmIChjaHVuay50eXBlID09PSAnY2h1bmsnKSB7CiAgICAgICAgICAgIGZ1bGxDb250ZW50ICs9IGNodW5rLmNvbnRlbnQ7CiAgICAgICAgICAgIHNldFN0cmVhbWluZ01lc3NhZ2UoZnVsbENvbnRlbnQpOwogICAgICAgICAgICBzZXRTdGF0dXMoJycpOwogICAgICAgICAgfSBlbHNlIGlmIChjaHVuay50eXBlID09PSAncmVzdWx0JykgewogICAgICAgICAgICAvLyBGaW5hbGl6ZSB0aHJlYWQgdXBkYXRlICh0aXRsZSBtaWdodCBoYXZlIGNoYW5nZWQpCiAgICAgICAgICAgIHNldFRocmVhZHMocHJldiA9PiBwcmV2Lm1hcCh0ID0+IHsKICAgICAgICAgICAgICBpZiAodC5pZCA9PT0gYWN0aXZlVGhyZWFkSWQpIHsKICAgICAgICAgICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICAgICAgIC4uLnQsCiAgICAgICAgICAgICAgICAgIHRpdGxlOiBjaHVuay5kYXRhLnRpdGxlLAogICAgICAgICAgICAgICAgICBtZXNzYWdlczogWy4uLnQubWVzc2FnZXMsIHsgcm9sZTogJ2Fzc2lzdGFudCcsIGNvbnRlbnQ6IGZ1bGxDb250ZW50IH1dCiAgICAgICAgICAgICAgICB9OwogICAgICAgICAgICAgIH0KICAgICAgICAgICAgICByZXR1cm4gdDsKICAgICAgICAgICAgfSkpOwogICAgICAgICAgICBzZXRTdHJlYW1pbmdNZXNzYWdlKCcnKTsKICAgICAgICAgIH0gZWxzZSBpZiAoY2h1bmsudHlwZSA9PT0gJ2Vycm9yJykgewogICAgICAgICAgICBjb25zb2xlLmVycm9yKCJbU1RSRUFNX0VSUk9SX0NIVU5LXSIsIGNodW5rLm1lc3NhZ2UpOwogICAgICAgICAgICBzZXRTdGF0dXMoYEVycm9yOiAke2NodW5rLm1lc3NhZ2V9YCk7CiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICBvbkVycm9yOiAoZXJyKSA9PiB7CiAgICAgICAgICBjb25zb2xlLmVycm9yKCJbU1RSRUFNX0VSUk9SXSIsIGVycik7CiAgICAgICAgICBzZXRTdGF0dXMoIlNvcnJ5LCBJIGVuY291bnRlcmVkIGFuIGVycm9yLiIpOwogICAgICAgIH0KICAgICAgfSk7CiAgICB9IGNhdGNoIChlcnIpIHsKICAgICAgY29uc29sZS5lcnJvcigiW1NFTkRfRVJST1JdIiwgZXJyKTsKICAgIH0gZmluYWxseSB7CiAgICAgIHNldExvYWRpbmcoZmFsc2UpOwogICAgfQogIH07CgogIGNvbnN0IGFjdGl2ZVRocmVhZCA9IHRocmVhZHMuZmluZCh0ID0+IHQuaWQgPT09IGFjdGl2ZVRocmVhZElkKTsKCiAgcmV0dXJuICgKICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGgtc2NyZWVuIGJnLWJhY2tncm91bmQgdGV4dC1mb3JlZ3JvdW5kIG92ZXJmbG93LWhpZGRlbiI+CiAgICAgIHsvKiBNb2JpbGUgTWVudSBPdmVybGF5ICovfQogICAgICB7IWlzU2lkZWJhck9wZW4gJiYgKAogICAgICAgIDxCdXR0b24gCiAgICAgICAgICB2YXJpYW50PSJnaG9zdCIgCiAgICAgICAgICBzaXplPSJpY29uIiAKICAgICAgICAgIGNsYXNzTmFtZT0iZml4ZWQgdG9wLTQgbGVmdC00IHotNTAgbWQ6aGlkZGVuIgogICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0SXNTaWRlYmFyT3Blbih0cnVlKX0KICAgICAgICA+CiAgICAgICAgICA8TWVudSBjbGFzc05hbWU9ImgtNiB3LTYiIC8+CiAgICAgICAgPC9CdXR0b24+CiAgICAgICl9CgogICAgICB7LyogU2lkZWJhciAqL30KICAgICAgPGRpdiBjbGFzc05hbWU9e2NuKAogICAgICAgICJmaXhlZCBpbnNldC15LTAgbGVmdC0wIHotNDAgdy03MiBiZy1jYXJkIGJvcmRlci1yIHRyYW5zaXRpb24tdHJhbnNmb3JtIGR1cmF0aW9uLTMwMCB0cmFuc2Zvcm0gbWQ6cmVsYXRpdmUgbWQ6dHJhbnNsYXRlLXgtMCIsCiAgICAgICAgaXNTaWRlYmFyT3BlbiA/ICJ0cmFuc2xhdGUteC0wIiA6ICItdHJhbnNsYXRlLXgtZnVsbCIKICAgICAgKX0+CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggZmxleC1jb2wgaC1mdWxsIj4KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJwLTQgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIj4KICAgICAgICAgICAgPGgxIGNsYXNzTmFtZT0idGV4dC14bCBmb250LWJvbGQgdGV4dC1wcmltYXJ5IGZsZXggaXRlbXMtY2VudGVyIGdhcC0yIj4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iYmctcHJpbWFyeS8xMCBwLTEuNSByb3VuZGVkLWxnIj4KICAgICAgICAgICAgICAgIDxCb3QgY2xhc3NOYW1lPSJoLTUgdy01IHRleHQtcHJpbWFyeSIgLz4KICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICBFY2hvIEFJCiAgICAgICAgICAgIDwvaDE+CiAgICAgICAgICAgIDxCdXR0b24gdmFyaWFudD0iZ2hvc3QiIHNpemU9Imljb24iIGNsYXNzTmFtZT0ibWQ6aGlkZGVuIiBvbkNsaWNrPXsoKSA9PiBzZXRJc1NpZGViYXJPcGVuKGZhbHNlKX0+CiAgICAgICAgICAgICAgPFggY2xhc3NOYW1lPSJoLTUgdy01IiAvPgogICAgICAgICAgICA8L0J1dHRvbj4KICAgICAgICAgIDwvZGl2PgoKICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJweC00IG1iLTQiPgogICAgICAgICAgICA8QnV0dG9uIGNsYXNzTmFtZT0idy1mdWxsIGp1c3RpZnktc3RhcnQgZ2FwLTIiIHZhcmlhbnQ9Im91dGxpbmUiIG9uQ2xpY2s9e2hhbmRsZUNyZWF0ZVRocmVhZH0+CiAgICAgICAgICAgICAgPFBsdXMgY2xhc3NOYW1lPSJoLTQgdy00IiAvPgogICAgICAgICAgICAgIE5ldyBDaGF0CiAgICAgICAgICAgIDwvQnV0dG9uPgogICAgICAgICAgPC9kaXY+CgogICAgICAgICAgPFNjcm9sbEFyZWEgY2xhc3NOYW1lPSJmbGV4LTEgcHgtNCI+CiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJzcGFjZS15LTEgcGItNCI+CiAgICAgICAgICAgICAge3RocmVhZHMubWFwKHRocmVhZCA9PiAoCiAgICAgICAgICAgICAgICA8ZGl2CiAgICAgICAgICAgICAgICAgIGtleT17dGhyZWFkLmlkfQogICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiB7CiAgICAgICAgICAgICAgICAgICAgc2V0QWN0aXZlVGhyZWFkSWQodGhyZWFkLmlkKTsKICAgICAgICAgICAgICAgICAgICBpZiAod2luZG93LmlubmVyV2lkdGggPCA3NjgpIHNldElzU2lkZWJhck9wZW4oZmFsc2UpOwogICAgICAgICAgICAgICAgICB9fQogICAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICAgICAgICAgICAgICJncm91cCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gcC0zIHJvdW5kZWQtbGcgY3Vyc29yLXBvaW50ZXIgdHJhbnNpdGlvbi1jb2xvcnMiLAogICAgICAgICAgICAgICAgICAgIGFjdGl2ZVRocmVhZElkID09PSB0aHJlYWQuaWQgPyAiYmctcHJpbWFyeS8xMCB0ZXh0LXByaW1hcnkiIDogImhvdmVyOmJnLW11dGVkIgogICAgICAgICAgICAgICAgICApfQogICAgICAgICAgICAgICAgPgogICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTMgb3ZlcmZsb3ctaGlkZGVuIj4KICAgICAgICAgICAgICAgICAgICA8TWVzc2FnZVNxdWFyZSBjbGFzc05hbWU9ImgtNCB3LTQgc2hyaW5rLTAiIC8+CiAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0cnVuY2F0ZSB0ZXh0LXNtIGZvbnQtbWVkaXVtIj57dGhyZWFkLnRpdGxlfTwvc3Bhbj4KICAgICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICAgIDxCdXR0b24KICAgICAgICAgICAgICAgICAgICB2YXJpYW50PSJnaG9zdCIKICAgICAgICAgICAgICAgICAgICBzaXplPSJpY29uIgogICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT0iaC03IHctNyBvcGFjaXR5LTAgZ3JvdXAtaG92ZXI6b3BhY2l0eS0xMDAgdHJhbnNpdGlvbi1vcGFjaXR5IGhvdmVyOnRleHQtZGVzdHJ1Y3RpdmUiCiAgICAgICAgICAgICAgICAgICAgb25DbGljaz17KGUpID0+IGhhbmRsZURlbGV0ZVRocmVhZCh0aHJlYWQuaWQsIGUpfQogICAgICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICAgICAgPFRyYXNoMiBjbGFzc05hbWU9ImgtMy41IHctMy41IiAvPgogICAgICAgICAgICAgICAgICA8L0J1dHRvbj4KICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICkpfQogICAgICAgICAgICAgIHt0aHJlYWRzLmxlbmd0aCA9PT0gMCAmJiAoCiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0idGV4dC1jZW50ZXIgcHktOCB0ZXh0LW11dGVkLWZvcmVncm91bmQgdGV4dC1zbSI+CiAgICAgICAgICAgICAgICAgIE5vIGNvbnZlcnNhdGlvbnMgeWV0CiAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICApfQogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDwvU2Nyb2xsQXJlYT4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CgogICAgICB7LyogTWFpbiBDb250ZW50ICovfQogICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleC0xIGZsZXggZmxleC1jb2wgaC1mdWxsIHJlbGF0aXZlIj4KICAgICAgICB7LyogSGVhZGVyICovfQogICAgICAgIDxoZWFkZXIgY2xhc3NOYW1lPSJoLTE2IGJvcmRlci1iIGZsZXggaXRlbXMtY2VudGVyIHB4LTYgYmctYmFja2dyb3VuZC84MCBiYWNrZHJvcC1ibHVyLW1kIHN0aWNreSB0b3AtMCB6LTMwIj4KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMyI+CiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJtZDpoaWRkZW4gdy0xMCIgLz4gey8qIFNwYWNlciBmb3IgbWVudSBidXR0b24gKi99CiAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9ImZvbnQtc2VtaWJvbGQgdHJ1bmNhdGUiPgogICAgICAgICAgICAgIHthY3RpdmVUaHJlYWQgPyBhY3RpdmVUaHJlYWQudGl0bGUgOiAiU2VsZWN0IGEgY29udmVyc2F0aW9uIn0KICAgICAgICAgICAgPC9oMj4KICAgICAgICAgICAge2FjdGl2ZVRocmVhZCAmJiAoCiAgICAgICAgICAgICAgPEJhZGdlIHZhcmlhbnQ9InNlY29uZGFyeSIgY2xhc3NOYW1lPSJtbC0yIGZvbnQtbm9ybWFsIHRleHQtWzEwcHhdIHVwcGVyY2FzZSB0cmFja2luZy13aWRlciI+CiAgICAgICAgICAgICAgICB7YWN0aXZlVGhyZWFkLm1lc3NhZ2VzLmxlbmd0aH0gbWVzc2FnZXMKICAgICAgICAgICAgICA8L0JhZGdlPgogICAgICAgICAgICApfQogICAgICAgICAgPC9kaXY+CiAgICAgICAgPC9oZWFkZXI+CgogICAgICAgIHsvKiBDaGF0IEFyZWEgKi99CiAgICAgICAgPFNjcm9sbEFyZWEgY2xhc3NOYW1lPSJmbGV4LTEgcC00IG1kOnAtNiI+CiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ibWF4LXctM3hsIG14LWF1dG8gc3BhY2UteS02IHBiLTI0Ij4KICAgICAgICAgICAgeyFhY3RpdmVUaHJlYWRJZCA/ICgKICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBmbGV4LWNvbCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgaC1bNjB2aF0gdGV4dC1jZW50ZXIgc3BhY2UteS00Ij4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJiZy1wcmltYXJ5LzUgcC02IHJvdW5kZWQtZnVsbCI+CiAgICAgICAgICAgICAgICAgIDxCb3QgY2xhc3NOYW1lPSJoLTEyIHctMTIgdGV4dC1wcmltYXJ5LzQwIiAvPgogICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ic3BhY2UteS0yIj4KICAgICAgICAgICAgICAgICAgPGgzIGNsYXNzTmFtZT0idGV4dC14bCBmb250LXNlbWlib2xkIj5XZWxjb21lIHRvIEVjaG8gQUk8L2gzPgogICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtbXV0ZWQtZm9yZWdyb3VuZCBtYXgtdy1zbSI+CiAgICAgICAgICAgICAgICAgICAgQSBjaGlsbCwgY29tcGFzc2lvbmF0ZSBkaWdpdGFsIGJ1ZGR5IGhlcmUgdG8gbGlzdGVuIGFuZCBjaGF0LgogICAgICAgICAgICAgICAgICA8L3A+CiAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgIDxCdXR0b24gb25DbGljaz17aGFuZGxlQ3JlYXRlVGhyZWFkfT5TdGFydCBhIGNvbnZlcnNhdGlvbjwvQnV0dG9uPgogICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICApIDogKAogICAgICAgICAgICAgIDw+CiAgICAgICAgICAgICAgICB7LyogU3lzdGVtIC8gV2VsY29tZSBNZXNzYWdlICovfQogICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXgganVzdGlmeS1jZW50ZXIgbWItOCI+CiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJiZy1tdXRlZC81MCBweC00IHB5LTIgcm91bmRlZC1mdWxsIHRleHQteHMgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj4KICAgICAgICAgICAgICAgICAgICBDb252ZXJzYXRpb24gc3RhcnRlZCBvbiB7bmV3IERhdGUoYWN0aXZlVGhyZWFkPy5jcmVhdGVkX2F0IHx8ICIiKS50b0xvY2FsZURhdGVTdHJpbmcoKX0KICAgICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICA8L2Rpdj4KCiAgICAgICAgICAgICAgICB7YWN0aXZlVGhyZWFkPy5tZXNzYWdlcy5tYXAoKG1zZywgaWR4KSA9PiAoCiAgICAgICAgICAgICAgICAgIDxkaXYga2V5PXtpZHh9IGNsYXNzTmFtZT17Y24oCiAgICAgICAgICAgICAgICAgICAgImZsZXggdy1mdWxsIGdhcC00IGFuaW1hdGUtaW4gZmFkZS1pbiBzbGlkZS1pbi1mcm9tLWJvdHRvbS0yIGR1cmF0aW9uLTMwMCIsCiAgICAgICAgICAgICAgICAgICAgbXNnLnJvbGUgPT09ICd1c2VyJyA/ICJmbGV4LXJvdy1yZXZlcnNlIiA6ICJmbGV4LXJvdyIKICAgICAgICAgICAgICAgICAgKX0+CiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9e2NuKAogICAgICAgICAgICAgICAgICAgICAgImgtOCB3LTggcm91bmRlZC1mdWxsIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHNocmluay0wIHNoYWRvdy1zbSIsCiAgICAgICAgICAgICAgICAgICAgICBtc2cucm9sZSA9PT0gJ3VzZXInID8gImJnLXByaW1hcnkgdGV4dC1wcmltYXJ5LWZvcmVncm91bmQiIDogImJnLW11dGVkIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCIKICAgICAgICAgICAgICAgICAgICApfT4KICAgICAgICAgICAgICAgICAgICAgIHttc2cucm9sZSA9PT0gJ3VzZXInID8gPFVzZXIgY2xhc3NOYW1lPSJoLTQgdy00IiAvPiA6IDxCb3QgY2xhc3NOYW1lPSJoLTQgdy00IiAvPn0KICAgICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgICAgICA8Q2FyZCBjbGFzc05hbWU9e2NuKAogICAgICAgICAgICAgICAgICAgICAgIm1heC13LVs4NSVdIHNoYWRvdy1wcmVtaXVtIGJvcmRlci1ub25lIiwKICAgICAgICAgICAgICAgICAgICAgIG1zZy5yb2xlID09PSAndXNlcicgPyAiYmctcHJpbWFyeSB0ZXh0LXByaW1hcnktZm9yZWdyb3VuZCIgOiAiYmctY2FyZCIKICAgICAgICAgICAgICAgICAgICApfT4KICAgICAgICAgICAgICAgICAgICAgIDxDYXJkQ29udGVudCBjbGFzc05hbWU9InAtMyBtZDpwLTQgdGV4dC1zbSBsZWFkaW5nLXJlbGF4ZWQgd2hpdGVzcGFjZS1wcmUtd3JhcCI+CiAgICAgICAgICAgICAgICAgICAgICAgIHttc2cuY29udGVudH0KICAgICAgICAgICAgICAgICAgICAgIDwvQ2FyZENvbnRlbnQ+CiAgICAgICAgICAgICAgICAgICAgPC9DYXJkPgogICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgICkpfQoKICAgICAgICAgICAgICAgIHsvKiBTdHJlYW1pbmcgQXNzaXN0YW50IE1lc3NhZ2UgKi99CiAgICAgICAgICAgICAgICB7KHN0cmVhbWluZ01lc3NhZ2UgfHwgc3RhdHVzKSAmJiAoCiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IHctZnVsbCBnYXAtNCBhbmltYXRlLWluIGZhZGUtaW4gZHVyYXRpb24tMjAwIj4KICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iaC04IHctOCByb3VuZGVkLWZ1bGwgYmctbXV0ZWQgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgc2hyaW5rLTAiPgogICAgICAgICAgICAgICAgICAgICAgPEJvdCBjbGFzc05hbWU9ImgtNCB3LTQgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIiAvPgogICAgICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgICAgIDxDYXJkIGNsYXNzTmFtZT0ibWF4LXctWzg1JV0gc2hhZG93LXByZW1pdW0gYm9yZGVyLW5vbmUgYmctY2FyZCI+CiAgICAgICAgICAgICAgICAgICAgICA8Q2FyZENvbnRlbnQgY2xhc3NOYW1lPSJwLTMgbWQ6cC00IHRleHQtc20gbGVhZGluZy1yZWxheGVkIj4KICAgICAgICAgICAgICAgICAgICAgICAge3N0YXR1cyAmJiAoCiAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGdhcC0yIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCBpdGFsaWMiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPFNwaW5uZXIgY2xhc3NOYW1lPSJoLTMgdy0zIiAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAge3N0YXR1c30KICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgICAgICAgICAgKX0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9IndoaXRlc3BhY2UtcHJlLXdyYXAiPntzdHJlYW1pbmdNZXNzYWdlfTwvZGl2PgogICAgICAgICAgICAgICAgICAgICAgPC9DYXJkQ29udGVudD4KICAgICAgICAgICAgICAgICAgICA8L0NhcmQ+CiAgICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgKX0KICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgPGRpdiByZWY9e3Njcm9sbFJlZn0gLz4KICAgICAgICAgICAgICA8Lz4KICAgICAgICAgICAgKX0KICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvU2Nyb2xsQXJlYT4KCiAgICAgICAgey8qIElucHV0IEFyZWEgKi99CiAgICAgICAge2FjdGl2ZVRocmVhZElkICYmICgKICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJwLTQgbWQ6cC02IGJnLWdyYWRpZW50LXRvLXQgZnJvbS1iYWNrZ3JvdW5kIHZpYS1iYWNrZ3JvdW5kIHRvLXRyYW5zcGFyZW50IGFic29sdXRlIGJvdHRvbS0wIGxlZnQtMCByaWdodC0wIj4KICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9Im1heC13LTN4bCBteC1hdXRvIj4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0icmVsYXRpdmUgZ3JvdXAiPgogICAgICAgICAgICAgICAgPElucHV0CiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT0icHItMTIgcHktNiBiZy1jYXJkIGJvcmRlci1ub25lIHNoYWRvdy1wcmVtaXVtIGZvY3VzLXZpc2libGU6cmluZy1wcmltYXJ5LzIwIHJvdW5kZWQtMnhsIgogICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj0iSG93IGFyZSB5b3UgZmVlbGluZyB0b2RheT8iCiAgICAgICAgICAgICAgICAgIHZhbHVlPXtpbnB1dH0KICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRJbnB1dChlLnRhcmdldC52YWx1ZSl9CiAgICAgICAgICAgICAgICAgIG9uS2V5RG93bj17KGUpID0+IGUua2V5ID09PSAnRW50ZXInICYmICFlLnNoaWZ0S2V5ICYmIGhhbmRsZVNlbmRNZXNzYWdlKCl9CiAgICAgICAgICAgICAgICAgIGRpc2FibGVkPXtsb2FkaW5nfQogICAgICAgICAgICAgICAgLz4KICAgICAgICAgICAgICAgIDxCdXR0b24gCiAgICAgICAgICAgICAgICAgIHNpemU9Imljb24iIAogICAgICAgICAgICAgICAgICBjbGFzc05hbWU9ImFic29sdXRlIHJpZ2h0LTIgdG9wLTEvMiAtdHJhbnNsYXRlLXktMS8yIHJvdW5kZWQteGwgdHJhbnNpdGlvbi1hbGwgZHVyYXRpb24tMjAwIgogICAgICAgICAgICAgICAgICBkaXNhYmxlZD17bG9hZGluZyB8fCAhaW5wdXQudHJpbSgpfQogICAgICAgICAgICAgICAgICBvbkNsaWNrPXtoYW5kbGVTZW5kTWVzc2FnZX0KICAgICAgICAgICAgICAgID4KICAgICAgICAgICAgICAgICAge2xvYWRpbmcgPyA8U3Bpbm5lciBjbGFzc05hbWU9ImgtNCB3LTQiIC8+IDogPFNlbmQgY2xhc3NOYW1lPSJoLTQgdy00IiAvPn0KICAgICAgICAgICAgICAgIDwvQnV0dG9uPgogICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1bMTBweF0gdGV4dC1jZW50ZXIgbXQtMyB0ZXh0LW11dGVkLWZvcmVncm91bmQiPgogICAgICAgICAgICAgICAgRWNobyBBSSBpcyBhIGNvbXBhc3Npb25hdGUgZGlnaXRhbCBidWRkeS4gQWx3YXlzIGNvbnN1bHQgcHJvZmVzc2lvbmFscyBmb3Igc2VyaW91cyBjb25jZXJucy4KICAgICAgICAgICAgICA8L3A+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPC9kaXY+CiAgICAgICAgKX0KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICApOwp9Cg==
+import { useState, useEffect, useRef } from 'react';
+import { rpcCall, streamCall } from './api';
+import { Button } from './components/ui/button';
+import { Card, CardContent } from './components/ui/card';
+import { Textarea } from './components/ui/textarea';
+import { ScrollArea } from './components/ui/scroll-area';
+import { Spinner } from './components/ui/spinner';
+import { Badge } from './components/ui/badge';
+import { Switch } from './components/ui/switch';
+import { Plus, MessageSquare, Trash2, Send, Bot, User, Menu, X, HeartPulse, Sparkles, TrendingUp, TrendingDown, Moon, Sun, Gauge, Flame, ScrollText, SlidersHorizontal, Smile, Copy, Check, Share2, Mic, MicOff, Pin } from 'lucide-react';
+import { cn } from './lib/utils';
+
+interface Message {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+}
+
+interface Thread {
+  id: string;
+  title: string;
+  messages: Message[];
+  created_at: string;
+  updated_at: string;
+}
+
+interface ThreadSummary {
+  title: string;
+  message_count: number;
+  summary: string;
+  talked_about: string[];
+  learned: string[];
+  generated_at: string;
+  source: 'ai' | 'fallback' | 'empty';
+  error?: string;
+}
+
+interface SharedImportResponse {
+  thread?: Thread;
+  readonly?: boolean;
+  reason?: string;
+  error?: string;
+}
+
+interface PinnedMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+type SpeechRecognitionEventLite = {
+  resultIndex: number;
+  results: ArrayLike<
+    ArrayLike<{ transcript: string }> & {
+      isFinal?: boolean;
+    }
+  >;
+};
+
+type SpeechRecognitionInstanceLite = {
+  lang: string;
+  interimResults: boolean;
+  continuous: boolean;
+  onstart: (() => void) | null;
+  onend: (() => void) | null;
+  onerror: ((event: { error?: string }) => void) | null;
+  onresult: ((event: SpeechRecognitionEventLite) => void) | null;
+  start: () => void;
+  stop: () => void;
+};
+
+type SpeechRecognitionCtorLite = new () => SpeechRecognitionInstanceLite;
+
+declare global {
+  interface Window {
+    SpeechRecognition?: SpeechRecognitionCtorLite;
+    webkitSpeechRecognition?: SpeechRecognitionCtorLite;
+  }
+}
+
+const THREADS_CACHE_KEY = 'echo_threads_cache_v1';
+const ACTIVE_THREAD_CACHE_KEY = 'echo_active_thread_v1';
+const THEME_CACHE_KEY = 'echo_theme_v1';
+const SEND_ENTER_CACHE_KEY = 'echo_send_enter_v1';
+const COMPACT_SIDEBAR_CACHE_KEY = 'echo_compact_sidebar_v1';
+const PINNED_CACHE_KEY = 'echo_pinned_messages_v1';
+const MAX_INPUT_CHARS = 500;
+const EMOJI_OPTIONS = ['😀', '😁', '😂', '🤣', '😊', '😍', '🥳', '😎', '🤔', '🙏', '🔥', '💪', '❤️', '💜', '✨', '🎯', '🙌', '🤝', '😅', '😴', '😢', '🤗', '💡', '🧠'];
+
+type SentimentInsight = {
+  score: number;
+  label: string;
+  energy: number;
+};
+
+const SENTIMENT_LEXICON: Record<string, number> = {
+  happy: 1.8, great: 1.7, awesome: 2.0, amazing: 2.1, good: 1.1, love: 2.0, excited: 1.8, calm: 1.2, grateful: 1.5, better: 1.0,
+  hopeful: 1.3, proud: 1.4, focused: 1.1, motivated: 1.4, peaceful: 1.6, confident: 1.5, nice: 0.9,
+  sad: -1.8, angry: -1.8, depressed: -2.3, hate: -1.9, upset: -1.5, stressed: -1.9, anxious: -1.8, tired: -1.2, lonely: -2.0,
+  worried: -1.5, overwhelmed: -2.0, scared: -1.7, hurt: -1.6, bad: -1.1, terrible: -2.2, empty: -1.9, exhausted: -1.8,
+};
+
+const INTENSIFIERS = new Set(['very', 'really', 'extremely', 'super', 'so', 'too']);
+const NEGATIONS = new Set(['not', "don't", "didn't", "isn't", "wasn't", 'never', 'no']);
+
+function average(nums: number[]): number {
+  if (!nums.length) return 0;
+  return nums.reduce((a, b) => a + b, 0) / nums.length;
+}
+
+function analyzeSentiment(text: string): SentimentInsight {
+  const raw = (text || '').trim();
+  const t = raw.toLowerCase();
+  const crisis = ['suicide', 'kill myself', 'self harm', 'end my life', 'want to die'];
+  if (crisis.some((w) => t.includes(w))) {
+    return { score: -3, label: 'Crisis', energy: 1 };
+  }
+
+  const tokens = t.match(/[a-z']+/g) || [];
+  let score = 0;
+  let hitCount = 0;
+
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    const base = SENTIMENT_LEXICON[token];
+    if (!base) continue;
+    hitCount += 1;
+    let weight = base;
+    const prev = tokens[i - 1];
+    if (prev && INTENSIFIERS.has(prev)) weight *= 1.35;
+    if (prev && NEGATIONS.has(prev)) weight *= -1;
+    score += weight;
+  }
+
+  const exclamations = (raw.match(/!/g) || []).length;
+  const questionMarks = (raw.match(/\?/g) || []).length;
+  if (score > 0) score += exclamations * 0.12;
+  if (score < 0) score -= exclamations * 0.12;
+  if (hitCount === 0) {
+    if (t.includes('thank')) score += 0.8;
+    if (t.includes('help me') || t.includes('i need help')) score -= 0.8;
+    if (t.includes('haha') || t.includes('lol')) score += 0.5;
+  }
+  score -= questionMarks * 0.03;
+  score = Math.max(-3, Math.min(3, score));
+
+  const absScore = Math.abs(score);
+  const label = score <= -2 ? 'Heavy' : score < -0.5 ? 'Low' : score < 0.6 ? 'Steady' : score < 1.8 ? 'Positive' : 'Elevated';
+  const energy = Math.min(1, absScore / 2.4 + Math.min(0.3, exclamations * 0.06));
+  return { score, label, energy };
+}
+
+function buildSparklinePath(values: number[], width = 180, height = 44): string {
+  if (values.length === 0) return '';
+  const min = -3;
+  const max = 3;
+  const stepX = values.length === 1 ? 0 : width / (values.length - 1);
+  const points = values.map((v, i) => {
+    const normalized = (v - min) / (max - min);
+    const y = height - normalized * height;
+    const x = i * stepX;
+    return `${x},${y}`;
+  });
+  return `M${points.join(' L')}`;
+}
+
+export default function App() {
+  const isShareView = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('share');
+  const [threads, setThreads] = useState<Thread[]>([]);
+  const [activeThreadId, setActiveThreadId] = useState<string | null>(null);
+  const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth >= 768;
+  });
+  const [streamingMessage, setStreamingMessage] = useState('');
+  const [status, setStatus] = useState('');
+  const [showPulse, setShowPulse] = useState(false);
+  const [sendOnEnter, setSendOnEnter] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    const saved = localStorage.getItem(SEND_ENTER_CACHE_KEY);
+    return saved !== 'false';
+  });
+  const [compactSidebar, setCompactSidebar] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem(COMPACT_SIDEBAR_CACHE_KEY) === 'true';
+  });
+  const [summaryLoading, setSummaryLoading] = useState(false);
+  const [threadSummary, setThreadSummary] = useState<ThreadSummary | null>(null);
+  const [summaryError, setSummaryError] = useState('');
+  const [inputFocused, setInputFocused] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [voiceHint, setVoiceHint] = useState('');
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [pinnedByThread, setPinnedByThread] = useState<Record<string, PinnedMessage[]>>(() => {
+    if (typeof window === 'undefined') return {};
+    try {
+      const raw = localStorage.getItem(PINNED_CACHE_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      return parsed && typeof parsed === 'object' ? parsed : {};
+    } catch {
+      return {};
+    }
+  });
+  const [shareLoading, setShareLoading] = useState(false);
+  const [sharedMode, setSharedMode] = useState(false);
+  const [sharedReason, setSharedReason] = useState('');
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window === 'undefined') return 'light';
+    const saved = localStorage.getItem(THEME_CACHE_KEY);
+    return saved === 'dark' ? 'dark' : 'light';
+  });
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const recognitionRef = useRef<SpeechRecognitionInstanceLite | null>(null);
+  const speechCommittedRef = useRef('');
+  const lastVoiceChunkRef = useRef('');
+  const lastVoiceChunkAtRef = useRef(0);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const messageRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  useEffect(() => {
+    console.log("RENDER_SUCCESS");
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get('key');
+    const shareId = params.get('share');
+    if (key === 'echoo' && window.location.pathname !== '/admin') {
+      window.location.replace(`/admin?key=${encodeURIComponent(key)}`);
+      return;
+    }
+
+    if (shareId) {
+      handleImportSharedThread(shareId);
+      return;
+    }
+    const cachedThreads = localStorage.getItem(THREADS_CACHE_KEY);
+    const cachedActive = localStorage.getItem(ACTIVE_THREAD_CACHE_KEY);
+    if (cachedThreads) {
+      try {
+        const parsed = JSON.parse(cachedThreads);
+        if (Array.isArray(parsed)) setThreads(parsed);
+      } catch {}
+    }
+    if (cachedActive) setActiveThreadId(cachedActive);
+    fetchThreads();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const Rec = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!Rec) {
+      setSpeechSupported(false);
+      return;
+    }
+    setSpeechSupported(true);
+    const rec = new Rec();
+    rec.lang = 'en-US';
+    rec.interimResults = false;
+    rec.continuous = false;
+    rec.onstart = () => {
+      setIsRecording(true);
+      setVoiceHint('Listening...');
+      speechCommittedRef.current = '';
+      lastVoiceChunkRef.current = '';
+      lastVoiceChunkAtRef.current = 0;
+    };
+    rec.onend = () => {
+      setIsRecording(false);
+      setVoiceHint((prev) => (prev === 'Listening...' ? 'Voice input stopped.' : prev));
+    };
+    rec.onerror = () => {
+      setIsRecording(false);
+      setVoiceHint('Voice input failed. You can type instead.');
+    };
+    rec.onresult = (event: SpeechRecognitionEventLite) => {
+      let transcript = '';
+      const start = Math.max(0, Number(event.resultIndex || 0));
+      for (let i = start; i < event.results.length; i += 1) {
+        const result = event.results[i];
+        if (result?.isFinal === false) continue;
+        const alt = result[0];
+        if (alt?.transcript) transcript += `${alt.transcript} `;
+      }
+      const cleaned = transcript.replace(/\s+/g, ' ').trim();
+      if (!cleaned) return;
+
+      // Some browsers return cumulative transcripts in repeated callbacks.
+      // Keep only the new delta that wasn't already committed in this recording session.
+      const committed = speechCommittedRef.current;
+      let delta = cleaned;
+      if (committed && cleaned.startsWith(committed)) {
+        delta = cleaned.slice(committed.length).trim();
+      } else if (committed && committed.startsWith(cleaned)) {
+        delta = '';
+      }
+      if (!delta) return;
+
+      const now = Date.now();
+      if (
+        delta.toLowerCase() === lastVoiceChunkRef.current.toLowerCase() &&
+        now - lastVoiceChunkAtRef.current < 1800
+      ) {
+        return;
+      }
+
+      lastVoiceChunkRef.current = delta;
+      lastVoiceChunkAtRef.current = now;
+      speechCommittedRef.current = committed ? `${committed} ${delta}`.trim() : cleaned;
+      setInput((prev) => `${prev}${prev ? ' ' : ''}${delta}`.slice(0, MAX_INPUT_CHARS));
+      setVoiceHint('Transcribed voice to text.');
+      requestAnimationFrame(() => {
+        if (!textareaRef.current) return;
+        textareaRef.current.style.height = '44px';
+        textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 128)}px`;
+      });
+    };
+    recognitionRef.current = rec;
+    return () => {
+      try {
+        rec.stop();
+      } catch {}
+      recognitionRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') root.classList.add('dark');
+    else root.classList.remove('dark');
+    localStorage.setItem(THEME_CACHE_KEY, theme);
+  }, [theme]);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [threads, streamingMessage]);
+
+  useEffect(() => {
+    if (isShareView || sharedMode) return;
+    localStorage.setItem(THREADS_CACHE_KEY, JSON.stringify(threads));
+  }, [threads, isShareView, sharedMode]);
+
+  useEffect(() => {
+    if (isShareView || sharedMode) return;
+    if (activeThreadId) {
+      localStorage.setItem(ACTIVE_THREAD_CACHE_KEY, activeThreadId);
+    } else {
+      localStorage.removeItem(ACTIVE_THREAD_CACHE_KEY);
+    }
+  }, [activeThreadId, isShareView, sharedMode]);
+
+  useEffect(() => {
+    setThreadSummary(null);
+    setSummaryError('');
+    setShowPulse(false);
+  }, [activeThreadId]);
+
+  useEffect(() => {
+    localStorage.setItem(SEND_ENTER_CACHE_KEY, String(sendOnEnter));
+  }, [sendOnEnter]);
+
+  useEffect(() => {
+    localStorage.setItem(COMPACT_SIDEBAR_CACHE_KEY, String(compactSidebar));
+  }, [compactSidebar]);
+
+  useEffect(() => {
+    localStorage.setItem(PINNED_CACHE_KEY, JSON.stringify(pinnedByThread));
+  }, [pinnedByThread]);
+
+  const fetchThreads = async () => {
+    console.log("[FETCH_START] get_threads");
+    try {
+      const data = await rpcCall({ func: 'get_threads', args: {} });
+      if (Array.isArray(data) && data.length > 0) {
+        setThreads(data);
+        setActiveThreadId((prev) => {
+          if (prev && data.some((t: Thread) => t.id === prev)) return prev;
+          const cached = localStorage.getItem(ACTIVE_THREAD_CACHE_KEY);
+          if (cached && data.some((t: Thread) => t.id === cached)) return cached;
+          return data[0].id;
+        });
+      }
+    } catch (err) {
+      console.error("[FETCH_ERROR]", err);
+    }
+  };
+
+  const handleCreateThread = async () => {
+    if (sharedMode) {
+      setStatus(sharedReason || "Shared chats are read-only.");
+      return;
+    }
+    const current = threads.find(t => t.id === activeThreadId);
+    if (current && current.messages.length === 0) {
+      setStatus("Use the current chat first before creating another.");
+      return;
+    }
+    console.log("[ACTION] create_thread");
+    try {
+      const newThread = await rpcCall({ func: 'create_thread', args: { title: "New Conversation" } });
+      setThreads([newThread, ...threads]);
+      setActiveThreadId(newThread.id);
+      if (window.innerWidth < 768) setIsSidebarOpen(false);
+    } catch (err) {
+      console.error("[ACTION_ERROR]", err);
+    }
+  };
+
+  const handleDeleteThread = async (id: string, e: React.MouseEvent) => {
+    if (sharedMode) {
+      setStatus(sharedReason || "Shared chats are read-only.");
+      return;
+    }
+    e.stopPropagation();
+    console.log("[ACTION] delete_thread", id);
+    try {
+      await rpcCall({ func: 'delete_thread', args: { thread_id: id } });
+      const updatedThreads = threads.filter(t => t.id !== id);
+      setThreads(updatedThreads);
+      if (activeThreadId === id) {
+        setActiveThreadId(updatedThreads.length > 0 ? updatedThreads[0].id : null);
+      }
+    } catch (err) {
+      console.error("[ACTION_ERROR]", err);
+    }
+  };
+
+  const handleSendMessage = async () => {
+    if (sharedMode) {
+      setStatus(sharedReason || "This shared chat is read-only.");
+      return;
+    }
+    if (!input.trim() || !activeThreadId || loading) return;
+
+    const userMsg = input.trim();
+    setInput('');
+    setShowEmojiPicker(false);
+    if (textareaRef.current) {
+      textareaRef.current.style.height = '44px';
+    }
+    setLoading(true);
+    setStreamingMessage('');
+    setStatus('');
+
+    // Optimistically update UI
+    setThreads(prev => prev.map(t => {
+      if (t.id === activeThreadId) {
+        return {
+          ...t,
+          messages: [...t.messages, { role: 'user', content: userMsg }]
+        };
+      }
+      return t;
+    }));
+
+    try {
+      console.log("[STREAM_START] chat_streaming");
+      let fullContent = '';
+      
+      await streamCall({
+        func: 'chat_streaming',
+        args: { thread_id: activeThreadId, message: userMsg },
+        onChunk: (chunk) => {
+          if (chunk.type === 'status') {
+            setStatus(chunk.message);
+          } else if (chunk.type === 'chunk') {
+            fullContent += chunk.content;
+            setStreamingMessage(fullContent);
+            setStatus('');
+          } else if (chunk.type === 'result') {
+            // Finalize thread update (title might have changed)
+            setThreads(prev => prev.map(t => {
+              if (t.id === activeThreadId) {
+                return {
+                  ...t,
+                  title: chunk.data.title,
+                  messages: [...t.messages, { role: 'assistant', content: fullContent }]
+                };
+              }
+              return t;
+            }));
+            setStreamingMessage('');
+          } else if (chunk.type === 'error') {
+            console.error("[STREAM_ERROR_CHUNK]", chunk.message);
+            setStatus(`Error: ${chunk.message}`);
+          }
+        },
+        onError: (err) => {
+          console.error("[STREAM_ERROR]", err);
+          setStatus("Sorry, I encountered an error.");
+        }
+      });
+    } catch (err) {
+      console.error("[SEND_ERROR]", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const activeThread = threads.find(t => t.id === activeThreadId);
+  const blockNewChat = !!activeThread && activeThread.messages.length === 0;
+  const userMsgs = (activeThread?.messages || []).filter(m => m.role === 'user').map(m => m.content);
+  const assistantMsgs = (activeThread?.messages || []).filter(m => m.role === 'assistant').map(m => m.content);
+  const userAnalyses = userMsgs.slice(-12).map(analyzeSentiment);
+  const moodSeries = userAnalyses.map(s => s.score);
+  const moodAvg = average(moodSeries);
+  const moodEnergy = average(userAnalyses.map(s => s.energy));
+  const latestSent = userAnalyses.length ? userAnalyses[userAnalyses.length - 1] : { score: 0, label: 'Steady', energy: 0 };
+  const headWindow = moodSeries.slice(0, Math.max(1, Math.floor(moodSeries.length / 2)));
+  const tailWindow = moodSeries.slice(-Math.max(1, Math.floor(moodSeries.length / 2)));
+  const moodTrend = average(tailWindow) - average(headWindow);
+  const moodLabel = moodAvg <= -1.3 ? 'Heavy' : moodAvg < -0.4 ? 'Low' : moodAvg < 0.35 ? 'Steady' : moodAvg < 1.1 ? 'Positive' : 'Elevated';
+  const sparkline = buildSparklinePath(moodSeries.length ? moodSeries : [0]);
+  const totalMessages = threads.reduce((acc, t) => acc + (t.messages?.length || 0), 0);
+  const recentActive = threads.length ? new Date(threads[0].updated_at || threads[0].created_at || '').toLocaleString() : 'No activity yet';
+  const lastAssistantPreview = (assistantMsgs[assistantMsgs.length - 1] || '').slice(0, 90);
+
+  const memoryCards = [
+    {
+      id: 'steps',
+      label: 'Weekly Steps',
+      prompt: 'Based on what you know about me, give me 3 practical steps I should take this week.',
+    },
+    {
+      id: 'mood',
+      label: 'Mood Insight',
+      prompt: `Summarize my current emotional pattern as ${moodLabel.toLowerCase()} and give one actionable habit for today.`,
+    },
+    {
+      id: 'continue',
+      label: 'Continue',
+      prompt: lastAssistantPreview
+        ? `Continue from your last point: "${lastAssistantPreview}" and give me the clearest next action.`
+        : 'Continue from where we stopped and help me finish my highest-priority task today.',
+    },
+  ];
+  const activePins = activeThreadId ? (pinnedByThread[activeThreadId] || []) : [];
+
+  const handleApplyMemoryPrompt = (prompt: string) => {
+    if (sharedMode) {
+      setStatus(sharedReason || 'Shared chats are read-only.');
+      return;
+    }
+    setInput(prompt.slice(0, MAX_INPUT_CHARS));
+    requestAnimationFrame(() => {
+      if (!textareaRef.current) return;
+      textareaRef.current.focus();
+      textareaRef.current.style.height = '44px';
+      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 128)}px`;
+    });
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (window.innerWidth >= 768) return;
+    const t = e.touches[0];
+    touchStartRef.current = { x: t.clientX, y: t.clientY };
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (window.innerWidth >= 768) return;
+    const start = touchStartRef.current;
+    touchStartRef.current = null;
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    const mostlyHorizontal = Math.abs(dx) > Math.abs(dy) * 1.2;
+    if (!mostlyHorizontal || Math.abs(dy) > 80) return;
+    if (dx > 72 && !isSidebarOpen) {
+      setIsSidebarOpen(true);
+      return;
+    }
+    if (dx < -72 && isSidebarOpen) {
+      setIsSidebarOpen(false);
+    }
+  };
+
+  const togglePinMessage = (messageId: string, role: 'user' | 'assistant', content: string) => {
+    if (!activeThreadId) return;
+    setPinnedByThread((prev) => {
+      const existing = prev[activeThreadId] || [];
+      const has = existing.some((m) => m.id === messageId);
+      const nextPins = has
+        ? existing.filter((m) => m.id !== messageId)
+        : [...existing, { id: messageId, role, content }];
+      return { ...prev, [activeThreadId]: nextPins.slice(-12) };
+    });
+  };
+
+  const jumpToPinnedMessage = (messageId: string) => {
+    const node = messageRefs.current[messageId];
+    if (!node) return;
+    node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+  const applyReflectivePrompt = () => {
+    const prompt = moodAvg <= -1
+      ? "I feel heavy right now. Help me calm down step-by-step."
+      : moodAvg >= 0.8
+        ? "I'm feeling good. Help me channel this energy productively."
+        : "Help me reflect on today and identify one useful next step.";
+    setInput(prompt);
+  };
+
+  const handleSummarizeThread = async () => {
+    if (!activeThreadId || summaryLoading) return;
+    setSummaryLoading(true);
+    setSummaryError('');
+    try {
+      const result = await rpcCall<ThreadSummary>({ func: 'summarize_thread', args: { thread_id: activeThreadId } });
+      if (result && (result as any).error) {
+        setSummaryError(String((result as any).error));
+        setThreadSummary(null);
+      } else {
+        setThreadSummary(result);
+      }
+    } catch (err) {
+      console.error('[SUMMARY_ERROR]', err);
+      setSummaryError('Could not summarize this chat right now.');
+    } finally {
+      setSummaryLoading(false);
+    }
+  };
+
+  const handleInsertEmoji = (emoji: string) => {
+    if (!textareaRef.current) {
+      setInput((prev) => (prev + emoji).slice(0, MAX_INPUT_CHARS));
+      return;
+    }
+    const ta = textareaRef.current;
+    const start = ta.selectionStart ?? input.length;
+    const end = ta.selectionEnd ?? input.length;
+    const next = (input.slice(0, start) + emoji + input.slice(end)).slice(0, MAX_INPUT_CHARS);
+    setInput(next);
+    requestAnimationFrame(() => {
+      ta.focus();
+      const pos = Math.min(start + emoji.length, next.length);
+      ta.selectionStart = pos;
+      ta.selectionEnd = pos;
+      ta.style.height = '44px';
+      ta.style.height = `${Math.min(ta.scrollHeight, 128)}px`;
+    });
+  };
+
+  const handleToggleRecording = () => {
+    if (sharedMode) return;
+    const rec = recognitionRef.current;
+    if (!rec) {
+      setVoiceHint('Voice input not supported on this browser.');
+      return;
+    }
+    try {
+      if (isRecording) {
+        rec.stop();
+      } else {
+        setShowEmojiPicker(false);
+        rec.start();
+      }
+    } catch {
+      setVoiceHint('Could not start voice input. Please try again.');
+    }
+  };
+
+  const handleCopyMessage = async (text: string, idx: number) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedIndex(idx);
+      setTimeout(() => setCopiedIndex((prev) => (prev === idx ? null : prev)), 1200);
+    } catch (e) {
+      console.error('Copy failed', e);
+    }
+  };
+
+  const handleImportSharedThread = async (shareId: string) => {
+    try {
+      const res = await rpcCall<SharedImportResponse>({
+        func: 'import_shared_thread',
+        args: { share_id: shareId },
+      });
+      if (res?.error || !res?.thread) {
+        setStatus(res?.error || 'Could not import shared chat.');
+        return;
+      }
+      const thread = res.thread;
+      setThreads([thread]);
+      setActiveThreadId(thread.id);
+      setSharedMode(Boolean(res.readonly));
+      setSharedReason(
+        res.reason || 'This is a shared read-only snapshot to protect the owner conversation and privacy.'
+      );
+      setStatus('');
+    } catch (err) {
+      console.error('[IMPORT_SHARED_ERROR]', err);
+      setStatus('Could not import shared chat.');
+    }
+  };
+
+  const handleShareThread = async () => {
+    if (!activeThreadId || shareLoading) return;
+    setShareLoading(true);
+    try {
+      const res = await rpcCall<{ url?: string; error?: string }>({
+        func: 'create_share_link',
+        args: { thread_id: activeThreadId },
+      });
+      if (res?.error || !res?.url) {
+        setStatus(res?.error || 'Could not create share link.');
+        return;
+      }
+      await navigator.clipboard.writeText(res.url);
+      setStatus('Share link copied.');
+    } catch (err) {
+      console.error('[SHARE_ERROR]', err);
+      setStatus('Could not copy share link.');
+    } finally {
+      setShareLoading(false);
+    }
+  };
+
+  return (
+    <div
+      className="flex h-screen w-full max-w-full bg-background text-foreground overflow-x-hidden overflow-y-hidden [touch-action:pan-y]"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Mobile Menu Overlay */}
+      {!isSidebarOpen && (
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="fixed top-4 left-4 z-50 md:hidden"
+          onClick={() => setIsSidebarOpen(true)}
+        >
+          <Menu className="h-6 w-6" />
+        </Button>
+      )}
+
+      {/* Sidebar */}
+      <div className={cn(
+        "fixed inset-y-0 left-0 z-40 w-72 bg-card border-r transition-transform duration-300 transform md:relative md:translate-x-0",
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      )}>
+        <div className="flex flex-col h-full">
+          <div className="p-4 flex items-center justify-between">
+            <h1 className="text-xl font-bold text-primary flex items-center gap-2">
+              <div className="bg-primary/10 p-1.5 rounded-lg">
+                <img src="/echo-ai-logo.png" alt="Echo AI Logo" className="h-5 w-5" />
+              </div>
+              Echo AI
+            </h1>
+            <div className="flex items-center gap-1">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                aria-label="Toggle theme"
+                title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </Button>
+              <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsSidebarOpen(false)}>
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="px-4 mb-4">
+            <Button className="w-full justify-start gap-2" variant="outline" onClick={handleCreateThread} disabled={blockNewChat || sharedMode}>
+              <Plus className="h-4 w-4" />
+              New Chat
+            </Button>
+          </div>
+
+          <div className="px-4 mb-4">
+            <Card className="border-none shadow-premium bg-gradient-to-br from-primary/15 via-card to-card">
+              <CardContent className="p-3 space-y-2">
+                <div className="flex items-center justify-between">
+                  <p className="text-xs uppercase tracking-wide text-muted-foreground">Command Center</p>
+                  <Gauge className="h-4 w-4 text-primary" />
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="rounded-md border bg-background/70 p-2">
+                    <p className="text-[10px] text-muted-foreground uppercase">Chats</p>
+                    <p className="text-sm font-semibold">{threads.length}</p>
+                  </div>
+                  <div className="rounded-md border bg-background/70 p-2">
+                    <p className="text-[10px] text-muted-foreground uppercase">Messages</p>
+                    <p className="text-sm font-semibold">{totalMessages}</p>
+                  </div>
+                </div>
+                <div className="rounded-md border bg-background/70 p-2 flex items-center justify-between">
+                  <div>
+                    <p className="text-[10px] text-muted-foreground uppercase">Tone</p>
+                    <p className="text-sm font-medium">{moodLabel}</p>
+                  </div>
+                  <Flame className={cn("h-4 w-4", moodAvg >= 0 ? "text-emerald-600" : moodAvg < 0 ? "text-rose-600" : "text-amber-600")} />
+                </div>
+                <p className="text-[10px] text-muted-foreground">Latest activity: {recentActive}</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <ScrollArea className="flex-1 px-4">
+            <div className="space-y-1 pb-4">
+              {threads.map(thread => (
+                <div
+                  key={thread.id}
+                  onClick={() => {
+                    setActiveThreadId(thread.id);
+                    if (window.innerWidth < 768) setIsSidebarOpen(false);
+                  }}
+                  className={cn(
+                    "group flex items-center justify-between rounded-lg cursor-pointer transition-colors",
+                    compactSidebar ? "p-2" : "p-3",
+                    activeThreadId === thread.id ? "bg-primary/10 text-primary" : "hover:bg-muted"
+                  )}
+                >
+                  <div className="flex items-center gap-3 overflow-hidden">
+                    <MessageSquare className="h-4 w-4 shrink-0" />
+                    <span className="truncate text-sm font-medium">{thread.title}</span>
+                  </div>
+                  {!sharedMode && (
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity hover:text-destructive"
+                      onClick={(e) => handleDeleteThread(thread.id, e)}
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                    </Button>
+                  )}
+                </div>
+              ))}
+              {threads.length === 0 && (
+                <div className="text-center py-8 text-muted-foreground text-sm">
+                  No conversations yet
+                </div>
+              )}
+            </div>
+          </ScrollArea>
+
+          <div className="border-t px-4 py-3">
+            <Card className="border-none shadow-premium">
+              <CardContent className="p-3 space-y-3">
+                <div className="flex items-center justify-between">
+                  <p className="text-xs uppercase tracking-wide text-muted-foreground">Quick Settings</p>
+                  <SlidersHorizontal className="h-4 w-4 text-primary" />
+                </div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium">Send on Enter</p>
+                    <p className="text-[11px] text-muted-foreground">Shift + Enter for new line</p>
+                  </div>
+                  <Switch checked={sendOnEnter} onCheckedChange={setSendOnEnter} />
+                </div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium">Compact Sidebar</p>
+                    <p className="text-[11px] text-muted-foreground">Denser thread list layout</p>
+                  </div>
+                  <Switch checked={compactSidebar} onCheckedChange={setCompactSidebar} />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col h-full min-w-0 w-full relative overflow-x-hidden">
+        {/* Header */}
+        <header className="h-16 border-b flex items-center px-3 md:px-6 bg-background/80 backdrop-blur-md sticky top-0 z-30">
+          <div className="flex items-center justify-between w-full gap-3">
+            <div className="flex items-center gap-2 min-w-0 flex-1">
+              <div className="md:hidden w-8 shrink-0" /> {/* Spacer for menu button */}
+              <h2 className="font-semibold truncate">
+                {activeThread ? activeThread.title : "Select a conversation"}
+              </h2>
+              {activeThread && (
+                <Badge variant="secondary" className="ml-1 font-normal text-[10px] uppercase tracking-wider shrink-0 hidden sm:inline-flex">
+                  {activeThread.messages.length} messages
+                </Badge>
+              )}
+            </div>
+            <div className="flex items-center gap-1 shrink-0">
+              <Button
+                size="sm"
+                variant="outline"
+                className="gap-1 px-2 md:px-3"
+                onClick={handleShareThread}
+                disabled={!activeThreadId || shareLoading || sharedMode}
+              >
+                {shareLoading ? <Spinner className="h-3.5 w-3.5" /> : <Share2 className="h-3.5 w-3.5" />}
+                <span className="hidden sm:inline">Share</span>
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                className="gap-1 px-2 md:px-3"
+                onClick={handleSummarizeThread}
+                disabled={!activeThreadId || summaryLoading}
+              >
+                {summaryLoading ? <Spinner className="h-3.5 w-3.5" /> : <ScrollText className="h-3.5 w-3.5" />}
+                <span className="hidden sm:inline">Summarize</span>
+              </Button>
+            </div>
+          </div>
+        </header>
+        {sharedMode && activeThread && (
+          <div className="px-4 md:px-6 pt-3">
+            <Card className="border border-amber-300/60 bg-amber-50 dark:bg-amber-950/30 dark:border-amber-700/50">
+              <CardContent className="p-3">
+                <p className="text-sm font-medium text-amber-900 dark:text-amber-200">
+                  Read-only shared chat
+                </p>
+                <p className="text-xs text-amber-800/90 dark:text-amber-300/90 mt-1">
+                  {sharedReason || 'This shared snapshot is locked. You can view and copy messages, but you cannot continue or edit the conversation.'}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+        {activeThread && (threadSummary || summaryError) && (
+          <div className="px-4 md:px-6 pt-3">
+            <Card className="border-none shadow-premium bg-gradient-to-r from-card via-card to-primary/5">
+              <CardContent className="p-3 md:p-4 space-y-3">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-sm font-semibold">Conversation Summary</p>
+                  {threadSummary && (
+                    <Badge variant="secondary" className="text-[10px] uppercase tracking-wide">
+                      {threadSummary.source}
+                    </Badge>
+                  )}
+                </div>
+                {summaryError && (
+                  <p className="text-sm text-rose-600">{summaryError}</p>
+                )}
+                {threadSummary && (
+                  <>
+                    <p className="text-sm leading-relaxed">{threadSummary.summary}</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="rounded-lg border bg-card/70 p-3">
+                        <p className="text-xs uppercase tracking-wide text-muted-foreground mb-2">What They Talked About</p>
+                        <ul className="space-y-1 text-sm">
+                          {threadSummary.talked_about.map((item, idx) => (
+                            <li key={`talked-${idx}`} className="leading-relaxed">- {item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="rounded-lg border bg-card/70 p-3">
+                        <p className="text-xs uppercase tracking-wide text-muted-foreground mb-2">What Echo Learned</p>
+                        <ul className="space-y-1 text-sm">
+                          {threadSummary.learned.map((item, idx) => (
+                            <li key={`learned-${idx}`} className="leading-relaxed">- {item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground">
+                      Based on {threadSummary.message_count} messages
+                    </p>
+                  </>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        )}
+        {activeThread && showPulse && (
+          <div className="px-4 md:px-6 pt-3">
+            <Card className="border-none shadow-premium bg-gradient-to-r from-primary/10 via-background to-primary/5">
+              <CardContent className="p-3 md:p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <div className="h-8 w-8 rounded-full bg-primary/15 flex items-center justify-center animate-pulse">
+                      <HeartPulse className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-wide text-muted-foreground">Emotion Pulse</p>
+                      <p className="text-sm font-semibold">{moodLabel} ({latestSent.label})</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button size="sm" variant="outline" className="gap-1" onClick={applyReflectivePrompt}>
+                      <Sparkles className="h-3.5 w-3.5" />
+                      Reflective Prompt
+                    </Button>
+                    <Button size="sm" variant="ghost" onClick={() => setShowPulse(false)}>Hide</Button>
+                  </div>
+                </div>
+                <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-2">
+                  <div className="rounded-lg border bg-card/70 p-2">
+                    <p className="text-[10px] uppercase tracking-wide text-muted-foreground">Current Tone</p>
+                    <p className="text-sm font-medium">{moodAvg >= 0 ? '+' : ''}{moodAvg.toFixed(2)}</p>
+                  </div>
+                  <div className="rounded-lg border bg-card/70 p-2 flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-wide text-muted-foreground">Trend</p>
+                      <p className="text-sm font-medium">{moodTrend >= 0.12 ? 'Rising' : moodTrend <= -0.12 ? 'Dropping' : 'Flat'}</p>
+                    </div>
+                    {moodTrend >= 0.12 ? <TrendingUp className="h-4 w-4 text-emerald-600" /> : moodTrend <= -0.12 ? <TrendingDown className="h-4 w-4 text-rose-600" /> : <HeartPulse className="h-4 w-4 text-amber-600" />}
+                  </div>
+                  <div className="rounded-lg border bg-card/70 p-2">
+                    <p className="text-[10px] uppercase tracking-wide text-muted-foreground">Energy</p>
+                    <p className="text-sm font-medium">{Math.round(moodEnergy * 100)}%</p>
+                  </div>
+                </div>
+                <div className="mt-2">
+                  <svg viewBox="0 0 180 44" className="w-full h-11">
+                    <path d="M0,22 L180,22" stroke="hsl(var(--border))" strokeWidth="1" fill="none" />
+                    <path d={sparkline} stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                  </svg>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+        {activeThread && !showPulse && (
+          <div className="px-4 md:px-6 pt-2">
+            <Button size="sm" variant="ghost" onClick={() => setShowPulse(true)}>Show Emotion Pulse</Button>
+          </div>
+        )}
+
+        {/* Chat Area */}
+        <ScrollArea className="flex-1 p-4 md:p-6">
+          <div className="max-w-3xl mx-auto space-y-6 pb-4">
+            {!activeThreadId ? (
+              <div className="flex flex-col items-center justify-center h-[60vh] text-center space-y-4">
+                <div className="bg-primary/5 p-6 rounded-full">
+                  <Bot className="h-12 w-12 text-primary/40" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-semibold">Welcome to Echo AI</h3>
+                  <p className="text-muted-foreground max-w-sm">
+                    A chill, compassionate digital buddy here to listen and chat.
+                  </p>
+                </div>
+                <Button onClick={handleCreateThread}>Start a conversation</Button>
+              </div>
+            ) : (
+              <>
+                {/* System / Welcome Message */}
+                <div className="flex justify-center mb-8">
+                  <div className="bg-muted/50 px-4 py-2 rounded-full text-xs text-muted-foreground">
+                    Conversation started on {new Date(activeThread?.created_at || "").toLocaleDateString()}
+                  </div>
+                </div>
+
+                {activeThread?.messages.map((msg, idx) => {
+                  const messageId = `${activeThread?.id || 't'}:${idx}:${msg.role}`;
+                  const isPinned = activePins.some((p) => p.id === messageId);
+                  return (
+                  <div
+                    key={idx}
+                    ref={(el) => { messageRefs.current[messageId] = el; }}
+                    className={cn(
+                    "flex w-full gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300",
+                    msg.role === 'user' ? "flex-row-reverse" : "flex-row"
+                  )}>
+                    <div className={cn(
+                      "h-8 w-8 rounded-full flex items-center justify-center shrink-0 shadow-sm",
+                      msg.role === 'user' ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                    )}>
+                      {msg.role === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
+                    </div>
+                    <div className={cn("max-w-[85%] flex flex-col", msg.role === 'user' ? "items-end" : "items-start")}>
+                      <Card className={cn(
+                        "w-full shadow-premium border-none",
+                        msg.role === 'user' ? "bg-primary text-primary-foreground" : "bg-card"
+                      )}>
+                        <CardContent className="p-3 md:p-4 text-sm leading-relaxed whitespace-pre-wrap">
+                          {msg.content}
+                        </CardContent>
+                      </Card>
+                      <div className="mt-1 flex items-center gap-1">
+                        {msg.role === 'assistant' && (
+                          <button
+                            type="button"
+                            aria-label="Copy response"
+                            className="h-7 w-7 rounded-md border border-border/60 bg-background/70 text-foreground inline-flex items-center justify-center hover:bg-background transition-colors"
+                            onClick={() => handleCopyMessage(msg.content, idx)}
+                          >
+                            {copiedIndex === idx ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5" />}
+                          </button>
+                        )}
+                        {msg.role === 'assistant' && (
+                          <button
+                            type="button"
+                            aria-label="Pin message"
+                            className={cn(
+                              "h-7 w-7 rounded-md border border-border/60 bg-background/70 inline-flex items-center justify-center hover:bg-background transition-colors",
+                              isPinned ? "text-primary" : "text-foreground"
+                            )}
+                            onClick={() => togglePinMessage(messageId, 'assistant', msg.content)}
+                          >
+                            <Pin className="h-3.5 w-3.5" />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )})}
+
+                {/* Streaming Assistant Message */}
+                {(streamingMessage || status) && (
+                  <div className="flex w-full gap-4 animate-in fade-in duration-200">
+                    <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0">
+                      <Bot className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                    <Card className="max-w-[85%] shadow-premium border-none bg-card">
+                      <CardContent className="p-3 md:p-4 text-sm leading-relaxed">
+                        {status && (
+                          <div className="flex items-center gap-2 text-muted-foreground italic">
+                            {loading ? <Spinner className="h-3 w-3" /> : null}
+                            {status}
+                          </div>
+                        )}
+                        <div className="whitespace-pre-wrap">{streamingMessage}</div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                )}
+                
+                <div ref={scrollRef} />
+              </>
+            )}
+          </div>
+        </ScrollArea>
+
+        {activeThreadId && activePins.length > 0 && (
+          <div className="px-2 md:px-6 pb-1">
+            <div className="max-w-3xl mx-auto overflow-x-auto no-scrollbar">
+              <div className="flex items-center gap-1.5 md:gap-2 whitespace-nowrap">
+                {activePins.map((pin) => (
+                  <button
+                    key={pin.id}
+                    type="button"
+                    onClick={() => jumpToPinnedMessage(pin.id)}
+                    className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/5 hover:bg-primary/10 text-[10px] md:text-xs px-2 md:px-3 py-1 transition-colors"
+                    title={pin.content}
+                  >
+                    <Pin className="h-3 w-3" />
+                    <span className="max-w-[180px] md:max-w-[260px] truncate">
+                      {pin.content}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeThreadId && !sharedMode && (
+          <div className="px-2 md:px-6 pb-1 md:pb-2">
+            <div className="max-w-3xl mx-auto overflow-x-auto no-scrollbar">
+              <div className="flex items-center gap-1.5 md:gap-2 whitespace-nowrap">
+                {memoryCards.map((card) => (
+                  <button
+                    key={card.id}
+                    type="button"
+                    onClick={() => handleApplyMemoryPrompt(card.prompt)}
+                    className="inline-flex items-center rounded-full border border-primary/25 bg-primary/5 hover:bg-primary/10 text-[10px] md:text-xs px-2 md:px-3 py-1 transition-colors"
+                    title={card.prompt}
+                  >
+                    {card.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Input Area */}
+        {activeThreadId && (
+          <div
+            className={cn(
+              "p-2 md:p-4 bg-gradient-to-t from-background via-background to-transparent sticky bottom-0 left-0 right-0 z-20 transition-transform duration-300 ease-out",
+              inputFocused ? "-translate-y-2 md:translate-y-0" : "translate-y-0"
+            )}
+          >
+            <div className="max-w-3xl mx-auto">
+              <div className="relative group">
+                <Textarea
+                  ref={textareaRef}
+                  className="no-scrollbar pr-28 py-2 min-h-[44px] max-h-32 resize-none overflow-y-auto break-words [overflow-wrap:anywhere] bg-card border-none shadow-premium focus-visible:ring-primary/20 rounded-2xl"
+                  placeholder={sharedMode ? 'This shared chat is read-only.' : 'How are you feeling today?'}
+                  value={input}
+                  rows={1}
+                  maxLength={MAX_INPUT_CHARS}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setInput(v);
+                    e.target.style.height = '44px';
+                    e.target.style.height = `${Math.min(e.target.scrollHeight, 128)}px`;
+                  }}
+                  onFocus={() => setInputFocused(true)}
+                  onBlur={() => {
+                    setInputFocused(false);
+                    setTimeout(() => setShowEmojiPicker(false), 120);
+                  }}
+                  onKeyDown={(e) => {
+                    if (sendOnEnter && e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSendMessage();
+                    }
+                  }}
+                  disabled={loading || sharedMode}
+                />
+                <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                  <Button
+                    type="button"
+                    size="icon"
+                    variant="ghost"
+                    className={cn("rounded-xl transition-all duration-200", isRecording && "text-rose-500 animate-pulse")}
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={handleToggleRecording}
+                    aria-label={isRecording ? 'Stop recording' : 'Start voice recording'}
+                    title={speechSupported ? (isRecording ? 'Stop recording' : 'Start recording') : 'Voice input not supported on this browser'}
+                    disabled={loading || sharedMode || !speechSupported}
+                  >
+                    {isRecording ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+                  </Button>
+                  <Button
+                    type="button"
+                    size="icon"
+                    variant="ghost"
+                    className="rounded-xl transition-all duration-200"
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => setShowEmojiPicker((v) => !v)}
+                    aria-label="Open emoji picker"
+                    disabled={sharedMode}
+                  >
+                    <Smile className="h-4 w-4" />
+                  </Button>
+                  <Button 
+                    size="icon" 
+                    className="rounded-xl transition-all duration-200"
+                    disabled={loading || !input.trim() || sharedMode}
+                    onClick={handleSendMessage}
+                  >
+                    {loading ? <Spinner className="h-4 w-4" /> : <Send className="h-4 w-4" />}
+                  </Button>
+                </div>
+                {showEmojiPicker && (
+                  <div className="absolute right-0 bottom-12 w-[260px] rounded-xl border bg-card p-2 shadow-xl z-30">
+                    <div className="grid grid-cols-8 gap-1">
+                      {EMOJI_OPTIONS.map((emoji) => (
+                        <button
+                          key={emoji}
+                          type="button"
+                          className="h-7 w-7 rounded hover:bg-muted text-base"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleInsertEmoji(emoji)}
+                        >
+                          {emoji}
+                        </button>
+                      ))}
+                    </div>
+                    <a
+                      href="https://getemoji.com/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-2 block text-[11px] text-primary hover:underline text-right"
+                    >
+                      More emojis via getemoji.com
+                    </a>
+                  </div>
+                )}
+              </div>
+              <div className="mt-2 flex items-center justify-between">
+                <p className="text-[10px] text-muted-foreground">
+                  {sendOnEnter ? 'Enter to send, Shift+Enter for new line' : 'Multi-line mode enabled'}
+                </p>
+                <p className="text-[10px] text-muted-foreground">{input.length}/{MAX_INPUT_CHARS}</p>
+              </div>
+              {(voiceHint || !speechSupported) && (
+                <p className="text-[10px] mt-1 text-muted-foreground">
+                  {voiceHint || 'Voice input is unavailable on this browser.'}
+                </p>
+              )}
+              <p className="text-[10px] text-center mt-3 text-muted-foreground">
+                Echo AI is a compassionate digital buddy. Always consult professionals for serious concerns.
+              </p>
+              <div className="mt-3 flex items-center justify-center gap-4">
+                <a
+                  href="mailto:mclanorjephthah@gmail.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-bounce social-delay-1 text-[20px]"
+                  aria-label="Gmail"
+                >
+                  <i className="fa-solid fa-envelope text-[#EA4335]" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/jephthah-kwame-lanor-6b9017262/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-bounce social-delay-2 text-[20px]"
+                  aria-label="LinkedIn"
+                >
+                  <i className="fa-brands fa-linkedin text-[#0A66C2]" />
+                </a>
+                <a
+                  href="https://github.com/Lanor-Jephthah1"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-bounce social-delay-3 text-[20px]"
+                  aria-label="GitHub"
+                >
+                  <i className="fa-brands fa-github text-[#171515] dark:text-[#f5f5f5]" />
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

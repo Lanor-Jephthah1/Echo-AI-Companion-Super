@@ -1,1 +1,23 @@
-ewogICJ2ZXJzaW9uIjogMiwKICAicmV3cml0ZXMiOiBbCiAgICB7CiAgICAgICJzb3VyY2UiOiAiL2FwaS8oLiopIiwKICAgICAgImRlc3RpbmF0aW9uIjogIi9iYWNrZW5kL3ZlcmNlbF9hcHAucHkiCiAgICB9CiAgXQp9Cg==
+{
+  "installCommand": "npm install --prefix frontend",
+  "buildCommand": "npm run build --prefix frontend",
+  "outputDirectory": "frontend/dist",
+  "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "/api/admin"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/vercel_app.py"
+    },
+    {
+      "source": "/shared/(.*)",
+      "destination": "/api/vercel_app.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

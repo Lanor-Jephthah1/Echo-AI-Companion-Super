@@ -1,0 +1,62 @@
+[
+  {
+    "ref": "Psalm 34:18",
+    "text": "The Lord is close to the brokenhearted and saves those who are crushed in spirit.",
+    "tags": ["sad", "grief", "comfort"]
+  },
+  {
+    "ref": "Isaiah 41:10",
+    "text": "Do not fear, for I am with you; do not be dismayed, for I am your God.",
+    "tags": ["fear", "anxiety", "courage"]
+  },
+  {
+    "ref": "Philippians 4:6-7",
+    "text": "Do not be anxious about anything; in every situation, by prayer and petition, present your requests to God.",
+    "tags": ["anxiety", "worry", "prayer"]
+  },
+  {
+    "ref": "Matthew 11:28",
+    "text": "Come to me, all you who are weary and burdened, and I will give you rest.",
+    "tags": ["stress", "tired", "rest"]
+  },
+  {
+    "ref": "Jeremiah 29:11",
+    "text": "For I know the plans I have for you, plans to give you hope and a future.",
+    "tags": ["hope", "future"]
+  },
+  {
+    "ref": "Proverbs 3:5-6",
+    "text": "Trust in the Lord with all your heart and lean not on your own understanding.",
+    "tags": ["guidance", "decision"]
+  },
+  {
+    "ref": "Joshua 1:9",
+    "text": "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you.",
+    "tags": ["courage", "strength"]
+  },
+  {
+    "ref": "1 Peter 5:7",
+    "text": "Cast all your anxiety on him because he cares for you.",
+    "tags": ["anxiety", "care"]
+  },
+  {
+    "ref": "Psalm 46:1",
+    "text": "God is our refuge and strength, an ever-present help in trouble.",
+    "tags": ["trouble", "strength"]
+  },
+  {
+    "ref": "Romans 12:12",
+    "text": "Be joyful in hope, patient in affliction, faithful in prayer.",
+    "tags": ["hope", "prayer", "patience"]
+  },
+  {
+    "ref": "Colossians 3:13",
+    "text": "Bear with each other and forgive one another if any of you has a grievance.",
+    "tags": ["forgiveness", "conflict"]
+  },
+  {
+    "ref": "1 Corinthians 13:4-7",
+    "text": "Love is patient, love is kind; it always protects, always trusts, always hopes, always perseveres.",
+    "tags": ["love", "relationship"]
+  }
+]

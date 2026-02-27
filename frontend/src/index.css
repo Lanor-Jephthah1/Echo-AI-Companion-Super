@@ -1,1 +1,119 @@
-QHRhaWx3aW5kIGJhc2U7CkB0YWlsd2luZCBjb21wb25lbnRzOwpAdGFpbHdpbmQgdXRpbGl0aWVzOwoKQGxheWVyIGJhc2UgewogIDpyb290IHsKICAgIC0tYmFja2dyb3VuZDogMCAwJSAxMDAlOwogICAgLS1mb3JlZ3JvdW5kOiAyMjQgNzEuNCUgNC4xJTsKICAgIC0tY2FyZDogMCAwJSAxMDAlOwogICAgLS1jYXJkLWZvcmVncm91bmQ6IDIyNCA3MS40JSA0LjElOwogICAgLS1wb3BvdmVyOiAwIDAlIDEwMCU7CiAgICAtLXBvcG92ZXItZm9yZWdyb3VuZDogMjI0IDcxLjQlIDQuMSU7CiAgICAtLXByaW1hcnk6IDI2My40IDcwJSA1MC40JTsKICAgIC0tcHJpbWFyeS1mb3JlZ3JvdW5kOiAyMTAgNDAlIDk4JTsKICAgIC0tc2Vjb25kYXJ5OiAyMjAgMTQuMyUgOTUuOSU7CiAgICAtLXNlY29uZGFyeS1mb3JlZ3JvdW5kOiAyMjAuOSAzOS4zJSAxMSU7CiAgICAtLW11dGVkOiAyMjAgMTQuMyUgOTUuOSU7CiAgICAtLW11dGVkLWZvcmVncm91bmQ6IDIyMCA4LjklIDQ2LjElOwogICAgLS1hY2NlbnQ6IDIyMCAxNC4zJSA5NS45JTsKICAgIC0tYWNjZW50LWZvcmVncm91bmQ6IDIyMC45IDM5LjMlIDExJTsKICAgIC0tZGVzdHJ1Y3RpdmU6IDAgODQuMiUgNjAuMiU7CiAgICAtLWRlc3RydWN0aXZlLWZvcmVncm91bmQ6IDIxMCAyMCUgOTglOwogICAgLS1ib3JkZXI6IDIyMCAxMyUgOTElOwogICAgLS1pbnB1dDogMjIwIDEzJSA5MSU7CiAgICAtLXJpbmc6IDI2My40IDcwJSA1MC40JTsKICAgIC0tcmFkaXVzOiAwLjYyNXJlbTsKICAgIC0tY2hhcnQtMTogMjYzLjQgNzAlIDUwLjQlOwogICAgLS1jaGFydC0yOiAzMzAgODElIDYwJTsKICAgIC0tY2hhcnQtMzogMTk5IDg5JSA0OCU7CiAgICAtLWNoYXJ0LTQ6IDQ3IDk2JSA1MyU7CiAgICAtLWNoYXJ0LTU6IDE2MCA2MCUgNDUlOwogIH0KCiAgKiB7CiAgICBAYXBwbHkgYm9yZGVyLWJvcmRlcjsKICB9CgogIGJvZHkgewogICAgQGFwcGx5IGJnLWJhY2tncm91bmQgdGV4dC1mb3JlZ3JvdW5kIGFudGlhbGlhc2VkOwogICAgZm9udC1mZWF0dXJlLXNldHRpbmdzOiAicmxpZyIgMSwgImNhbHQiIDE7CiAgfQp9CgouYmctbWVzaCB7CiAgYmFja2dyb3VuZC1jb2xvcjogaHNsYSgwLDAlLDEwMCUsMSk7CiAgYmFja2dyb3VuZC1pbWFnZToKICAgIHJhZGlhbC1ncmFkaWVudChhdCAwJSAwJSwgaHNsYSgyMjIsNDclLDExJSwwLjA1KSAwLCB0cmFuc3BhcmVudCA1MCUpLAogICAgcmFkaWFsLWdyYWRpZW50KGF0IDUwJSAwJSwgaHNsYSgyMjIsNDclLDExJSwwLjAyKSAwLCB0cmFuc3BhcmVudCA1MCUpOwp9Cg==
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 263.4 70% 50.4%;
+    --radius: 0.625rem;
+    --chart-1: 263.4 70% 50.4%;
+    --chart-2: 330 81% 60%;
+    --chart-3: 199 89% 48%;
+    --chart-4: 47 96% 53%;
+    --chart-5: 160 60% 45%;
+  }
+
+  .dark {
+    --background: 224 35% 8%;
+    --foreground: 210 40% 96%;
+    --card: 224 30% 12%;
+    --card-foreground: 210 40% 96%;
+    --popover: 224 30% 12%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 263.4 82% 66%;
+    --primary-foreground: 220 15% 10%;
+    --secondary: 223 24% 18%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 223 24% 18%;
+    --muted-foreground: 216 15% 72%;
+    --accent: 223 24% 18%;
+    --accent-foreground: 210 40% 96%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 210 40% 96%;
+    --border: 224 20% 24%;
+    --input: 224 20% 24%;
+    --ring: 263.4 82% 66%;
+    --chart-1: 263.4 82% 66%;
+    --chart-2: 330 80% 68%;
+    --chart-3: 196 84% 60%;
+    --chart-4: 42 96% 56%;
+    --chart-5: 160 62% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html, body, #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+.bg-mesh {
+  background-color: hsla(0,0%,100%,1);
+  background-image:
+    radial-gradient(at 0% 0%, hsla(222,47%,11%,0.05) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(222,47%,11%,0.02) 0, transparent 50%);
+}
+
+@keyframes socialBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.social-bounce {
+  display: inline-flex;
+  animation: socialBounce 1.6s ease-in-out infinite;
+}
+
+.social-delay-1 { animation-delay: 0s; }
+.social-delay-2 { animation-delay: 0.2s; }
+.social-delay-3 { animation-delay: 0.4s; }
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
