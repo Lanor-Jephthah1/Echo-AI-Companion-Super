@@ -382,14 +382,22 @@ export default function App() {
     console.log("[FETCH_START] get_threads");
     try {
       const data = await rpcCall({ func: 'get_threads', args: {} });
-      if (Array.isArray(data) && data.length > 0) {
-        setThreads(data);
-        setActiveThreadId((prev) => {
-          if (prev && data.some((t: Thread) => t.id === prev)) return prev;
-          const cached = localStorage.getItem(ACTIVE_THREAD_CACHE_KEY);
-          if (cached && data.some((t: Thread) => t.id === cached)) return cached;
-          return data[0].id;
-        });
+      if (Array.isArray(data)) {
+        if (data.length > 0) {
+          setThreads(data);
+          setActiveThreadId((prev) => {
+            if (prev && data.some((t: Thread) => t.id === prev)) return prev;
+            const cached = localStorage.getItem(ACTIVE_THREAD_CACHE_KEY);
+            if (cached && data.some((t: Thread) => t.id === cached)) return cached;
+            return data[0].id;
+          });
+          return;
+        }
+        if (!isShareView && !sharedMode) {
+          const firstThread = await rpcCall({ func: 'create_thread', args: { title: "New Conversation" } });
+          setThreads([firstThread]);
+          setActiveThreadId(firstThread.id);
+        }
       }
     } catch (err) {
       console.error("[FETCH_ERROR]", err);

@@ -98,7 +98,7 @@ def route_admin_logs():
         limit = int(request.args.get("limit", "1200"))
     except Exception:
         limit = 1200
-    return json.dumps(get_chat_logs(limit=max(50, min(limit, 3000))))
+    return json.dumps(get_chat_logs(limit=max(50, min(limit, 10000))))
 
 
 @app.route("/api/admin_email_health", methods=["GET"])
@@ -124,7 +124,7 @@ def route_admin():
     if not _admin_authorized():
         return Response("Unauthorized. Use ?key=echoo", status=401)
 
-    rows = get_chat_logs(limit=1200)
+    rows = get_chat_logs(limit=10000)
     rows_payload = json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")
     key = html.escape(request.args.get("key", ""))
 
@@ -167,8 +167,9 @@ def route_admin():
     .day {{ border: 1px solid #374151; border-radius: 6px; min-height: 58px; padding: 6px; background: #0f172a; font-size: 11px; }}
     .day-num {{ color: #9ca3af; }}
     .day-metric {{ margin-top: 6px; font-weight: 700; font-size: 12px; }}
-    table {{ width: 100%; border-collapse: collapse; background: #111827; }}
+    table {{ width: 100%; border-collapse: collapse; background: #111827; table-layout: fixed; }}
     th, td {{ border: 1px solid #374151; padding: 10px; text-align: left; vertical-align: top; }}
+    td {{ white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }}
     th {{ background: #1f2937; position: sticky; top: 0; }}
     tr:nth-child(even) {{ background: #0f172a; }}
     .wrap {{ max-width: 100%; overflow-x: auto; }}
@@ -254,13 +255,13 @@ def route_admin():
   </div>
   <div class="wrap">
     <table>
-      <thead><tr><th>Timestamp</th><th>IP</th><th>Client</th><th>Sentiment</th><th>User Message</th><th>Bot Reply</th></tr></thead>
-      <tbody id="logs-body"><tr><td colspan="6">Loading...</td></tr></tbody>
+      <thead><tr><th>#</th><th>Timestamp</th><th>IP</th><th>Client</th><th>Sentiment</th><th>User Message</th><th>Bot Reply</th></tr></thead>
+      <tbody id="logs-body"><tr><td colspan="7">Loading...</td></tr></tbody>
     </table>
   </div>
   <script>
     const CACHE_KEY = "echo_admin_logs_cache_v1";
-    const MAX_ROWS = 2500;
+    const MAX_ROWS = 10000;
     const serverRows = {rows_payload};
     const keyParam = "{key}";
 
@@ -281,7 +282,9 @@ def route_admin():
       }};
       (primaryRows || []).forEach(add);
       (cachedRows || []).forEach(add);
-      return Array.from(map.values()).slice(0, MAX_ROWS);
+      const merged = Array.from(map.values());
+      merged.sort((a, b) => String(b.timestamp_iso || b.timestamp || "").localeCompare(String(a.timestamp_iso || a.timestamp || "")));
+      return merged.slice(0, MAX_ROWS);
     }}
 
     function scoreForRow(r) {{
@@ -408,17 +411,18 @@ def route_admin():
       const tbody = document.getElementById("logs-body");
       if (!tbody) return;
       if (!rows.length) {{
-        tbody.innerHTML = "<tr><td colspan='6'>No chat logs yet</td></tr>";
+        tbody.innerHTML = "<tr><td colspan='7'>No chat logs yet</td></tr>";
         return;
       }}
-      tbody.innerHTML = rows.map((r) => `
+      tbody.innerHTML = rows.map((r, idx) => `
         <tr>
-          <td data-label="Timestamp">${{esc(r.timestamp)}}</td>
-          <td data-label="IP">${{esc(r.ip)}}</td>
+          <td data-label="#">${{idx + 1}}</td>
+          <td data-label="Timestamp">${{esc(r.timestamp || r.timestamp_iso || "-")}}</td>
+          <td data-label="IP">${{esc(r.ip || "unknown")}}</td>
           <td data-label="Client">${{esc(r.client_id || "unknown")}}</td>
-          <td data-label="Sentiment">${{esc(r.sentiment)}} (${{scoreForRow(r)}})</td>
-          <td data-label="User">${{esc(r.user_message)}}</td>
-          <td data-label="Bot">${{esc(r.bot_reply)}}</td>
+          <td data-label="Sentiment">${{esc(r.sentiment || "neutral")}} (${{scoreForRow(r)}})</td>
+          <td data-label="User">${{esc(r.user_message || "")}}</td>
+          <td data-label="Bot">${{esc(r.bot_reply || "")}}</td>
         </tr>
       `).join("");
     }}
@@ -554,7 +558,7 @@ def route_admin():
 
     async function fetchServerRows() {{
       try {{
-        const res = await fetch(`/api/admin_logs?key=${{encodeURIComponent(keyParam)}}&limit=2500`, {{ credentials: "same-origin" }});
+        const res = await fetch(`/api/admin_logs?key=${{encodeURIComponent(keyParam)}}&limit=10000`, {{ credentials: "same-origin" }});
         if (!res.ok) return [];
         return await res.json();
       }} catch (e) {{

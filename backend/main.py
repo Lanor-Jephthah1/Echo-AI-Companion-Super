@@ -1861,12 +1861,26 @@ def render_shared_link_page(**args) -> str:
     safe_share = html.escape(share_id)
     base_url = os.environ.get("PUBLIC_APP_URL", "https://echo-ai-companion-bice.vercel.app").strip().rstrip("/")
     target_url = f"{base_url}/?share={safe_share}"
+    snap = _get_shared_snapshot(share_id) or {}
+    thread_title = str(snap.get("title", "Shared Chat")).strip() or "Shared Chat"
+    messages = snap.get("messages", []) if isinstance(snap.get("messages"), list) else []
+    first_user = ""
+    for m in messages:
+        if isinstance(m, dict) and str(m.get("role", "")) == "user":
+            first_user = str(m.get("content", "")).strip()
+            if first_user:
+                break
+
     og_image = os.environ.get(
         "ECHO_SHARED_OG_IMAGE",
-        f"{base_url}/echo-ai-share.png",
+        f"{base_url}/echo-ai-shared-link.png?v=20260227",
     ).strip()
-    title = "Echo AI Shared Chat"
-    desc = "This is a shared, read-only Echo AI conversation snapshot."
+    title = f"Echo AI Shared Chat - {thread_title}"
+    desc = (
+        f"Read-only shared conversation: {first_user[:120]}"
+        if first_user
+        else "This is a shared, read-only Echo AI conversation snapshot."
+    )
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1878,11 +1892,17 @@ def render_shared_link_page(**args) -> str:
   <meta property="og:title" content="{html.escape(title)}" />
   <meta property="og:description" content="{html.escape(desc)}" />
   <meta property="og:image" content="{html.escape(og_image)}" />
+  <meta property="og:image:secure_url" content="{html.escape(og_image)}" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Echo AI" />
   <meta property="og:url" content="{html.escape(base_url)}/shared/{safe_share}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{html.escape(title)}" />
   <meta name="twitter:description" content="{html.escape(desc)}" />
   <meta name="twitter:image" content="{html.escape(og_image)}" />
+  <meta name="twitter:url" content="{html.escape(base_url)}/shared/{safe_share}" />
   <meta http-equiv="refresh" content="0; url={html.escape(target_url)}" />
   <script>window.location.replace({json.dumps(target_url)});</script>
 </head>

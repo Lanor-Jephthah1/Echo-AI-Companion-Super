@@ -1,34 +1,59 @@
 import { streamSSE } from "./useSSE";
 
-function getConfig() {
-  return (window as any).__APP_CONFIG__;
+const CLIENT_ID_KEY = "echo_client_id_v1";
+
+function getClientId(): string {
+  try {
+    const existing = localStorage.getItem(CLIENT_ID_KEY);
+    if (existing) return existing;
+    const generated =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : `echo-${Math.random().toString(36).slice(2)}-${Date.now()}`;
+    localStorage.setItem(CLIENT_ID_KEY, generated);
+    return generated;
+  } catch {
+    return "anon";
+  }
 }
 
-export async function rpcCall<T = any>({ func, args = {}, module }: any): Promise<T> {
-  const config = getConfig();
-  const resolvedModule = module || `apps.${config.appName}.backend.main`;
+function endpointForFunc(func: string): string {
+  const known: Record<string, string> = {
+    get_threads: "/api/get_threads",
+    create_thread: "/api/create_thread",
+    delete_thread: "/api/delete_thread",
+    summarize_thread: "/api/summarize_thread",
+    create_share_link: "/api/create_share_link",
+    import_shared_thread: "/api/import_shared_thread",
+    transcribe_audio: "/api/transcribe_audio",
+  };
+  return known[func] || `/api/${func}`;
+}
 
-  const res = await fetch(config.dataEndpoint, {
+export async function rpcCall<T = any>({ func, args = {} }: any): Promise<T> {
+  const res = await fetch(endpointForFunc(func), {
     method: "POST",
-    headers: { "Content-Type": "application/json", "X-Run-Id": config.runId || "" },
-    body: JSON.stringify({ module: resolvedModule, func, args }),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...args, client_id: args?.client_id || getClientId() }),
     credentials: "include",
   });
 
-  if (!res.ok) throw new Error("Request failed");
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(text || "Request failed");
+  }
   return await res.json();
 }
 
-export async function streamCall({ func, args = {}, module, onChunk, onError }: any): Promise<void> {
-  const config = getConfig();
-  const resolvedModule = module || `apps.${config.appName}.backend.main`;
-  const streamUrl = config.dataEndpoint.replace("/data", "/data/stream");
-
+export async function streamCall({ func, args = {}, onChunk, onError }: any): Promise<void> {
+  if (func !== "chat_streaming") {
+    throw new Error(`Unsupported stream function: ${func}`);
+  }
   await streamSSE(
-    streamUrl,
-    { module: resolvedModule, func, args },
+    "/api/chat_streaming",
+    { ...args, client_id: args?.client_id || getClientId() },
     onChunk,
-    onError,
-    { "X-Run-Id": config.runId || "" }
+    onError
   );
 }
+
