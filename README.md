@@ -104,8 +104,5 @@ npx vercel --prod
 - Rotate credentials immediately if exposed.
 - Restrict database and SMTP account permissions.
 
-## Repository Description (Suggested)
-`Wellness-focused AI chat companion with streaming responses, sentiment-aware guidance, read-only shared chat snapshots, and advanced admin analytics on Vercel.`
-
 ## Maintainer
 Lanor Jephthah Kwame (McLanor)
