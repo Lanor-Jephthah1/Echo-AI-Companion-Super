@@ -40,8 +40,10 @@ Echo AI Companion is a production-ready wellness chatbot with streaming replies,
 - `backend/core/providers.py`: provider selection and request helpers.
 - `backend/core/summarization.py`: thread summaries + collective title generation.
 - `backend/core/sharing.py`: shared snapshot creation/import/render helpers.
+- `backend/core/storage_backend.py`: Mongo/Postgres/file backend selection + connection lifecycle.
+- `backend/core/storage_ops.py`: thread/chat-log/share/email persistence operations.
 
-This phase-2 modular split reduces coupling and keeps deployments stable while extracting logic from the monolith in controlled steps.
+This phase-2 modular split reduces coupling and keeps deployments stable while extracting logic from the monolith in controlled steps. Runtime calls are linked through `backend/core_engine.py`, so API behavior remains compatible while code is now separated into dedicated modules.
 
 ## Core Routes
 - App: `/`
