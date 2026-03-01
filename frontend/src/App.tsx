@@ -234,6 +234,7 @@ export default function App() {
   const [shareLoading, setShareLoading] = useState(false);
   const [sharedMode, setSharedMode] = useState(false);
   const [sharedReason, setSharedReason] = useState('');
+  const [isTopChromeVisible, setIsTopChromeVisible] = useState(true);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window === 'undefined') return 'light';
     const saved = localStorage.getItem(THEME_CACHE_KEY);
@@ -248,6 +249,7 @@ export default function App() {
   const lastVoiceChunkAtRef = useRef(0);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const messageRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const lastChatScrollTopRef = useRef(0);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const audioUnlockedRef = useRef(false);
 
@@ -452,6 +454,8 @@ export default function App() {
     setThreadSummary(null);
     setSummaryError('');
     setShowPulse(false);
+    setIsTopChromeVisible(true);
+    lastChatScrollTopRef.current = 0;
   }, [activeThreadId]);
 
   useEffect(() => {
@@ -691,6 +695,22 @@ export default function App() {
     if (dx < -72 && isSidebarOpen) {
       setIsSidebarOpen(false);
     }
+  };
+
+  const handleChatViewportScroll: React.UIEventHandler<HTMLDivElement> = (e) => {
+    const node = e.currentTarget;
+    const top = node.scrollTop;
+    const prev = lastChatScrollTopRef.current;
+    const delta = top - prev;
+    if (Math.abs(delta) < 6) return;
+    if (top <= 8) {
+      setIsTopChromeVisible(true);
+    } else if (delta > 0) {
+      setIsTopChromeVisible(true);
+    } else {
+      setIsTopChromeVisible(false);
+    }
+    lastChatScrollTopRef.current = top;
   };
 
   const togglePinMessage = (messageId: string, role: 'user' | 'assistant', content: string) => {
@@ -1002,8 +1022,9 @@ export default function App() {
         {/* Header */}
         <header
           className={cn(
-            "h-16 border-b flex items-center px-3 md:px-6 bg-background/85 backdrop-blur-xl sticky top-0 z-40 shrink-0 transition-opacity duration-200",
-            isSidebarOpen ? "opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto" : "opacity-100"
+            "border-b flex items-center px-3 md:px-6 bg-background/85 backdrop-blur-xl sticky top-0 z-40 shrink-0 transition-all duration-200 overflow-hidden",
+            isTopChromeVisible ? "h-16 opacity-100" : "h-0 opacity-0 border-b-0 pointer-events-none",
+            isSidebarOpen ? "opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto" : ""
           )}
         >
           <div className="flex items-center justify-between w-full gap-3">
@@ -1103,7 +1124,7 @@ export default function App() {
             )}
           </div>
         )}
-        {activeThread && (
+        {isTopChromeVisible && activeThread && (
           <div className={cn("px-4 md:px-6 motion-accordion", showPulse ? "open" : "")}>
             {showPulse && (
             <Card className="motion-fade-up mt-3 border-none shadow-premium bg-gradient-to-r from-primary/10 via-background to-primary/5">
@@ -1154,14 +1175,17 @@ export default function App() {
             )}
           </div>
         )}
-        {activeThread && !showPulse && (
+        {isTopChromeVisible && activeThread && !showPulse && (
           <div className="px-4 md:px-6 pt-2">
             <Button size="sm" variant="ghost" onClick={() => setShowPulse(true)}>Show Emotion Pulse</Button>
           </div>
         )}
 
         {/* Chat Area */}
-        <ScrollArea className="responses-stage flex-1 p-4 md:p-6">
+        <ScrollArea
+          className="responses-stage flex-1 p-4 md:p-6"
+          viewportOnScroll={handleChatViewportScroll}
+        >
           <div className="responses-track max-w-3xl mx-auto space-y-6 pb-4">
             {!activeThreadId ? (
               <div className="flex flex-col items-center justify-center h-[60vh] text-center space-y-4">
