@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { rpcCall, streamCall } from './api';
 import { Button } from './components/ui/button';
 import { Card, CardContent } from './components/ui/card';
@@ -83,8 +83,32 @@ const THEME_CACHE_KEY = 'echo_theme_v1';
 const SEND_ENTER_CACHE_KEY = 'echo_send_enter_v1';
 const COMPACT_SIDEBAR_CACHE_KEY = 'echo_compact_sidebar_v1';
 const PINNED_CACHE_KEY = 'echo_pinned_messages_v1';
-const MAX_INPUT_CHARS = 500;
-const EMOJI_OPTIONS = ['😀', '😁', '😂', '🤣', '😊', '😍', '🥳', '😎', '🤔', '🙏', '🔥', '💪', '❤️', '💜', '✨', '🎯', '🙌', '🤝', '😅', '😴', '😢', '🤗', '💡', '🧠'];
+const EMOJI_OPTIONS = [
+  "\u{1F600}", // grinning face
+  "\u{1F601}", // beaming face
+  "\u{1F602}", // tears of joy
+  "\u{1F923}", // rolling on floor laughing
+  "\u{1F60A}", // smiling face
+  "\u{1F60D}", // heart eyes
+  "\u{1F973}", // partying face
+  "\u{1F60E}", // sunglasses
+  "\u{1F914}", // thinking face
+  "\u{1F64F}", // folded hands
+  "\u{1F525}", // fire
+  "\u{1F4AA}", // flexed biceps
+  "\u{2764}\u{FE0F}", // red heart
+  "\u{1F4AF}", // hundred points
+  "\u{2728}", // sparkles
+  "\u{1F3AF}", // bullseye
+  "\u{1F64C}", // raising hands
+  "\u{1F91D}", // handshake
+  "\u{1F605}", // sweat smile
+  "\u{1F634}", // sleeping face
+  "\u{1F622}", // crying face
+  "\u{1F917}", // hugging face
+  "\u{1F4A1}", // light bulb
+  "\u{1F9E0}" // brain
+];
 
 type SentimentInsight = {
   score: number;
@@ -173,7 +197,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(() => {
     if (typeof window === 'undefined') return false;
-    return window.innerWidth >= 768;
+    return window.innerWidth >= 1024;
   });
   const [streamingMessage, setStreamingMessage] = useState('');
   const [status, setStatus] = useState('');
@@ -316,7 +340,7 @@ export default function App() {
       lastVoiceChunkRef.current = delta;
       lastVoiceChunkAtRef.current = now;
       speechCommittedRef.current = committed ? `${committed} ${delta}`.trim() : cleaned;
-      setInput((prev) => `${prev}${prev ? ' ' : ''}${delta}`.slice(0, MAX_INPUT_CHARS));
+      setInput((prev) => `${prev}${prev ? ' ' : ''}${delta}`);
       setVoiceHint('Transcribed voice to text.');
       requestAnimationFrame(() => {
         if (!textareaRef.current) return;
@@ -377,7 +401,6 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem(PINNED_CACHE_KEY, JSON.stringify(pinnedByThread));
   }, [pinnedByThread]);
-
   const fetchThreads = async () => {
     console.log("[FETCH_START] get_threads");
     try {
@@ -529,6 +552,7 @@ export default function App() {
   const tailWindow = moodSeries.slice(-Math.max(1, Math.floor(moodSeries.length / 2)));
   const moodTrend = average(tailWindow) - average(headWindow);
   const moodLabel = moodAvg <= -1.3 ? 'Heavy' : moodAvg < -0.4 ? 'Low' : moodAvg < 0.35 ? 'Steady' : moodAvg < 1.1 ? 'Positive' : 'Elevated';
+  const animationProfile = moodAvg <= -0.9 ? 'anim-calm' : moodAvg >= 0.95 ? 'anim-energetic' : 'anim-balanced';
   const sparkline = buildSparklinePath(moodSeries.length ? moodSeries : [0]);
   const totalMessages = threads.reduce((acc, t) => acc + (t.messages?.length || 0), 0);
   const recentActive = threads.length ? new Date(threads[0].updated_at || threads[0].created_at || '').toLocaleString() : 'No activity yet';
@@ -560,7 +584,7 @@ export default function App() {
       setStatus(sharedReason || 'Shared chats are read-only.');
       return;
     }
-    setInput(prompt.slice(0, MAX_INPUT_CHARS));
+    setInput(prompt);
     requestAnimationFrame(() => {
       if (!textareaRef.current) return;
       textareaRef.current.focus();
@@ -643,13 +667,13 @@ export default function App() {
 
   const handleInsertEmoji = (emoji: string) => {
     if (!textareaRef.current) {
-      setInput((prev) => (prev + emoji).slice(0, MAX_INPUT_CHARS));
+      setInput((prev) => prev + emoji);
       return;
     }
     const ta = textareaRef.current;
     const start = ta.selectionStart ?? input.length;
     const end = ta.selectionEnd ?? input.length;
-    const next = (input.slice(0, start) + emoji + input.slice(end)).slice(0, MAX_INPUT_CHARS);
+    const next = input.slice(0, start) + emoji + input.slice(end);
     setInput(next);
     requestAnimationFrame(() => {
       ta.focus();
@@ -738,7 +762,10 @@ export default function App() {
 
   return (
     <div
-      className="flex h-screen w-full max-w-full bg-background text-foreground overflow-x-hidden overflow-y-hidden [touch-action:pan-y]"
+      className={cn(
+        "chat-shell flex h-screen w-full max-w-full bg-background text-foreground overflow-x-hidden overflow-y-hidden [touch-action:pan-y]",
+        animationProfile
+      )}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -747,17 +774,27 @@ export default function App() {
         <Button 
           variant="ghost" 
           size="icon" 
-          className="fixed top-4 left-4 z-50 md:hidden"
+          className="fixed top-4 left-4 z-50 md:hidden motion-fade-in"
           onClick={() => setIsSidebarOpen(true)}
         >
           <Menu className="h-6 w-6" />
         </Button>
       )}
 
+      {isSidebarOpen && (
+        <button
+          type="button"
+          aria-label="Close sidebar overlay"
+          className="fixed inset-0 z-30 bg-black/35 backdrop-blur-[1px] md:hidden motion-overlay"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
       <div className={cn(
-        "fixed inset-y-0 left-0 z-40 w-72 bg-card border-r transition-transform duration-300 transform md:relative md:translate-x-0",
-        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        "motion-panel sidebar-smooth fixed inset-y-0 left-0 z-40 w-72 bg-card border-r transform",
+        isSidebarOpen ? "motion-panel-enter" : "",
+        isSidebarOpen ? "translate-x-0 opacity-100 shadow-2xl" : "-translate-x-full opacity-0"
       )}>
         <div className="flex flex-col h-full">
           <div className="p-4 flex items-center justify-between">
@@ -829,7 +866,7 @@ export default function App() {
                     if (window.innerWidth < 768) setIsSidebarOpen(false);
                   }}
                   className={cn(
-                    "group flex items-center justify-between rounded-lg cursor-pointer transition-colors",
+                    "motion-chip group flex items-center justify-between rounded-lg cursor-pointer transition-colors",
                     compactSidebar ? "p-2" : "p-3",
                     activeThreadId === thread.id ? "bg-primary/10 text-primary" : "hover:bg-muted"
                   )}
@@ -888,7 +925,12 @@ export default function App() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col h-full min-w-0 w-full relative overflow-x-hidden">
         {/* Header */}
-        <header className="h-16 border-b flex items-center px-3 md:px-6 bg-background/80 backdrop-blur-md sticky top-0 z-30">
+        <header
+          className={cn(
+            "h-16 border-b flex items-center px-3 md:px-6 bg-background/85 backdrop-blur-xl sticky top-0 z-40 shrink-0 transition-opacity duration-200",
+            isSidebarOpen ? "opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto" : "opacity-100"
+          )}
+        >
           <div className="flex items-center justify-between w-full gap-3">
             <div className="flex items-center gap-2 min-w-0 flex-1">
               <div className="md:hidden w-8 shrink-0" /> {/* Spacer for menu button */}
@@ -939,10 +981,11 @@ export default function App() {
             </Card>
           </div>
         )}
-        {activeThread && (threadSummary || summaryError) && (
-          <div className="px-4 md:px-6 pt-3">
-            <Card className="border-none shadow-premium bg-gradient-to-r from-card via-card to-primary/5">
-              <CardContent className="p-3 md:p-4 space-y-3">
+        {activeThread && (
+          <div className={cn("px-4 md:px-6 motion-accordion", (threadSummary || summaryError) ? "open" : "")}>
+            {(threadSummary || summaryError) && (
+            <Card className="motion-fade-up mt-3 border-none shadow-premium bg-gradient-to-r from-card via-card to-primary/5">
+              <CardContent className="p-3 md:p-4 space-y-3 max-h-[48vh] overflow-y-auto no-scrollbar pr-1">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-sm font-semibold">Conversation Summary</p>
                   {threadSummary && (
@@ -982,11 +1025,13 @@ export default function App() {
                 )}
               </CardContent>
             </Card>
+            )}
           </div>
         )}
-        {activeThread && showPulse && (
-          <div className="px-4 md:px-6 pt-3">
-            <Card className="border-none shadow-premium bg-gradient-to-r from-primary/10 via-background to-primary/5">
+        {activeThread && (
+          <div className={cn("px-4 md:px-6 motion-accordion", showPulse ? "open" : "")}>
+            {showPulse && (
+            <Card className="motion-fade-up mt-3 border-none shadow-premium bg-gradient-to-r from-primary/10 via-background to-primary/5">
               <CardContent className="p-3 md:p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2">
@@ -1031,6 +1076,7 @@ export default function App() {
                 </div>
               </CardContent>
             </Card>
+            )}
           </div>
         )}
         {activeThread && !showPulse && (
@@ -1040,8 +1086,8 @@ export default function App() {
         )}
 
         {/* Chat Area */}
-        <ScrollArea className="flex-1 p-4 md:p-6">
-          <div className="max-w-3xl mx-auto space-y-6 pb-4">
+        <ScrollArea className="responses-stage flex-1 p-4 md:p-6">
+          <div className="responses-track max-w-3xl mx-auto space-y-6 pb-4">
             {!activeThreadId ? (
               <div className="flex flex-col items-center justify-center h-[60vh] text-center space-y-4">
                 <div className="bg-primary/5 p-6 rounded-full">
@@ -1071,8 +1117,10 @@ export default function App() {
                   <div
                     key={idx}
                     ref={(el) => { messageRefs.current[messageId] = el; }}
+                    style={{ animationDelay: `${Math.min(idx, 12) * 20}ms` }}
                     className={cn(
-                    "flex w-full gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300",
+                    "message-pop flex w-full gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300",
+                    msg.role === 'user' ? "msg-user-enter" : "msg-bot-enter",
                     msg.role === 'user' ? "flex-row-reverse" : "flex-row"
                   )}>
                     <div className={cn(
@@ -1095,7 +1143,7 @@ export default function App() {
                           <button
                             type="button"
                             aria-label="Copy response"
-                            className="h-7 w-7 rounded-md border border-border/60 bg-background/70 text-foreground inline-flex items-center justify-center hover:bg-background transition-colors"
+                            className="motion-chip h-7 w-7 rounded-md border border-border/60 bg-background/70 text-foreground inline-flex items-center justify-center hover:bg-background transition-colors"
                             onClick={() => handleCopyMessage(msg.content, idx)}
                           >
                             {copiedIndex === idx ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5" />}
@@ -1106,7 +1154,7 @@ export default function App() {
                             type="button"
                             aria-label="Pin message"
                             className={cn(
-                              "h-7 w-7 rounded-md border border-border/60 bg-background/70 inline-flex items-center justify-center hover:bg-background transition-colors",
+                              "motion-chip h-7 w-7 rounded-md border border-border/60 bg-background/70 inline-flex items-center justify-center hover:bg-background transition-colors",
                               isPinned ? "text-primary" : "text-foreground"
                             )}
                             onClick={() => togglePinMessage(messageId, 'assistant', msg.content)}
@@ -1121,16 +1169,19 @@ export default function App() {
 
                 {/* Streaming Assistant Message */}
                 {(streamingMessage || status) && (
-                  <div className="flex w-full gap-4 animate-in fade-in duration-200">
+                  <div className="message-pop flex w-full gap-4 animate-in fade-in duration-200">
                     <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0">
                       <Bot className="h-4 w-4 text-muted-foreground" />
                     </div>
-                    <Card className="max-w-[85%] shadow-premium border-none bg-card">
+                    <Card className="max-w-[85%] shadow-premium border-none bg-card stream-shimmer">
                       <CardContent className="p-3 md:p-4 text-sm leading-relaxed">
                         {status && (
                           <div className="flex items-center gap-2 text-muted-foreground italic">
-                            {loading ? <Spinner className="h-3 w-3" /> : null}
-                            {status}
+                            {loading ? (
+                              <span className="typing-dots" aria-hidden="true">
+                                <span></span><span></span><span></span>
+                              </span>
+                            ) : null}
                           </div>
                         )}
                         <div className="whitespace-pre-wrap">{streamingMessage}</div>
@@ -1177,7 +1228,7 @@ export default function App() {
                     key={card.id}
                     type="button"
                     onClick={() => handleApplyMemoryPrompt(card.prompt)}
-                    className="inline-flex items-center rounded-full border border-primary/25 bg-primary/5 hover:bg-primary/10 text-[10px] md:text-xs px-2 md:px-3 py-1 transition-colors"
+                    className="motion-chip inline-flex items-center rounded-full border border-primary/25 bg-primary/5 hover:bg-primary/10 text-[10px] md:text-xs px-2 md:px-3 py-1 transition-colors"
                     title={card.prompt}
                   >
                     {card.label}
@@ -1197,14 +1248,13 @@ export default function App() {
             )}
           >
             <div className="max-w-3xl mx-auto">
-              <div className="relative group">
+              <div className={cn("relative group input-shell", (inputFocused || input.length > 0) ? "is-active" : "")}>
                 <Textarea
                   ref={textareaRef}
-                  className="no-scrollbar pr-28 py-2 min-h-[44px] max-h-32 resize-none overflow-y-auto break-words [overflow-wrap:anywhere] bg-card border-none shadow-premium focus-visible:ring-primary/20 rounded-2xl"
+                  className="textarea-modern no-scrollbar pr-28 py-2 min-h-[44px] max-h-32 resize-none overflow-y-auto break-words [overflow-wrap:anywhere] bg-card/95 border-none shadow-premium focus-visible:ring-primary/30 rounded-2xl"
                   placeholder={sharedMode ? 'This shared chat is read-only.' : 'How are you feeling today?'}
                   value={input}
                   rows={1}
-                  maxLength={MAX_INPUT_CHARS}
                   onChange={(e) => {
                     const v = e.target.value;
                     setInput(v);
@@ -1289,7 +1339,7 @@ export default function App() {
                 <p className="text-[10px] text-muted-foreground">
                   {sendOnEnter ? 'Enter to send, Shift+Enter for new line' : 'Multi-line mode enabled'}
                 </p>
-                <p className="text-[10px] text-muted-foreground">{input.length}/{MAX_INPUT_CHARS}</p>
+                <p className="text-[10px] text-muted-foreground">{input.length} chars</p>
               </div>
               {(voiceHint || !speechSupported) && (
                 <p className="text-[10px] mt-1 text-muted-foreground">
@@ -1335,3 +1385,4 @@ export default function App() {
     </div>
   );
 }
+

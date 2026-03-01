@@ -11,7 +11,7 @@ function ScrollArea({
       className={cn("relative overflow-hidden", className)}
       {...props}
     >
-      <div className="h-full w-full overflow-auto no-scrollbar">
+      <div className="h-full w-full overflow-auto no-scrollbar overscroll-contain">
         {children}
       </div>
     </div>

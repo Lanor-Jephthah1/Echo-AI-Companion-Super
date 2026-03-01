@@ -27,6 +27,17 @@ Echo AI Companion is a production-ready wellness chatbot with streaming replies,
 2. Postgres fallback (if configured)
 3. Local file fallback for local/dev scenarios
 
+## Backend Structure
+- `backend/index.py`: thin facade exporting stable backend API functions.
+- `backend/main.py`: compatibility entrypoint (`from index import *`).
+- `backend/core_engine.py`: legacy core implementation (kept intact for stability during refactor).
+- `backend/services/threads_service.py`: thread lifecycle functions.
+- `backend/services/chat_service.py`: chat streaming + summaries.
+- `backend/services/share_service.py`: share-link create/import/render.
+- `backend/services/admin_service.py`: admin logs + email health/test endpoints.
+
+This modular split reduces coupling at the entrypoint and makes further extraction from `core_engine.py` safer and incremental.
+
 ## Core Routes
 - App: `/`
 - Shared preview route: `/shared/<share_id>`
