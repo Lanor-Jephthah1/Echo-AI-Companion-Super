@@ -1,18 +1,43 @@
 import { streamSSE } from "./useSSE";
 
 const CLIENT_ID_KEY = "echo_client_id_v1";
+const CLIENT_ID_COOKIE = "echo_client_id_v1";
+
+function readCookie(name: string): string {
+  if (typeof document === "undefined") return "";
+  const escaped = name.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+  const match = document.cookie.match(new RegExp(`(?:^|; )${escaped}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : "";
+}
+
+function writeCookie(name: string, value: string): void {
+  if (typeof document === "undefined") return;
+  const maxAge = 60 * 60 * 24 * 365 * 2; // 2 years
+  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}; samesite=lax`;
+}
 
 function getClientId(): string {
   try {
     const existing = localStorage.getItem(CLIENT_ID_KEY);
-    if (existing) return existing;
+    if (existing) {
+      writeCookie(CLIENT_ID_COOKIE, existing);
+      return existing;
+    }
+    const fromCookie = readCookie(CLIENT_ID_COOKIE);
+    if (fromCookie) {
+      localStorage.setItem(CLIENT_ID_KEY, fromCookie);
+      return fromCookie;
+    }
     const generated =
       typeof crypto !== "undefined" && "randomUUID" in crypto
         ? crypto.randomUUID()
         : `echo-${Math.random().toString(36).slice(2)}-${Date.now()}`;
     localStorage.setItem(CLIENT_ID_KEY, generated);
+    writeCookie(CLIENT_ID_COOKIE, generated);
     return generated;
   } catch {
+    const fromCookie = readCookie(CLIENT_ID_COOKIE);
+    if (fromCookie) return fromCookie;
     return "anon";
   }
 }
@@ -56,4 +81,3 @@ export async function streamCall({ func, args = {}, onChunk, onError }: any): Pr
     onError
   );
 }
-

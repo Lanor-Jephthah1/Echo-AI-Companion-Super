@@ -248,6 +248,56 @@ export default function App() {
   const lastVoiceChunkAtRef = useRef(0);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const messageRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const audioUnlockedRef = useRef(false);
+
+  const getAudioContext = () => {
+    if (typeof window === 'undefined') return null;
+    const Ctx = window.AudioContext || (window as any).webkitAudioContext;
+    if (!Ctx) return null;
+    if (!audioCtxRef.current) {
+      audioCtxRef.current = new Ctx();
+    }
+    return audioCtxRef.current;
+  };
+
+  const unlockAudio = async () => {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    if (ctx.state === 'suspended') {
+      try {
+        await ctx.resume();
+      } catch {}
+    }
+    audioUnlockedRef.current = ctx.state === 'running';
+  };
+
+  const playAiSound = (kind: 'start' | 'done' | 'error') => {
+    const ctx = getAudioContext();
+    if (!ctx || !audioUnlockedRef.current) return;
+    const now = ctx.currentTime;
+    const freqs =
+      kind === 'start'
+        ? [660, 770]
+        : kind === 'done'
+          ? [720, 860, 980]
+          : [260, 220];
+    const total = kind === 'done' ? 0.22 : 0.14;
+    const step = total / freqs.length;
+    freqs.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = kind === 'error' ? 'triangle' : 'sine';
+      osc.frequency.setValueAtTime(freq, now + i * step);
+      gain.gain.setValueAtTime(0.0001, now + i * step);
+      gain.gain.exponentialRampToValueAtTime(0.05, now + i * step + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + (i + 1) * step);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + i * step);
+      osc.stop(now + (i + 1) * step);
+    });
+  };
 
   useEffect(() => {
     console.log("RENDER_SUCCESS");
@@ -277,6 +327,18 @@ export default function App() {
     }
     if (cachedActive) setActiveThreadId(cachedActive);
     fetchThreads();
+  }, []);
+
+  useEffect(() => {
+    const onUserGesture = () => {
+      void unlockAudio();
+    };
+    window.addEventListener('pointerdown', onUserGesture, { passive: true });
+    window.addEventListener('keydown', onUserGesture);
+    return () => {
+      window.removeEventListener('pointerdown', onUserGesture);
+      window.removeEventListener('keydown', onUserGesture);
+    };
   }, []);
 
   useEffect(() => {
@@ -498,6 +560,7 @@ export default function App() {
     try {
       console.log("[STREAM_START] chat_streaming");
       let fullContent = '';
+      let playedStartSound = false;
       
       await streamCall({
         func: 'chat_streaming',
@@ -506,10 +569,17 @@ export default function App() {
           if (chunk.type === 'status') {
             setStatus(chunk.message);
           } else if (chunk.type === 'chunk') {
+            if (!playedStartSound) {
+              playedStartSound = true;
+              playAiSound('start');
+            }
             fullContent += chunk.content;
             setStreamingMessage(fullContent);
             setStatus('');
           } else if (chunk.type === 'result') {
+            if (fullContent.trim()) {
+              playAiSound('done');
+            }
             // Finalize thread update (title might have changed)
             setThreads(prev => prev.map(t => {
               if (t.id === activeThreadId) {
@@ -524,11 +594,13 @@ export default function App() {
             setStreamingMessage('');
           } else if (chunk.type === 'error') {
             console.error("[STREAM_ERROR_CHUNK]", chunk.message);
+            playAiSound('error');
             setStatus(`Error: ${chunk.message}`);
           }
         },
         onError: (err) => {
           console.error("[STREAM_ERROR]", err);
+          playAiSound('error');
           setStatus("Sorry, I encountered an error.");
         }
       });

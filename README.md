@@ -11,6 +11,8 @@ Echo AI Companion is a production-ready wellness chatbot with streaming replies,
 - Share links that open a read-only snapshot (`/shared/<share_id>`).
 - Assistant-only pinning with quick jump-to-message.
 - Voice input transcription (microphone to text input).
+- Automatic AI response sound cues (start, done, error) with no manual toggle.
+- Durable client identity persistence (localStorage + cookie fallback) for long-term chat continuity on the same browser profile.
 - Admin dashboard with:
 1. mood timeline bars
 2. mood calendar
