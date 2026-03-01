@@ -1448,12 +1448,57 @@ export default function App() {
               <p className="text-[10px] text-center mt-3 text-muted-foreground">
                 Echo AI is a compassionate digital buddy. Always consult professionals for serious concerns.
               </p>
-              <div className="mt-3 flex items-center justify-center gap-4">
+              <div className="mt-3 rounded-xl border bg-card/70 px-3 py-2">
+                <p className="text-[11px] font-semibold text-foreground">Reach the Creator</p>
+                <div className="mt-1.5 space-y-1.5">
+                  <a
+                    href="mailto:mclanorjephthah@gmail.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-[11px] hover:text-primary transition-colors"
+                    aria-label="Email McLanor Jephthah"
+                  >
+                    <i className="fa-solid fa-envelope text-[#EA4335]" />
+                    <span className="truncate">mclanorjephthah@gmail.com</span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/jephthah-kwame-lanor-6b9017262/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-[11px] hover:text-primary transition-colors"
+                    aria-label="LinkedIn profile"
+                  >
+                    <i className="fa-brands fa-linkedin text-[#0A66C2]" />
+                    <span className="truncate">Jephthah Kwame Lanor</span>
+                  </a>
+                  <a
+                    href="https://bsky.app/profile/mclanorjeff.bsky.social"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-[11px] hover:text-primary transition-colors"
+                    aria-label="Bluesky profile"
+                  >
+                    <i className="fa-brands fa-bluesky text-[#0085FF]" />
+                    <span className="truncate">The JKL (@mclanorjeff.bsky.social)</span>
+                  </a>
+                  <a
+                    href="https://x.com/jeff_lanor"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-[11px] hover:text-primary transition-colors"
+                    aria-label="X profile"
+                  >
+                    <i className="fa-brands fa-x-twitter text-[#111111] dark:text-[#f5f5f5]" />
+                    <span className="truncate">@jeff_lanor</span>
+                  </a>
+                </div>
+              </div>
+              <div className="mt-2 flex items-center justify-center gap-4">
                 <a
                   href="mailto:mclanorjephthah@gmail.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="social-bounce social-delay-1 text-[20px]"
+                  className="social-bounce social-delay-1 text-[18px]"
                   aria-label="Gmail"
                 >
                   <i className="fa-solid fa-envelope text-[#EA4335]" />
@@ -1462,16 +1507,34 @@ export default function App() {
                   href="https://www.linkedin.com/in/jephthah-kwame-lanor-6b9017262/"
                   target="_blank"
                   rel="noreferrer"
-                  className="social-bounce social-delay-2 text-[20px]"
+                  className="social-bounce social-delay-2 text-[18px]"
                   aria-label="LinkedIn"
                 >
                   <i className="fa-brands fa-linkedin text-[#0A66C2]" />
                 </a>
                 <a
+                  href="https://bsky.app/profile/mclanorjeff.bsky.social"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-bounce social-delay-3 text-[18px]"
+                  aria-label="Bluesky"
+                >
+                  <i className="fa-brands fa-bluesky text-[#0085FF]" />
+                </a>
+                <a
+                  href="https://x.com/jeff_lanor"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-bounce social-delay-1 text-[18px]"
+                  aria-label="X"
+                >
+                  <i className="fa-brands fa-x-twitter text-[#111111] dark:text-[#f5f5f5]" />
+                </a>
+                <a
                   href="https://github.com/Lanor-Jephthah1"
                   target="_blank"
                   rel="noreferrer"
-                  className="social-bounce social-delay-3 text-[20px]"
+                  className="social-bounce social-delay-2 text-[18px]"
                   aria-label="GitHub"
                 >
                   <i className="fa-brands fa-github text-[#171515] dark:text-[#f5f5f5]" />
