@@ -272,17 +272,19 @@ export default function App() {
     audioUnlockedRef.current = ctx.state === 'running';
   };
 
-  const playAiSound = (kind: 'start' | 'done' | 'error') => {
+  const playAiSound = (kind: 'send' | 'start' | 'done' | 'error') => {
     const ctx = getAudioContext();
     if (!ctx || !audioUnlockedRef.current) return;
     const now = ctx.currentTime;
     const freqs =
-      kind === 'start'
+      kind === 'send'
+        ? [520, 660]
+        : kind === 'start'
         ? [660, 770]
         : kind === 'done'
           ? [720, 860, 980]
           : [260, 220];
-    const total = kind === 'done' ? 0.22 : 0.14;
+    const total = kind === 'done' ? 0.22 : kind === 'send' ? 0.1 : 0.14;
     const step = total / freqs.length;
     freqs.forEach((freq, i) => {
       const osc = ctx.createOscillator();
@@ -545,6 +547,7 @@ export default function App() {
     setLoading(true);
     setStreamingMessage('');
     setStatus('');
+    playAiSound('send');
 
     // Optimistically update UI
     setThreads(prev => prev.map(t => {
