@@ -903,7 +903,7 @@ export default function App() {
 
       {/* Sidebar */}
       <div className={cn(
-        "motion-panel sidebar-smooth fixed inset-y-0 left-0 z-40 w-72 bg-card border-r transform",
+        "motion-panel sidebar-smooth fixed inset-y-0 left-0 z-40 w-72 bg-card border-r transform transition-transform duration-300 ease-out",
         isSidebarOpen ? "motion-panel-enter" : "",
         isSidebarOpen ? "translate-x-0 opacity-100 shadow-2xl" : "-translate-x-full opacity-0"
       )}>
@@ -1034,7 +1034,12 @@ export default function App() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col h-full min-w-0 w-full relative overflow-x-hidden">
+      <div
+        className={cn(
+          "flex-1 flex flex-col h-full min-w-0 w-full relative overflow-x-hidden transition-[padding] duration-300 ease-out",
+          isSidebarOpen ? "md:pl-72" : "md:pl-0"
+        )}
+      >
         {/* Header */}
         <header
           className={cn(
@@ -1045,6 +1050,16 @@ export default function App() {
         >
           <div className="flex items-center justify-between w-full gap-3">
             <div className="flex items-center gap-2 min-w-0 flex-1">
+              <Button
+                variant="outline"
+                size="icon"
+                className="hidden md:inline-flex h-10 w-10 shrink-0"
+                onClick={() => setIsSidebarOpen((v) => !v)}
+                aria-label={isSidebarOpen ? "Close sidebar" : "Open sidebar"}
+                title={isSidebarOpen ? "Close sidebar" : "Open sidebar"}
+              >
+                <Menu className="h-5 w-5" />
+              </Button>
               <div className="md:hidden w-8 shrink-0" /> {/* Spacer for menu button */}
               <h2 className="font-semibold truncate">
                 {activeThread ? activeThread.title : "Select a conversation"}
