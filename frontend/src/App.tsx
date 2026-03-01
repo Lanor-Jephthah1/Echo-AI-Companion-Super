@@ -250,6 +250,7 @@ export default function App() {
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const messageRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const lastChatScrollTopRef = useRef(0);
+  const scrollDirectionBudgetRef = useRef(0);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const audioUnlockedRef = useRef(false);
 
@@ -702,15 +703,30 @@ export default function App() {
     const top = node.scrollTop;
     const prev = lastChatScrollTopRef.current;
     const delta = top - prev;
-    if (Math.abs(delta) < 6) return;
+    lastChatScrollTopRef.current = top;
+    if (Math.abs(delta) < 2) return;
+
     if (top <= 8) {
       setIsTopChromeVisible(true);
-    } else if (delta > 0) {
-      setIsTopChromeVisible(true);
-    } else {
-      setIsTopChromeVisible(false);
+      scrollDirectionBudgetRef.current = 0;
+      return;
     }
-    lastChatScrollTopRef.current = top;
+
+    // Hysteresis budget to avoid flicker on tiny direction changes.
+    const nextBudget = scrollDirectionBudgetRef.current + delta;
+    const clamped = Math.max(-64, Math.min(64, nextBudget));
+    scrollDirectionBudgetRef.current = clamped;
+    const threshold = 20;
+
+    if (!isTopChromeVisible && clamped >= threshold) {
+      setIsTopChromeVisible(true);
+      scrollDirectionBudgetRef.current = 0;
+      return;
+    }
+    if (isTopChromeVisible && clamped <= -threshold) {
+      setIsTopChromeVisible(false);
+      scrollDirectionBudgetRef.current = 0;
+    }
   };
 
   const togglePinMessage = (messageId: string, role: 'user' | 'assistant', content: string) => {
@@ -1022,7 +1038,7 @@ export default function App() {
         {/* Header */}
         <header
           className={cn(
-            "border-b flex items-center px-3 md:px-6 bg-background/85 backdrop-blur-xl sticky top-0 z-40 shrink-0 transition-all duration-200 overflow-hidden",
+            "border-b flex items-center px-3 md:px-6 bg-background/85 backdrop-blur-xl sticky top-0 z-40 shrink-0 transition-all duration-300 ease-out overflow-hidden",
             isTopChromeVisible ? "h-16 opacity-100" : "h-0 opacity-0 border-b-0 pointer-events-none",
             isSidebarOpen ? "opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto" : ""
           )}
@@ -1124,60 +1140,67 @@ export default function App() {
             )}
           </div>
         )}
-        {isTopChromeVisible && activeThread && (
-          <div className={cn("px-4 md:px-6 motion-accordion", showPulse ? "open" : "")}>
-            {showPulse && (
-            <Card className="motion-fade-up mt-3 border-none shadow-premium bg-gradient-to-r from-primary/10 via-background to-primary/5">
-              <CardContent className="p-3 md:p-4">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-full bg-primary/15 flex items-center justify-center animate-pulse">
-                      <HeartPulse className="h-4 w-4 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-wide text-muted-foreground">Emotion Pulse</p>
-                      <p className="text-sm font-semibold">{moodLabel} ({latestSent.label})</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Button size="sm" variant="outline" className="gap-1" onClick={applyReflectivePrompt}>
-                      <Sparkles className="h-3.5 w-3.5" />
-                      Reflective Prompt
-                    </Button>
-                    <Button size="sm" variant="ghost" onClick={() => setShowPulse(false)}>Hide</Button>
-                  </div>
-                </div>
-                <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-2">
-                  <div className="rounded-lg border bg-card/70 p-2">
-                    <p className="text-[10px] uppercase tracking-wide text-muted-foreground">Current Tone</p>
-                    <p className="text-sm font-medium">{moodAvg >= 0 ? '+' : ''}{moodAvg.toFixed(2)}</p>
-                  </div>
-                  <div className="rounded-lg border bg-card/70 p-2 flex items-center justify-between">
-                    <div>
-                      <p className="text-[10px] uppercase tracking-wide text-muted-foreground">Trend</p>
-                      <p className="text-sm font-medium">{moodTrend >= 0.12 ? 'Rising' : moodTrend <= -0.12 ? 'Dropping' : 'Flat'}</p>
-                    </div>
-                    {moodTrend >= 0.12 ? <TrendingUp className="h-4 w-4 text-emerald-600" /> : moodTrend <= -0.12 ? <TrendingDown className="h-4 w-4 text-rose-600" /> : <HeartPulse className="h-4 w-4 text-amber-600" />}
-                  </div>
-                  <div className="rounded-lg border bg-card/70 p-2">
-                    <p className="text-[10px] uppercase tracking-wide text-muted-foreground">Energy</p>
-                    <p className="text-sm font-medium">{Math.round(moodEnergy * 100)}%</p>
-                  </div>
-                </div>
-                <div className="mt-2">
-                  <svg viewBox="0 0 180 44" className="w-full h-11">
-                    <path d="M0,22 L180,22" stroke="hsl(var(--border))" strokeWidth="1" fill="none" />
-                    <path d={sparkline} stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-                  </svg>
-                </div>
-              </CardContent>
-            </Card>
+        {activeThread && (
+          <div
+            className={cn(
+              "overflow-hidden transition-all duration-300 ease-out",
+              isTopChromeVisible ? "max-h-[460px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
             )}
-          </div>
-        )}
-        {isTopChromeVisible && activeThread && !showPulse && (
-          <div className="px-4 md:px-6 pt-2">
-            <Button size="sm" variant="ghost" onClick={() => setShowPulse(true)}>Show Emotion Pulse</Button>
+          >
+            <div className={cn("px-4 md:px-6 motion-accordion", showPulse ? "open" : "")}>
+              {showPulse && (
+              <Card className="motion-fade-up mt-3 border-none shadow-premium bg-gradient-to-r from-primary/10 via-background to-primary/5">
+                <CardContent className="p-3 md:p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2">
+                      <div className="h-8 w-8 rounded-full bg-primary/15 flex items-center justify-center animate-pulse">
+                        <HeartPulse className="h-4 w-4 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-xs uppercase tracking-wide text-muted-foreground">Emotion Pulse</p>
+                        <p className="text-sm font-semibold">{moodLabel} ({latestSent.label})</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Button size="sm" variant="outline" className="gap-1" onClick={applyReflectivePrompt}>
+                        <Sparkles className="h-3.5 w-3.5" />
+                        Reflective Prompt
+                      </Button>
+                      <Button size="sm" variant="ghost" onClick={() => setShowPulse(false)}>Hide</Button>
+                    </div>
+                  </div>
+                  <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-2">
+                    <div className="rounded-lg border bg-card/70 p-2">
+                      <p className="text-[10px] uppercase tracking-wide text-muted-foreground">Current Tone</p>
+                      <p className="text-sm font-medium">{moodAvg >= 0 ? '+' : ''}{moodAvg.toFixed(2)}</p>
+                    </div>
+                    <div className="rounded-lg border bg-card/70 p-2 flex items-center justify-between">
+                      <div>
+                        <p className="text-[10px] uppercase tracking-wide text-muted-foreground">Trend</p>
+                        <p className="text-sm font-medium">{moodTrend >= 0.12 ? 'Rising' : moodTrend <= -0.12 ? 'Dropping' : 'Flat'}</p>
+                      </div>
+                      {moodTrend >= 0.12 ? <TrendingUp className="h-4 w-4 text-emerald-600" /> : moodTrend <= -0.12 ? <TrendingDown className="h-4 w-4 text-rose-600" /> : <HeartPulse className="h-4 w-4 text-amber-600" />}
+                    </div>
+                    <div className="rounded-lg border bg-card/70 p-2">
+                      <p className="text-[10px] uppercase tracking-wide text-muted-foreground">Energy</p>
+                      <p className="text-sm font-medium">{Math.round(moodEnergy * 100)}%</p>
+                    </div>
+                  </div>
+                  <div className="mt-2">
+                    <svg viewBox="0 0 180 44" className="w-full h-11">
+                      <path d="M0,22 L180,22" stroke="hsl(var(--border))" strokeWidth="1" fill="none" />
+                      <path d={sparkline} stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                </CardContent>
+              </Card>
+              )}
+            </div>
+            {!showPulse && (
+              <div className="px-4 md:px-6 pt-2">
+                <Button size="sm" variant="ghost" onClick={() => setShowPulse(true)}>Show Emotion Pulse</Button>
+              </div>
+            )}
           </div>
         )}
 
