@@ -1380,7 +1380,7 @@ export default function App() {
         {activeThreadId && (
           <div
             className={cn(
-              "p-2 md:p-4 bg-gradient-to-t from-background via-background to-transparent sticky bottom-0 left-0 right-0 z-20 transition-transform duration-300 ease-out",
+              "p-2 md:p-4 sticky bottom-0 left-0 right-0 z-20 transition-transform duration-300 ease-out backdrop-blur-md bg-gradient-to-t from-background/50 via-background/30 to-transparent",
               inputFocused ? "-translate-y-2 md:translate-y-0" : "translate-y-0"
             )}
           >
