@@ -1380,11 +1380,11 @@ export default function App() {
         {activeThreadId && (
           <div
             className={cn(
-              "p-2 md:p-4 sticky bottom-0 left-0 right-0 z-20 transition-transform duration-300 ease-out backdrop-blur-md bg-gradient-to-t from-background/50 via-background/30 to-transparent",
+              "p-2 md:p-4 sticky bottom-0 left-0 right-0 z-20 transition-transform duration-300 ease-out backdrop-blur-xl backdrop-saturate-150 bg-gradient-to-t from-background/25 via-background/10 to-transparent",
               inputFocused ? "-translate-y-2 md:translate-y-0" : "translate-y-0"
             )}
           >
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto rounded-2xl border border-white/15 dark:border-white/10 bg-white/10 dark:bg-black/20 backdrop-blur-xl px-2 md:px-3 py-2 md:py-3 shadow-[0_-12px_36px_rgba(0,0,0,0.24)]">
               <div className={cn("relative group input-shell", (inputFocused || input.length > 0) ? "is-active" : "")}>
                 <Textarea
                   ref={textareaRef}
