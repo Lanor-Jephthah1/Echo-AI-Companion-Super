@@ -30,13 +30,18 @@ Echo AI Companion is a production-ready wellness chatbot with streaming replies,
 ## Backend Structure
 - `backend/index.py`: thin facade exporting stable backend API functions.
 - `backend/main.py`: compatibility entrypoint (`from index import *`).
-- `backend/core_engine.py`: legacy core implementation (kept intact for stability during refactor).
+- `backend/core_engine.py`: composition root that wires modules and preserves the public API.
+- `backend/legacy_core_engine.py`: retained monolith for backward compatibility while extraction continues.
 - `backend/services/threads_service.py`: thread lifecycle functions.
 - `backend/services/chat_service.py`: chat streaming + summaries.
 - `backend/services/share_service.py`: share-link create/import/render.
 - `backend/services/admin_service.py`: admin logs + email health/test endpoints.
+- `backend/core/knowledge.py`: knowledge context + Bible RAG context builders.
+- `backend/core/providers.py`: provider selection and request helpers.
+- `backend/core/summarization.py`: thread summaries + collective title generation.
+- `backend/core/sharing.py`: shared snapshot creation/import/render helpers.
 
-This modular split reduces coupling at the entrypoint and makes further extraction from `core_engine.py` safer and incremental.
+This phase-2 modular split reduces coupling and keeps deployments stable while extracting logic from the monolith in controlled steps.
 
 ## Core Routes
 - App: `/`
