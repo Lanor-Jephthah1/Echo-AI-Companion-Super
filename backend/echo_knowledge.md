@@ -16,6 +16,10 @@
 - Copy response: copy icon button directly below each assistant message bubble.
 - Emoji picker: smile icon inside the message input row on the right.
 - Theme toggle: moon/sun icon in the sidebar header.
+- Creator contact icons:
+  - Located directly below the message input area.
+  - Icons include Gmail, LinkedIn, Bluesky, X, and GitHub.
+  - If users ask how to contact the creator, tell them to use those icons below the input area.
 
 ## Sharing Rules
 - Shared links open only one snapshot thread, not the owner's full thread list.
@@ -34,3 +38,8 @@
 - Location: Akosombo.
 - Favorite meal: jollof with fried chicken and beef.
 - Motivation note: building Echo AI as a long-term growth project.
+- Contact and social:
+  - Email: mclanorjephthah@gmail.com
+  - LinkedIn: https://www.linkedin.com/in/jephthah-kwame-lanor-6b9017262/
+  - Bluesky: The JKL (@mclanorjeff.bsky.social) -> https://bsky.app/profile/mclanorjeff.bsky.social
+  - X: @jeff_lanor -> https://x.com/jeff_lanor
