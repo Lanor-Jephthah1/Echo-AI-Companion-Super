@@ -15,9 +15,13 @@ def get_gemini_api_key() -> str:
     if key:
         return key
     fallback = os.environ.get("NEXTTOKEN_API_KEY", "").strip()
-    if fallback.startswith("AIza"):
+    if fallback.startswith("AIza") or fallback.startswith("AQ."):
         return fallback
     return ""
+
+
+def get_gemini_model() -> str:
+    return os.environ.get("GEMINI_MODEL", "gemini-3.8-flash").strip() or "gemini-3.8-flash"
 
 
 def get_nexttoken_api_key() -> str:
@@ -38,7 +42,7 @@ def nexttoken_generate_reply(system_content: str, messages: List[Dict[str, str]]
     history = [{"role": "system", "content": system_content}]
     history.extend(messages)
     response = client.chat.completions.create(
-        model="gemini-2.0-flash",
+        model=get_gemini_model(),
         messages=history,
         stream=True,
     )
@@ -65,7 +69,8 @@ def gemini_generate_reply(system_content: str, messages: List[Dict[str, str]]) -
         "contents": contents,
     }
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+    model = get_gemini_model()
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
     req = urllib.request.Request(
         url=url,
         data=json.dumps(payload).encode("utf-8"),
@@ -90,4 +95,3 @@ def gemini_generate_reply(system_content: str, messages: List[Dict[str, str]]) -
     if not text:
         raise RuntimeError("Gemini returned empty text")
     return text
-
