@@ -29,6 +29,8 @@ def get_nexttoken_api_key() -> str:
 
 
 def use_nexttoken() -> bool:
+    if get_gemini_api_key():
+        return False
     return NextToken is not None and get_nexttoken_api_key().startswith("sk-")
 
 
