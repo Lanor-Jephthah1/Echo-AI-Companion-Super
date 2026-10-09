@@ -1976,7 +1976,8 @@ def _gemini_generate_reply(system_content: str, messages: List[Dict[str, str]]) 
         "contents": contents,
     }
 
-    model = _get_gemini_model()`n    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+    model = _get_gemini_model()
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
     req = urllib.request.Request(
         url=url,
         data=json.dumps(payload).encode("utf-8"),
