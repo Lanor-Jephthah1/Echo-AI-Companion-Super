@@ -7,10 +7,15 @@ from flask import Flask, Response, request, stream_with_context
 from flask_cors import CORS
 
 # Ensure backend module imports work from Vercel function runtime.
-ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
-BACKEND_DIR = os.path.join(ROOT_DIR, "backend")
-if BACKEND_DIR not in sys.path:
-    sys.path.insert(0, BACKEND_DIR)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+for cand in [
+    os.path.join(parent_dir, "backend"),
+    os.path.join(current_dir, "backend"),
+    os.path.join(os.getcwd(), "backend"),
+]:
+    if os.path.isdir(cand) and cand not in sys.path:
+        sys.path.insert(0, cand)
 
 from index import (
     chat_streaming,
