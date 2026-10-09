@@ -2,23 +2,14 @@
   "installCommand": "npm install --prefix frontend",
   "buildCommand": "npm run build --prefix frontend",
   "outputDirectory": "frontend/dist",
-  "functions": {
-    "api/vercel_app.py": {
-      "includeFiles": "backend/**"
-    }
-  },
   "rewrites": [
     {
-      "source": "/admin",
-      "destination": "/api/admin"
-    },
-    {
       "source": "/api/(.*)",
-      "destination": "/api/vercel_app.py"
+      "destination": "/api/vercel_app"
     },
     {
       "source": "/shared/(.*)",
-      "destination": "/api/vercel_app.py"
+      "destination": "/api/vercel_app"
     },
     {
       "source": "/(.*)",
